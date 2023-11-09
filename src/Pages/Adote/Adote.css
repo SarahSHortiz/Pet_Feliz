@@ -1,0 +1,139 @@
+/* *{
+    padding: 0%;
+    margin: 0;
+    margin-top: 50%;
+}
+
+.body-adote{
+    width: 80rem;
+
+}
+
+.filtro-adote{
+    background-color: #F9C200;
+    width: 40rem;
+    height: 20rem;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.listar-cards-adote{
+    background-color: blueviolet;
+}
+
+.cards-container{
+    margin-top: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap:1rem
+}
+
+.filtro{
+    background-color: #00f953;
+    margin-top: 5%;
+}
+
+/* Estilos CSS para os filtros */
+/* .filtro {
+    background-color: #00f953;
+    
+
+* {
+    padding: 0%;
+    margin: 0;
+    margin-top: 50%;
+}
+
+.body-adote {
+    width: 80rem;
+}
+
+.filtro-adote {
+    background-color: #F9C200;
+    width: 40rem;
+    height: 20rem;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.listar-cards-adote {
+    background-color: blueviolet;
+}
+
+.cards-container {
+    margin-top: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 1rem;
+} */
+
+
+
+
+
+/* Estilos CSS para os filtros */
+
+
+/* Estilo para cada filtro individual */
+/* Estilo para o select específico */
+
+
+
+* {
+    padding: 0%;
+    margin: 0;
+    
+}
+.body-adote {
+    width: 80rem;
+}
+/* Estilos para as duas linhas de filtros */
+.filtros-container {
+    border-radius: 12px;
+    background-color: #F9C200;
+    margin-left: 10%;
+    height: 10rem;
+    width: 80rem;
+    display: flex;
+    margin-top: 10%;
+    justify-content: space-evenly; /* Distribui os filtros igualmente na largura com espaço entre eles */
+}
+
+.filtro{
+    width: 35rem;
+    margin-top: 5%;
+    
+}
+
+
+
+.cards-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 1rem;
+    margin-left: 10%;
+    justify-content: space-between; /* Adicione esta linha para distribuir os cards igualmente */
+}
+
+.paginacao{
+    align-items: center;
+    margin-top: 5%;
+    color: #F9C200;
+}
+
+.title{
+    color: #000;
+font-family: Glory;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-left: 10%;
+margin-top: 5%;
+}

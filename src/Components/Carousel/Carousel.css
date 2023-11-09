@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.carousel {
+    padding: 5rem;
+    height: 100vh;
+    width: 100vw;
+}
+
+.box {
+    height: 0rem;
+    width: 0rem;
+    height: 500px;
+    width: 800px
+}
+
+
+.box h3 {
+    text-align: center;
+}
+
+
+.slick-slide div {
+    margin: 0.1rem;
+}
+.slick-slide img {
+    height: 500px;
+    width: 800px
+}
+
+
+.slick-prev {
+    margin-left: -20px;
+    margin-top: -20px;
+}
+
+.slick-next {
+    margin-right: 5px;
+    margin-top: -20px;
+
+
+}
+
+.slick-dots li.slick-active button::before {
+    color: #F9C200 !important;
+}
+
+.slick-dots li button::before {
+    color: rgb(213, 214, 202) !important;
+    font-size: 2rem !important;
+    top: 2rem !important;
+}

@@ -1,0 +1,23 @@
+/* Filtro.css */
+
+/* Estilização dos selects */
+.SelectEstado,
+.SelectCidade,
+.SelectPorte,
+.SelectSexo {
+    height: 20vw;
+    width: 10;
+
+}
+
+/* Estilização do contêiner do filtro */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F9C200;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
