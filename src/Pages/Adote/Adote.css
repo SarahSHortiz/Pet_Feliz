@@ -1,139 +1,94 @@
-/* *{
-    padding: 0%;
-    margin: 0;
-    margin-top: 50%;
-}
-
-.body-adote{
-    width: 80rem;
-
-}
-
-.filtro-adote{
-    background-color: #F9C200;
-    width: 40rem;
-    height: 20rem;
-    margin-left: 10%;
-    margin-top: 10%;
-}
-.listar-cards-adote{
-    background-color: blueviolet;
-}
-
-.cards-container{
-    margin-top: 1rem;
-    padding: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    gap:1rem
-}
-
-.filtro{
-    background-color: #00f953;
-    margin-top: 5%;
-}
-
-/* Estilos CSS para os filtros */
-/* .filtro {
-    background-color: #00f953;
-    
-
 * {
-    padding: 0%;
+    padding: 0;
     margin: 0;
-    margin-top: 50%;
+    border: none;
 }
 
-.body-adote {
-    width: 80rem;
-}
-
-.filtro-adote {
-    background-color: #F9C200;
-    width: 40rem;
-    height: 20rem;
-    margin-left: 10%;
-    margin-top: 10%;
-}
-
-.listar-cards-adote {
-    background-color: blueviolet;
-}
-
-.cards-container {
-    margin-top: 1rem;
-    padding: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    gap: 1rem;
-} */
-
-
-
-
-
-/* Estilos CSS para os filtros */
-
-
-/* Estilo para cada filtro individual */
-/* Estilo para o select específico */
-
-
-
-* {
-    padding: 0%;
+body {
+    padding: 0;
     margin: 0;
-    
+    font-family: Glory;
+    border: none;
 }
-.body-adote {
-    width: 80rem;
+
+.adote {
+    margin-bottom: 10%;
 }
-/* Estilos para as duas linhas de filtros */
-.filtros-container {
-    border-radius: 12px;
-    background-color: #F9C200;
-    margin-left: 10%;
-    height: 10rem;
-    width: 80rem;
+
+
+.filtros {
     display: flex;
+    margin-left: 16%;
+    width: 80rem;
+    font-size: x-large;
+
+
+}
+
+.container-adote{
+}
+
+/* Adiciona uma classe para a coluna */
+.coluna1 {
     margin-top: 10%;
-    justify-content: space-evenly; /* Distribui os filtros igualmente na largura com espaço entre eles */
+    width: 40%;
+    height: 12rem;
+
+    flex-direction: column;
+    background-color:  #f8c100;
+    border-radius: 5px 0% 0% 5px;
+
+
+
 }
 
-.filtro{
-    width: 35rem;
-    margin-top: 5%;
-    
+.coluna2 {
+    margin-top: 10%;
+    width: 40%;
+    height: 12rem;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f8c100;
+    border-radius: 0px 5px 5px 0%;
+
+
+
 }
 
 
-
-.cards-container {
-    margin-top: 2rem;
-    padding: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    gap: 1rem;
-    margin-left: 10%;
-    justify-content: space-between; /* Adicione esta linha para distribuir os cards igualmente */
-}
-
-.paginacao{
+.filtro {
     align-items: center;
-    margin-top: 5%;
-    color: #F9C200;
+    margin-bottom: 2%;
+    margin-top: 8%;
+    width: 30rem;
+    margin-left: 2%;
 }
 
-.title{
-    color: #000;
-font-family: Glory;
-font-size: 15px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-margin-left: 10%;
-margin-top: 5%;
+
+
+
+.title {
+    margin-top: 2%;
+    margin-left: 16%;
+    font-size: 14px;
+}
+
+.cards-container {
+    width: 80%;
+    margin-left: 15%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1%;
+    margin-top: 2%;
+}
+
+
+
+
+.paginacao {
+    border-color: red;
+    align-items: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    /* Ajuste a margem inferior conforme necessário */
 }

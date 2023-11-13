@@ -11,14 +11,18 @@ function Cadastro() {
     Email: '',
     Telefone: '',
     Senha: '',
-    SenhaConfirmar: '',  // Adicione a propriedade SenhaConfirmar
     Logradouro: {
       CEP: '',
       NomeLog: '',
       Numero: '',
     },
+    Cidade: {
+      Nome_Cidade: ''
+    },
+    Estado: {
+      Nome_Estado: ''
+    }
   });
-  
 
   const handleInputChange = (evento) => {
     const { name, value } = evento.target;
@@ -34,6 +38,28 @@ function Cadastro() {
       ...prevUsuario,
       Logradouro: {
         ...prevUsuario.Logradouro,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleCidadeInputChange = (evento) => {
+    const { name, value } = evento.target;
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      Cidade: {
+        ...prevUsuario.Cidade,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleEstadoInputChange = (evento) => {
+    const { name, value } = evento.target;
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      Estado: {
+        ...prevUsuario.Estado,
         [name]: value,
       },
     }));
@@ -64,11 +90,6 @@ function Cadastro() {
         alert("Preencha o campo senha");
         return;
       }
-      if (usuario.Senha !== usuario.SenhaConfirmar) {
-        alert("A senha e a confirmação de senha não coincidem.");
-        return;
-      }
-      
       if (!usuario.Logradouro.CEP) {
         alert("Preencha o campo CEP");
         return;
@@ -81,7 +102,7 @@ function Cadastro() {
         alert("Preencha o campo numero");
         return;
       }
-      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Usuario/cadastrarUsuario", usuario);
+      const response = await axios.post("https://localhost:44302/api/Usuario/cadastrarUsuario", usuario);
       console.log("Cadastro bem-sucedido:", response.data);
 
       setUsuario({
@@ -95,12 +116,17 @@ function Cadastro() {
           NomeLog: '',
           Numero: '',
         },
+        Cidade: {
+          Nome_Cidade: ''
+        },
+        Estado: {
+          Nome_Estado: ''
+        }
       });
       alert("Usuario cadastrado com sucesso")
       window.location.reload();
     } catch (error) {
-      console.error('Erro ao fazer a solicitação:', error);
-      alert('Ocorreu um erro durante o cadastro. Por favor, tente novamente mais tarde.');
+      console.error("Erro na solicitação:", error); 
     }
   };
 
@@ -121,19 +147,15 @@ function Cadastro() {
           <input type="email" id="email" name="Email" value={usuario.Email} onChange={handleInputChange} placeholder="E-mail" />
           <input type="password" id="senha" name="Senha" value={usuario.Senha} onChange={handleInputChange} placeholder="Senha" />
           <input
-  type="password"
-  id="senhaconfirmar"
-  name="SenhaConfirmar"
-  value={usuario.SenhaConfirmar}
-  onChange={handleInputChange}
-  placeholder="Confirmar Senha"
-/>
-
+            type="password"
+            id="senhaconfirmar" name="senhaconfirmar" placeholder="Confirmar Senha" />
           <input type="number" id="tel" name="Telefone" value={usuario.Telefone} onChange={handleInputChange} placeholder="Celular" />
           <input type="text" id="cpf" name="CPF" value={usuario.CPF} onChange={handleInputChange} placeholder="CPF" />
           <input type="text" id="endereco" name="CEP" value={usuario.Logradouro.CEP} onChange={handleLogradouroInputChange} placeholder="CEP"
           />
-          <input type="text" id="estado" name="NomeLog" value={usuario.Logradouro.NomeLog} onChange={handleLogradouroInputChange} placeholder="Endereço" />
+          <input type="text" id="estado" name="Nome_Estado" value={usuario.Estado.Nome_Estado} onChange={handleEstadoInputChange} placeholder="Estado"/>
+          <input type="text" id="cidade" name="Nome_Cidade" value={usuario.Cidade.Nome_Cidade} onChange={handleCidadeInputChange} placeholder="Cidade"/>
+          <input type="text" id="endereco" name="NomeLog" value={usuario.Logradouro.NomeLog} onChange={handleLogradouroInputChange} placeholder="Endereço" />
           <input type="text" id="cidade" name="Numero" value={usuario.Logradouro.Numero} onChange={handleLogradouroInputChange} placeholder="Numero" />
         </div>
         <div >
@@ -142,7 +164,7 @@ function Cadastro() {
           </button>
         </div>
         <div className="cadastro-buttom2">
-          <a href="#">Já sou cadastrado(a)</a>
+          <a  href="#">Já sou cadastrado(a)</a>
         </div>
       </form>
     </div>

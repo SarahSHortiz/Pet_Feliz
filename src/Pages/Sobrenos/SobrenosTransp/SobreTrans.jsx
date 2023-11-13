@@ -2,7 +2,7 @@ import "../SobrenosTransp/SobreTrans.css";
 import quemsomos from "../../../assets/PET FELIZ (2).png"
 import equipe from "../../../Components/img/mulhercomdog.jpg"
 import logo from "../../../Components/img/transparencia.jpeg"
-import propaganda2 from "../../../Components/img/propaganda2.jpg"
+import propaganda2 from "../../../Components/img/3.svg"
 import { Link } from "react-router-dom";
 
 

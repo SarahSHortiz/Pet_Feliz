@@ -4,20 +4,10 @@ import axios from 'axios';
 // import DateTimePicker from 'react-datetime-picker';
 // import Datetime from 'react-datetime';
 
-const CadastroAnimal = () => {
-    /*const [Pet, setPet] = useState({
-        Nome_Pet: '',
-        Sexo_Pet: 'Selecione o Sexo',
-        Descricao_Pet: '',
-        Idade_Pet: 'Selecione a Idade',
-        Porte_Pet: 'Selecione o Porte',
-        Status_Pet: 'Selecione uma opção',
-        Castrado: 'Selecione a opção',
-        Nome_Foto: '',
-        Foto_Pet: '',
-        Base64: null,
-    });*/
+const Doe = () => {
 
+
+    const [setNomeAnimal] = useState("");
     const [Nome_Pet, setNome_Pet] = useState("");
     const [Porte_Pet, setPorte_Pet] = useState("");
     const [Sexo_Pet, setSexo_Pet] = useState("");
@@ -37,9 +27,7 @@ const CadastroAnimal = () => {
         Nome_Raca: '',
     });
 
-    const [Animal, setAnimal] = useState({
-        Nome_Animal: '',
-    });
+
 
     const [Vacina, setVacina] = useState({
         data_vacina: '',
@@ -47,11 +35,13 @@ const CadastroAnimal = () => {
         descricao: '',
     });
 
+
     const [errors, setErrors] = useState({});
 
+    const nome_Animal  = ['Gato', 'Cão'];
     const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10'];
-    const porte_Pet = ['Pequeno Porte', 'Médio Porte', 'Grande Porte'];
-    const sexo_Pet = ['M', 'F'];
+    const porte_Pet = ['Anão', 'Pequeno Porte', 'Médio Porte', 'Grande Porte', 'Molosso'];
+    const sexo_Pet = ['Macho', 'Fêmea'];
     const castrado = ['Sim', 'Não'];
     const status_Pet = ['Disponivel'];
     const status = ['Valido', 'Vencido'];
@@ -60,10 +50,10 @@ const CadastroAnimal = () => {
         return {};
     };
 
-    function handleDateChange(date) {
-        setVacina({ ...Vacina, data_vacina: date });
-    }
-    
+    // function handleDateChange(date) {
+    //     setVacina({ ...Vacina, data_vacina: date });
+    // }
+
     function handleFileChange(event) {
         const selectedFile = event.target.files[0];
 
@@ -88,7 +78,7 @@ const CadastroAnimal = () => {
         if (Base64) {
 
             const body = {
-                Vacina, Animal, Raca, Especie, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64
+                Vacina, Raca, Especie, nome_Animal, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64
             }
 
             if (Object.keys(validationErrors).length === 0) {
@@ -114,7 +104,7 @@ const CadastroAnimal = () => {
                 type="text"
                 placeholder="Nome do animal"
                 className="input"
-                onChange={(e) => setNome_Pet( e.target.value )}
+                onChange={(e) => setNome_Pet(e.target.value)}
                 value={Nome_Pet}
             />
             {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>}
@@ -137,14 +127,29 @@ const CadastroAnimal = () => {
             />
             {errors.Nome_Raca && <p className="labelError">{errors.Nome_Raca}</p>}
 
-            <input
+            {/* <input
                 type="text"
                 placeholder="Tipo"
                 className="input"
                 onChange={(e) => setAnimal({ ...Animal, Nome_Animal: e.target.value })}
                 value={Animal.Nome_Animal}
             />
-            {errors.Nome_Animal && <p className="labelError">{errors.Nome_Animal}</p>}
+            {errors.Nome_Animal && <p className="labelError">{errors.Nome_Animal}</p>} */}
+
+            <select
+                value={nome_Animal}
+                onChange={(e) => setNomeAnimal(e.target.value)}
+                className="dropdown"
+            >
+                <option value="Selecione o tipo">tipo</option>
+                {nome_Animal.map((option) => (
+                    <option value={option} key={option}>
+                        {option}
+                    </option>
+                ))}
+            </select>
+
+
 
             <select
                 value={Idade_Pet}
@@ -187,7 +192,7 @@ const CadastroAnimal = () => {
 
             <select
                 value={Sexo_Pet}
-                onChange={(e) => setSexo_Pet(e.target.value )}
+                onChange={(e) => setSexo_Pet(e.target.value)}
                 className="dropdown"
             >
                 <option value="Selecione o Sexo">Sexo do animal?</option>
@@ -246,12 +251,12 @@ const CadastroAnimal = () => {
                 type="text"
                 placeholder="Descrição"
                 className="input"
-                onChange={(e) => setDescricao_Pet(e.target.value )}
+                onChange={(e) => setDescricao_Pet(e.target.value)}
                 value={Descricao_Pet}
             />
 
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value )} />
+                <input type="text" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
 
                 <input type="file" accept="image/jpeg" onChange={handleFileChange} />
                 <br></br>
@@ -263,4 +268,4 @@ const CadastroAnimal = () => {
     );
 };
 
-export default CadastroAnimal;
+export default Doe;

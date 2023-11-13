@@ -46,8 +46,9 @@ function Login() {
         setMensagem('Usuário ou senha incorretos.');
       }
     } catch (error) {
-      console.error('Erro no login:', error);
-      setMensagem('Erro no servidor.');
+      
+      console.error("Erro na solicitação:", error);
+
     }
   };
 
