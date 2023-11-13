@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap");
- 
+
 
 .fac-body {
   margin-bottom: 10%;
@@ -10,7 +10,7 @@
   display: flex;
   white-space: nowrap;
   font-family: arial;
-  margin-left: 30rem;
+  margin-left: 52rem;
   margin-top: 10rem;
 
 
@@ -18,14 +18,14 @@
 
 .wrapper {
   display: flex;
-  width: 20rem;
+  width: 15rem;
 
 }
 
 .accordion {
-  width: 20rem;
+  width: 50rem;
   margin-top: 80%;
-  margin-left: -30rem;
+  margin-left: -35rem;
 }
 
 .item {
@@ -34,11 +34,11 @@
   border-style: solid;
   border-color: #f9c200;
   margin-top: 2rem;
-  padding: 1rem 1rem;
-  font-size: 80%;
+  padding: 2rem 1rem;
+  font-size: x-large;
   font-family: arial;
-  line-height: 1.8;
-  width: 40rem;
+  line-height: 0.8;
+  width: 50rem;
 
 }
 
@@ -50,7 +50,7 @@
 }
 
 .content {
-  font-size: 1rem;
+  font-size: large;
   font-family: arial;
   line-height: 1.8;
   max-height: 0;
@@ -59,9 +59,10 @@
 }
 
 .content.show {
-  font-size: 1rem;
   font-family: arial;
   line-height: 1.8;
+  font-size: large;
+  margin-top: 5%;
   height: auto;
   max-height: 9999px;
   transition: all 0.5s cubic-bezier(1, 0, 1, 0);

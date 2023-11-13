@@ -1,21 +1,35 @@
 import PropTypes from 'prop-types';
 import './CardsAnimais.css'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
+
+
+
 function CardsAnimal({ cardanimal }) {
     if (!cardanimal) {
         return null;
     }
     return (
-        <div className='card'>
-            <div className='card-img'>
-                <label><img src={cardanimal.foto_Pet} style={{ width: 200, height: 200 }} alt="Imagem do Card" />
-                </label>
-            </div>
-            <div className='description'>
-                <div>{cardanimal.status_Pet}</div>
-                <h1>{cardanimal.nome_Pet}</h1>
-                <h3>CEP: {cardanimal.logradouro.cep}</h3>
-            </div>
-        </div>
+<Card sx={{ maxWidth: 450 }}>
+  <CardActionArea>
+    <CardMedia className='card-img' sx={{ height: 200 }}>
+      <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', width: '100%' }} />
+    </CardMedia>
+    <CardContent className='description' sx={{ marginBottom: '5%' }}>
+  <div>
+    <h2 style={{ marginBottom: '2%' }}>{cardanimal.status_Pet}</h2>
+  </div>
+  <h1 style={{ marginBottom: '5%' }}>{cardanimal.nome_Pet}</h1>
+  <h3 style={{ marginBottom: '2%' }}>CEP: {cardanimal.logradouro.cep}</h3>
+</CardContent>
+
+  </CardActionArea>
+</Card>
+
+
+
     );
 }
 

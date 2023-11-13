@@ -1,116 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Glory&family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
-
-
-* {
-    padding: 0;
-    margin: 0;
-    outline: none;
-    border: none;
-    font-family: Glory;
-    margin-top: 1000%;
-
-}
-
-.body-doe {
-    background-color: #F9C200;
-    margin-top: 50%;
-    width: 80vw;
-    height: 100%;
-    display: flex;
-    margin-left: 10%;
-    margin-bottom: 10%;
-}
-
-.container {
-    margin-left: 10%;
-    white-space: nowrap;
-    height: 50rem;
-    width: 80rem;
-    margin-top: 5%;
-    background-color: #F9C200;
-}
-.container  h1{
-    font-size: 2rem;
-}
-
-.avisos-doe {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10%;
-    margin-left: -70%;
-    margin-bottom: 10%;
-    
-}
-
-.box {
-    background: #FFF;
-    margin-top: 5%;
-    width: 25vw;
-    height: 10vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    
-}
-
-.box p {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: Glory;
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: black;
-}
-
-.form-doe {
-    margin-top: 10%;
-    height: 5rem;
-    width: 20rem;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-}
-
-
-.form-doe input,
-textarea,
-select {
-    margin-left: 45%;
-    border-radius: 10px;
-  
-    color: black;
-    font-size: 20px;
-    padding: 2%;
-    margin-top: 2%;
-
-
-
-}
-
-.title {
-    margin-top: 5%;
-}
-
-.img-doe {
-    background-color: blue;
-}
-
-
-.form-doe input::placeholder,
-.form-doe textarea::placeholder,
- .form-doe select ::placeholder {
-    color: black;
-    padding: 1%;
-    font-size: 20px;
-
-} */
-
 
 
 .container {
@@ -127,12 +14,13 @@ select {
     margin-top: 20px;
     font-size: 30px;
     font-weight: bold;
+    background-color: #ff375b;
   }
   
   .input {
     width: 350px;
     height: 70px;
-    border: 1px solid gray;
+    border: 1px solid rgb(73, 8, 60);
     border-radius: 10px;
     margin-bottom: 20px;
     padding-left: 10px;
@@ -140,7 +28,7 @@ select {
   }
   
   .cadastrar {
-    background-color: #F9C200;
+    background-color: #38362d;
     border-radius: 10px;
     width: 300px;
     height: 70px;
