@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import {jwtDecode} from "jwt-decode";
-
+import { jwtDecode } from "jwt-decode";
 
 function SaveJWT(jwtData) {
     const userData = jwtDecode(jwtData);
@@ -17,7 +15,7 @@ function GenerateHeader() {
     const usuarioLogado = CheckUserLogin();
 
     if (usuarioLogado == false) {
-        <Link to='/Login'></Link>
+        Navegar('Login')
     }
 
     const token = JSON.parse(localStorage.getItem("jwt"));

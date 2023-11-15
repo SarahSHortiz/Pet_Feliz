@@ -71,7 +71,7 @@
   
   }
   
-  .login-buttom-entrar a{
+  .login-buttom-entrar span{
     text-decoration: none;
     color: #fff;
     text-align: center;
@@ -88,7 +88,7 @@
     font-size: 1.4rem;
   }
   
-  .login-buttom-senha a {
+  .login-buttom-senha p {
     color: gray;
     text-decoration: none;
     font-family: Arial;
@@ -99,7 +99,7 @@
     margin-top: -6%;
   }
   
-  .login-buttom-cadastro a {
+  .login-buttom-cadastro p {
     color: gray;
     text-decoration: none;
     font-family: Arial;

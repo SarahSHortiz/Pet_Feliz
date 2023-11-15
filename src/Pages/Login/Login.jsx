@@ -4,7 +4,7 @@ import '../Login/Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { AuthContextFunctions } from '../../AuthContext'
+import { AuthContextFunctions } from '../../AuthContext';
 
 function Login() {
 
@@ -40,7 +40,7 @@ function Login() {
         setMensagem('Preencha ambos os campos.');
         return;
       }
-      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Usuario/login", usuario);
+      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Auth/Login", usuario);
       if (response.status === 200) {
       
         AuthContextFunctions.SaveJWT(response.data.token)
@@ -70,15 +70,15 @@ function Login() {
           <input type="email" id="email" name="Email" placeholder="E-mail" value={usuario.Email} onChange={handleInputChange} />
           <input type="password" id="senha" name="Senha" placeholder="Senha" value={usuario.Senha} onChange={handleInputChange} />
           <div className="login-buttom-entrar" onChange={handleInputChange}>
-            <a type="submit">ENTRAR</a> 
+            <span type="submit">ENTRAR</span> 
           </div>
         </form>
 
         <div className="login-buttom-senha">
-        <Link to="/EsqueciSenha"><a href="#">Esqueceu a Senha?</a></Link>
+        <Link to="/EsqueciSenha"><p>Esqueceu a Senha?</p></Link>
         </div>
         <div className="login-buttom-cadastro">
-        <Link to="/Cadastro" >  <a href="#">Cadastre-se</a></Link>
+        <Link to="/Cadastro" >  <p>Cadastre-se</p></Link>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import "../Cadastro/Cadastro.css";
 import img1 from '../../assets/cachorroCadastro.jpg';
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Cadastro() {
   const [usuario, setUsuario] = useState({
@@ -160,7 +161,7 @@ function Cadastro() {
           </button>
         </div>
         <div className="cadastro-buttom2">
-          <a href="#">Já sou cadastrado(a)</a>
+          <Link to='/Login'><a href="#">Já sou cadastrado(a)</a></Link>
         </div>
       </form>
     </div>

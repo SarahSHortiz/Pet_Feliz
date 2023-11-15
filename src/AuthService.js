@@ -17,19 +17,17 @@ export const removeToken = () => {
 
 export const isTokenExpired = () => {
     const token = getToken();
-    if (token) {
-        const decodedToken = jwt_decode(token);
+    if (!token) {
         return Date.now() >= decodedToken.exp * 1000;
     }
 
-    return true; 
+    return true;
 };
-
 
 export const setAuthHeaders = () => {
     const token = getToken();
     if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.headers.common['Authorization'] = 'Bearer ${token}';
     } else {
         delete axios.defaults.headers.common['Authorization'];
     }
@@ -58,7 +56,7 @@ export const login = async (usuario) => {
     }
 };
 
-export const getUserInfo = () => {
+const getUserInfo = () => {
     const token = getToken();
 
     if (token) {
@@ -68,3 +66,5 @@ export const getUserInfo = () => {
 
     return null;
 };
+
+export {getToken, getUserInfo};
