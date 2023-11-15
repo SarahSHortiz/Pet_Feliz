@@ -1,16 +1,33 @@
-import { Component } from "react";
+import  { Component } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import {MenuItems} from '../Navbar/MenuItems';
+import { MenuItems } from "../Navbar/MenuItems";
 
 class Navbar extends Component {
-  state = { clicked: false, isLoggedIn: false };
-  // Adicione um estado para controlar se o usuário está logado ou não
+  state = {
+    showDropdown: false,
+    isLoggedIn: false, // Defina o estado inicial como não logado
+  };
+
+  componentDidMount() {
+    // Simulação de verificação de login ao carregar a página (use sua lógica real aqui)
+    const isLoggedIn = localStorage.getItem("isLoggedIn"); // Pode ser uma verificação de token, cookie ou sessão
+    if (isLoggedIn) {
+      this.setState({ isLoggedIn: true });
+    }
+  }
 
   handleDropdown = () => {
-    // Função para mostrar/ocultar o dropdown
-    this.setState({ showDropdown: !this.state.showDropdown });
-  }
+    this.setState((prevState) => ({
+      showDropdown: !prevState.showDropdown,
+    }));
+  };
+
+  handleLogoff = () => {
+    // Simulação de logout (use sua lógica real aqui)
+    localStorage.removeItem("isLoggedIn"); // Limpar o token, cookie ou sessão
+    this.setState({ isLoggedIn: false, showDropdown: false });
+  };
 
   render() {
     const { showDropdown, isLoggedIn } = this.state;
@@ -26,13 +43,17 @@ class Navbar extends Component {
         <ul className={showDropdown ? "Nav-menu active" : "Nav-menu"}>
           {MenuItems.map((item, index) => (
             <li key={index}>
-              <Link className={item.cName} to={item.URL}>{item.title}</Link>
+              <Link className={item.cName} to={item.URL}>
+                {item.title}
+              </Link>
             </li>
           ))}
           {isLoggedIn ? (
-            // Se o usuário estiver logado, mostrar o botão "Perfil" com o dropdown
+            // Conteúdo a ser exibido quando o usuário está logado
             <li className="dropdown">
-              <span onClick={this.handleDropdown} className="nav_links">Perfil</span>
+              <span onClick={this.handleDropdown} className="nav_links">
+                Perfil
+              </span>
               {showDropdown && (
                 <div className="dropdown-content">
                   <Link to="/meu-perfil">Meu Perfil</Link>
@@ -43,7 +64,7 @@ class Navbar extends Component {
               )}
             </li>
           ) : (
-            // Se o usuário não estiver logado, mostrar o botão "Cadastre-se"
+            // Conteúdo a ser exibido quando o usuário não está logado
             <li>
               <Link to="/Cadastro">
                 <button className="button-navbar">Cadastre-se</button>
@@ -53,12 +74,6 @@ class Navbar extends Component {
         </ul>
       </nav>
     );
-  }
-
-  handleLogoff = () => {
-    // Função para realizar o logoff (logout) do usuário
-    // Você deve implementar a lógica de logout aqui, por exemplo, definindo isLoggedIn como falso
-    this.setState({ isLoggedIn: false, showDropdown: false });
   }
 }
 

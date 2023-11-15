@@ -22,7 +22,9 @@ function CardsAnimal({ cardanimal }) {
     <h2 style={{ marginBottom: '2%' }}>{cardanimal.status_Pet}</h2>
   </div>
   <h1 style={{ marginBottom: '5%' }}>{cardanimal.nome_Pet}</h1>
-  <h3 style={{ marginBottom: '2%' }}>CEP: {cardanimal.logradouro.cep}</h3>
+  <h3 style={{ marginBottom: '2%' }}> {cardanimal.estado.nome_Estado}</h3>
+  <h3 style={{ marginBottom: '2%' }}> {cardanimal.cidade.nome_Cidade}</h3>
+
 </CardContent>
 
   </CardActionArea>
@@ -32,20 +34,21 @@ function CardsAnimal({ cardanimal }) {
 
     );
 }
-
 CardsAnimal.propTypes = {
-    cardanimal: PropTypes.shape({
-        status_Pet: PropTypes.string.isRequired,
-        nome_Pet: PropTypes.string.isRequired,
-        logradouro: PropTypes.shape({
-            sexo_Pet: PropTypes.string.isRequired,
-            cep: PropTypes.string.isRequired,
-            nome_Estado: PropTypes.string.isRequired,
-            estado: PropTypes.string.isRequired,
-
-        }),
-        foto_Pet: PropTypes.string.isRequired,
+  cardanimal: PropTypes.shape({
+    status_Pet: PropTypes.string.isRequired,
+    nome_Pet: PropTypes.string.isRequired,
+    estado: PropTypes.shape({
+      nome_Estado: PropTypes.string.isRequired,
     }).isRequired,
+    foto_Pet: PropTypes.string.isRequired,
+    cidade: PropTypes.shape({
+      nome_Cidade: PropTypes.string.isRequired,
+    }).isRequired,
+    nome_Cidade: PropTypes.string.isRequired, // Validation for nome_Cidade within cardanimal
+  }).isRequired,
 };
+
+
 
 export default CardsAnimal;

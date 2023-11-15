@@ -7,15 +7,14 @@
 
 .carousel {
     padding: 5rem;
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
 }
 
 .box {
     height: 0rem;
     width: 0rem;
-    height: 500px;
-    width: 800px
+
 }
 
 
