@@ -4,6 +4,7 @@ import '../Login/Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { AuthContextFunctions } from '../../AuthContext'
 
 function Login() {
 
@@ -41,13 +42,16 @@ function Login() {
       }
       const response = await axios.post("https://petfeliz.azurewebsites.net/api/Usuario/login", usuario);
       if (response.status === 200) {
-        navigate("/alterarPerfil")
+      
+        AuthContextFunctions.SaveJWT(response.data.token)
+        const user = AuthContextFunctions.GetUserData();
+        navigate("/Home", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }
     } catch (error) {
-      
-      console.error("Erro na solicitação:", error);
+      console.error('Erro no login:', error);
+      setMensagem('Erro no servidor.');
 
     }
   };

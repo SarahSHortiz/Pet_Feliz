@@ -16,6 +16,8 @@
     transform: translate(-500);
     z-index: 9999;
     font-family: "Rubik";
+    position: fixed !important;
+    top: 0 !important;
 
 }
 

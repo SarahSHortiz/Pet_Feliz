@@ -19,7 +19,7 @@ function Adote() {
         uf: ""
     });
 
-  
+
     const porte_Pet = [
         { value: "anao", label: "Anão" },
         { value: "pequeno", label: "Pequeno Porte" },
@@ -126,7 +126,7 @@ function Adote() {
                         </div>
                     </div>
                     <div className="coluna2">
-                    
+
                         <div className="filtro">
                             <Select
                                 options={nome_Animal}
@@ -141,34 +141,28 @@ function Adote() {
                                 onChange={handleUFChange}
                             />
                         </div>
+                    </div>
                 </div>
+
+                <div className="title">
+                    <h1>VENHA ADOTAR SEU NOVO PET!</h1>
+                </div>
+
+                <div className="cards-container">
+                    {currentItems.map((x) => {
+                        return <CardsAnimal cardanimal={x} key={x?.id_Pet} />;
+                    })}
+                </div>
+                <Stack spacing={2} className="paginacao">
+                    <Pagination
+                        count={Math.ceil(filteredData.length / itemsPerPage)}
+                        page={currentPage}
+                        onChange={(event, value) => setCurrentPage(value)}
+
+                    />
+                </Stack>
             </div>
-
-            <div className="title">
-                <h1>VENHA ADOTAR SEU NOVO PET!</h1>
-            </div>
-
-
-            <div className="cards-container">
-                {currentItems.map((x) => {
-                    return <CardsAnimal cardanimal={x} key={x?.id_Pet} />;
-                })}
-            </div>
-            <Stack spacing={2} className="paginacao">
-                <Pagination
-                    count={Math.ceil(filteredData.length / itemsPerPage)}
-                    page={currentPage}
-                    onChange={(event, value) => setCurrentPage(value)}
-
-                />
-            </Stack>
-
-
-
         </div>
-        </div>
-                
-
 
     );
 }

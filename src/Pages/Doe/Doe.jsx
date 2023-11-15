@@ -4,6 +4,7 @@ import axios from 'axios';
 import img from '../../Components/img/propaganda.png'
 // import DateTimePicker from 'react-datetime-picker';
 // import Datetime from 'react-datetime';
+import { AuthContextFunctions } from "../../AuthContext";
 
 const Doe = () => {
 
@@ -52,6 +53,9 @@ const Doe = () => {
         return {};
     };
 
+    function handleDateChange(date) {
+        setVacina({ ...Vacina, data_vacina: date });
+    }
 
     function handleFileChange(event) {
         const selectedFile = event.target.files[0];
@@ -82,7 +86,8 @@ const Doe = () => {
 
             if (Object.keys(validationErrors).length === 0) {
                 try {
-                    const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body);
+                    const headers = AuthContextFunctions.GenerateHeader();
+                    const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body, { headers });
 
                     if (response.status === 200) {
                         alert('Cadastro realizado com sucesso');
@@ -97,9 +102,7 @@ const Doe = () => {
 
     return (
         <div className='doe-content'>
-
             <div className='doe'>
-
                 <div className='textos'>
                     <div className='txt'><h2>  Tenha consciência,
                         adicione informações verídicas sobre
@@ -109,7 +112,6 @@ const Doe = () => {
                     <div className='txt'><h2>    Se você quer mudar o mundo,
                         comece adotando um animal. Eles podem trazer grandes mudanças para nossas vidas, </h2></div>
                 </div>
-
                 <div className='imagem'>
                     <img src={img} alt="propaganda" />
                 </div>
@@ -142,16 +144,6 @@ const Doe = () => {
                         value={Raca.Nome_Raca}
                     />
                     {errors.Nome_Raca && <p className="labelError">{errors.Nome_Raca}</p>}
-
-                    {/* <input
-                type="text"
-                placeholder="Tipo"
-                className="input"
-                onChange={(e) => setAnimal({ ...Animal, Nome_Animal: e.target.value })}
-                value={Animal.Nome_Animal}
-            />
-            {errors.Nome_Animal && <p className="labelError">{errors.Nome_Animal}</p>} */}
-
                     <select
                         value={Nome_Animal}
                         onChange={(e) => setNomeAnimal(e.target.value)}
@@ -273,7 +265,7 @@ const Doe = () => {
                     />
 
                     <form onSubmit={handleSubmit}>
-                        <button value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
+                    <input type="text" placeholder='Nome da Imagem'  value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
 
                         <input type="file" accept="image/jpeg" onChange={handleFileChange} />
                         

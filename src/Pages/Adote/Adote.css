@@ -25,15 +25,13 @@ body {
 
 }
 
-.container-adote{
-}
+
 
 /* Adiciona uma classe para a coluna */
 .coluna1 {
     margin-top: 10%;
     width: 40%;
     height: 12rem;
-
     flex-direction: column;
     background-color:  #f8c100;
     border-radius: 5px 0% 0% 5px;
@@ -69,8 +67,14 @@ body {
 
 .title {
     margin-top: 2%;
-    margin-left: 16%;
-    font-size: 14px;
+    font-size: 1rem;
+
+}
+
+.title h1{
+    font-size: 2rem;
+    margin-left: -13%;
+
 }
 
 .cards-container {
@@ -79,7 +83,6 @@ body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 1%;
-    margin-top: 2%;
 }
 
 
@@ -90,5 +93,4 @@ body {
     align-items: center;
     margin-bottom: 5%;
     margin-top: 5%;
-    /* Ajuste a margem inferior conforme necessário */
 }
