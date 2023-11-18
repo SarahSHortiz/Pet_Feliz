@@ -70,7 +70,7 @@ function Login() {
           <input type="email" id="email" name="Email" placeholder="E-mail" value={usuario.Email} onChange={handleInputChange} />
           <input type="password" id="senha" name="Senha" placeholder="Senha" value={usuario.Senha} onChange={handleInputChange} />
           <div className="login-buttom-entrar" onChange={handleInputChange}>
-            <span type="submit">ENTRAR</span> 
+            <button type="submit">ENTRAR</button> 
           </div>
         </form>
 

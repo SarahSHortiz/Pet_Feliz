@@ -10,7 +10,7 @@ import Perfil from './Pages/Perfil/Perfil';
 import EsqueciSenha from './Pages/EsqueciSenha/EsqueciSenha';
 import CadastroAnimal  from '../src/Pages/Doe/Doe';
 import Doe from '../src/Pages/Doe/Doe';
-import AnimaisCadastrados from '../src/Pages/AnimaisCadastrados/AnimaisCadastrados';
+// import AnimaisCadastrados from '../src/Pages/AnimaisCadastrados/AnimaisCadastrados';
 import AlterarSenha from '../src/Pages/AlterarSenha/AlterarSenha';
 import AlterarPerfil from '../src/Pages/AlterarPerfil/AlterarPerfil';
 import Footer from '../src/Components/Footer/Footer';
@@ -35,7 +35,7 @@ function App() {
           <Route path="/Perfil" element={<Perfil/>} />
           <Route path="/CadastroAnimal " element={<CadastroAnimal/>} />
           <Route path="/Doe" element={<Doe/>} />
-          <Route path="/AnimaisCadastrados" element={<AnimaisCadastrados/>} />
+          {/* <Route path="/AnimaisCadastrados" element={<AnimaisCadastrados/>} /> */}
           <Route path="/AlterarSenha" element={<AlterarSenha/>} />
           <Route path="/EsqueciSenha" element={<EsqueciSenha/>} />
           <Route path="/EsqueciSenha" element={<EsqueciSenha/>} />

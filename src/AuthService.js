@@ -18,16 +18,18 @@ export const removeToken = () => {
 export const isTokenExpired = () => {
     const token = getToken();
     if (!token) {
-        return Date.now() >= decodedToken.exp * 1000;
+        return true; // Se não houver token, considere como expirado ou inválido
     }
 
-    return true;
+    const decodedToken = jwt_decode(token); // Decodifica o token aqui
+    return Date.now() >= decodedToken.exp * 1000;
 };
+
 
 export const setAuthHeaders = () => {
     const token = getToken();
     if (token) {
-        axios.defaults.headers.common['Authorization'] = 'Bearer ${token}';
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {
         delete axios.defaults.headers.common['Authorization'];
     }
@@ -67,4 +69,4 @@ const getUserInfo = () => {
     return null;
 };
 
-export {getToken, getUserInfo};
+export { getUserInfo }; // Exportando getUserInfo separadamente

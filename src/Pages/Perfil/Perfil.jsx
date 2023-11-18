@@ -1,7 +1,31 @@
-import '../perfil/perfil.css'
-import FileUpload from '../../Components/UploadFiles/UploadFiles'
+import { useEffect, useState } from 'react';
+import '../perfil/perfil.css';
+import { AuthContextFunctions } from '../../AuthContext';
 
 export default function Perfil() {
+  const [nome, setNome] = useState("");
+  const [Cidade, setCidade] = useState({
+    Nome_Cidade: ""
+  });
+  const [Estado, setEstado] = useState({
+    Nome_Estado: ""
+  });
+
+
+  useEffect(() => {
+    const usuariologado = AuthContextFunctions.CheckUserLogin();
+
+    if (usuariologado) {
+      const userData = JSON.parse(AuthContextFunctions.GetUserData());
+      const usernome = userData.Nome_Usuario;
+      const usercidade = userData.Nome_Cidade;
+      const userestado = userData.Nome_Estado;
+      setNome(usernome);
+      setCidade(usercidade);
+      setEstado(userestado);
+      console.log(userData);
+    }
+  }, []);
 
   return (
     <div className="perfil-body">
@@ -9,21 +33,16 @@ export default function Perfil() {
         <div className="perfil-title">
           <h1>Meu Perfil</h1>
         </div>
-        <div className="img-usuario-perfil">
-          <FileUpload></FileUpload>
-        </div>
 
         <form className="dados-usuario-perfil">
           <div className="question">
-
-            <input type="text" required placeholder='Nome' />
+            <input type="text" readOnly value={nome} />
           </div>
           <div className="question">
-            <input type="text" required placeholder='Cidade' />
-
+            <input type="text" readOnly value={Cidade} />
           </div>
           <div className="question">
-            <input type="text" required placeholder='Estado' />
+            <input type="text" readOnly value={Estado} />
           </div>
         </form>
 

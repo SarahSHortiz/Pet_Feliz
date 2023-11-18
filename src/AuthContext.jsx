@@ -8,17 +8,17 @@ function SaveJWT(jwtData) {
 }
 
 function GetUserData() {
-    return JSON.parse(localStorage.getItem("userData"));
+    return (localStorage.getItem("userData"));
 }
 
 function GenerateHeader() {
     const usuarioLogado = CheckUserLogin();
 
     if (usuarioLogado == false) {
-        Navegar('Login')
+        //Navegar('Login')
     }
 
-    const token = JSON.parse(localStorage.getItem("jwt"));
+    const token = (localStorage.getItem("jwt"));
     return new Headers({
         Authorization: "Bearer " + token,
         "Content-Type": "application/json",
@@ -46,5 +46,6 @@ function CheckUserLogin() {
 export const AuthContextFunctions = {
     SaveJWT,
     GetUserData,
-    GenerateHeader
+    GenerateHeader,
+    CheckUserLogin
 };

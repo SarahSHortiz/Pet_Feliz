@@ -9,25 +9,20 @@
 }
 
 .perfil-body {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   margin-bottom: 7rem;
   font-family: Glory;
-
-
 }
 
 .perfil-container {
   margin-top: 10%;
   background-color: #FDF8F8;
-  ;
   height: 60rem;
   width: 80%;
   display: flex;
-
 }
 
 .perfil-title {
@@ -35,12 +30,12 @@
   height: 8%;
   font-size: 20px;
   background-color: #F9C200;
-  margin-left: 22%;
   margin-top: 5%;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 20%;
 }
 
 .perfil-title h1 {
@@ -51,30 +46,19 @@
   color: #FDF8F8;
 }
 
-.img-usuario-perfil {
-  height: 40%;
-  width: 30%;
-  margin-top: 20%;
-  margin-left: -70%;
-  border-radius: 50%;
-}
-
-.img-usuario-perfil img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-}
-
 .dados-usuario-perfil {
-  margin-top: 20%;
-  margin-left: 10%;
+  margin-top: 15%;
   height: 40%;
   width: 40%;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .dados-usuario-perfil input {
-  background-color: #F9C200;
+  background-color: #00f9a2;
   border: none;
   border-radius: 20px;
   height: 5rem;
@@ -82,26 +66,35 @@
   margin-top: 10%;
   line-height: 5rem;
   font-size: 30px;
+  margin-left: -250%;
 }
-
-
 
 .dados-usuario-perfil input::placeholder {
   padding-left: 5%;
   color: oldlace;
 }
 
-
 .bnt-perfil-usuario {
-  margin-top: 58%;
-  margin-left: -32%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50%;
+  margin-left: -84%;
+}
+
+/* Estilos para os botões */
+.perfil-bnt-cadastrar,
+.perfil-bnt-petscadastrados {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .perfil-bnt-cadastrar {
   width: 18rem;
   height: 5rem;
   border-radius: 15px;
-  background-color: #FFD700;
 }
 
 .perfil-bnt-cadastrar button {
@@ -126,7 +119,6 @@
   width: 18rem;
   height: 5rem;
   border-radius: 15px;
-  background-color: #FFD700;
   margin-top: 20%;
 }
 
