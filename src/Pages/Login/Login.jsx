@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { AuthContextFunctions } from '../../AuthContext';
 
-function Login() {
+function Login({setIsLoggedIn}) {
 
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState({
@@ -45,6 +45,7 @@ function Login() {
       
         AuthContextFunctions.SaveJWT(response.data.token)
         const user = AuthContextFunctions.GetUserData();
+        setIsLoggedIn(true);
         navigate("/Home", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');

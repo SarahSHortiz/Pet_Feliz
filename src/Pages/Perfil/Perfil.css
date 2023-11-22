@@ -58,7 +58,7 @@
 }
 
 .dados-usuario-perfil input {
-  background-color: #00f9a2;
+  background-color: #F9C200;
   border: none;
   border-radius: 20px;
   height: 5rem;
@@ -67,6 +67,11 @@
   line-height: 5rem;
   font-size: 30px;
   margin-left: -250%;
+  padding-left: 10%;
+}
+
+.dados-usuario-perfil value{
+  margin-left: 10%;
 }
 
 .dados-usuario-perfil input::placeholder {

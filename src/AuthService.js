@@ -1,6 +1,8 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
+
+
 const TOKEN_KEY = 'token';
 
 export const getToken = () => {
@@ -58,6 +60,10 @@ export const login = async (usuario) => {
     }
 };
 
+
+
+
+
 const getUserInfo = () => {
     const token = getToken();
 
@@ -68,5 +74,11 @@ const getUserInfo = () => {
 
     return null;
 };
+
+
+
+
+
+
 
 export { getUserInfo }; // Exportando getUserInfo separadamente

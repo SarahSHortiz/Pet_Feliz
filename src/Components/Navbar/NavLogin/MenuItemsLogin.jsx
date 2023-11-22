@@ -1,4 +1,4 @@
-export const MenuItems = [
+export const MenuItemsLogin = [
     {
         title: "Home",
         URL: "/Home",
@@ -29,30 +29,7 @@ export const MenuItems = [
         cName: "nav_links",
 
     },
-    {
-        title: "Login",
-        URL: "/Login",
-        cName: "nav_links_login",
 
-    },
-    {
-        title: "perfil",
-        URL: "/AlterarPerfil",
-        cName: "nav_links_login",
-
-    },
-
-    {
-        title: "Senha",
-        URL: "/Perfil",
-        cName: "nav_links_login",
-
-    },
 
    
-    {
-        title: "CADASTRE-SE",
-        URL: "/Cadastro",
-        cName: "nav_links_cadastro",
-
-    }]
+]

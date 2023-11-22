@@ -9,15 +9,28 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import { AuthContextFunctions } from '../../../AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function CardsAnimal({ cardanimal }) {
   const [open, setOpen] = React.useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    const isLogged = AuthContextFunctions.CheckUserLogin();
+    setIsLoggedIn(isLogged);
+  }, []);
 
   // eslint-disable-next-line react/prop-types
   const telefoneUsuario = cardanimal.usuario.telefone;
   const mensagemPadrao = "%20Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20pet%20" + cardanimal.nome_Pet;
 
-  const handleOpen = () => setOpen(true);
+  const navigate = useNavigate();
+  function handleOpen() {
+    isLoggedIn ? setOpen(true) : navigate("/login");
+  }
+
   const handleClose = () => setOpen(false);
 
   if (!cardanimal) {
@@ -85,21 +98,24 @@ function CardsAnimal({ cardanimal }) {
             <a target="_blank" href={`https://api.whatsapp.com/send?phone=${telefoneUsuario}&text=${mensagemPadrao}`} rel="noreferrer">Whatsapp</a>
           </div>
           <div>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          {cardanimal.cidade.nome_Cidade}
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          {cardanimal.estado.nome_Estado}
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          {cardanimal.usuario.nome}
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          {cardanimal.usuario.email}
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          {cardanimal.usuario.celular}
-          </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {cardanimal.cidade.nome_Cidade}
+            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {cardanimal.estado.nome_Estado}
+            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {cardanimal.usuario.nome}
+            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {cardanimal.usuario.email}
+            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {cardanimal.usuario.celular}
+            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {cardanimal.descricao_Pet}
+            </Typography>
           </div>
         </Box>
       </Modal>
@@ -135,7 +151,7 @@ CardsAnimal.propTypes = {
     sexo_Pet: PropTypes.string.isRequired,
     nome_Raca: PropTypes.string.isRequired,
     idade_Pet: PropTypes.number.isRequired,
-
+    descricao_Pet: PropTypes.number.isRequired,
     animal: PropTypes.shape({
       nome_Animal: PropTypes.string.isRequired,
     }).isRequired,

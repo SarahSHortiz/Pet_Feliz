@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../perfil/perfil.css';
 import { AuthContextFunctions } from '../../AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function Perfil() {
   const [nome, setNome] = useState("");
@@ -48,10 +49,10 @@ export default function Perfil() {
 
         <div className='bnt-perfil-usuario'>
           <div className="perfil-bnt-cadastrar">
-            <button>Cadastrar Animal</button>
+          <Link to='/Doe'><button>Cadastrar Animal</button></Link>
           </div>
           <div className="perfil-bnt-petscadastrados">
-            <button>Animais Cadastrados</button>
+          <Link to='/AnimaisCadastrados'><button>Animais Cadastrados</button></Link>
           </div>
         </div>
       </div>

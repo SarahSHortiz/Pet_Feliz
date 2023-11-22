@@ -6,6 +6,8 @@ function SaveJWT(jwtData) {
     localStorage.setItem("jwt", jwtData);
     localStorage.setItem("userData", JSON.stringify(userData));
 }
+1
+
 
 function GetUserData() {
     return (localStorage.getItem("userData"));
@@ -16,6 +18,7 @@ function GenerateHeader() {
 
     if (usuarioLogado == false) {
         //Navegar('Login')
+        
     }
 
     const token = (localStorage.getItem("jwt"));
@@ -24,6 +27,9 @@ function GenerateHeader() {
         "Content-Type": "application/json",
     });
 }
+
+
+
 
 function CheckUserLogin() {
     const token = localStorage.getItem("jwt");
