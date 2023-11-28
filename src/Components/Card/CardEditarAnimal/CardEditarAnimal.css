@@ -1,31 +1,47 @@
-.card {
-    color: #000000;
-    margin-top: 5%;
-    background-color: rgb(247, 247, 247);
-    filter: drop-shadow(0px 2px 2px #575757);
-    width: 80%;
-    border-radius: 5px 5px 5px 5px ;
-  
-    
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Glory&family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
 
-  
-  .card-img{
-    object-fit: cover;
-    margin-bottom: 5%;
-    align-items: center;
-    border-radius: 5px 5px 0px 0px ;
-    height: 14rem;
-  
-  }
-  
-  .description{
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 5%;
-    
-  }
-  
-  
-  
+
+
+.card-editar {
+  color: #000000;
+  margin-top: 5%;
+  background-color: rgb(247, 247, 247);
+  filter: drop-shadow(0px 2px 2px #575757);
+  width: 15rem;
+  height: 20rem;
+  border-radius: 5px 5px 5px 5px;
+
+
+
+}
+
+.card-card {
+  margin-bottom: 8%;
+  width: 15rem;
+  height: 20rem;
+}
+
+.card-img {
+  object-fit: cover;
+  margin-bottom: 5%;
+  align-items: center;
+  border-radius: 5px 5px 0px 0px;
+
+}
+
+.card-img img {
+  object-fit: cover;
+  width: 10rem;
+  margin-bottom: 5%;
+  align-items: center;
+  border-radius: 5px 5px 0px 0px;
+
+}
+
+.description {
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 2%;
+
+}
+

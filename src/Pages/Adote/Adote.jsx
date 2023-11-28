@@ -80,6 +80,7 @@ function Adote() {
         }
     }
 
+    
     function handleTipoChange(option) {
         const updatedFilters = { ...filters, tipo: option.value };
         setFilters(updatedFilters);
@@ -104,7 +105,6 @@ function Adote() {
 
     return (
         <div className="adote">
-            <div className="container-adote">
                 <div className="filtros">
                     <div className="coluna1">
                         <div className="filtro">
@@ -162,8 +162,6 @@ function Adote() {
                     />
                 </Stack>
             </div>
-        </div>
-
     );
 }
 

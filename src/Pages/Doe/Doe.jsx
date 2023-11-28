@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Doe.css';
 import axios from 'axios';
 import img from '../../Components/img/propaganda.png'
-// import DateTimePicker from 'react-datetime-picker';
-// import Datetime from 'react-datetime';
-import { AuthContextFunctions } from "../../AuthContext";
+import { AuthContextFunctions } from '../../AuthContext';
+import { useLocation } from "react-router-dom";
 
 const Doe = () => {
+    const location = useLocation();
 
 
-
-    const [Nome_Animal, setNomeAnimal] = useState("");
     const [Nome_Pet, setNome_Pet] = useState("");
     const [Porte_Pet, setPorte_Pet] = useState("");
     const [Sexo_Pet, setSexo_Pet] = useState("");
@@ -19,8 +17,10 @@ const Doe = () => {
     const [Status_Pet, setStatus_Pet] = useState("");
     const [Castrado, setCastrado] = useState("");
     const [Nome_Foto, setNome_Foto] = useState("");
-    const [Foto_Pet] = useState("");
     const [Base64, setBase64] = useState(null);
+    const [Cod_Usuario, setCod_Usuario] = useState("");
+    const [Nome_Animal, setNomeAnimal] = useState("");
+    const [Foto_Pet] = useState("");
 
     const [Especie, setEspecie] = useState({
         Nome_Especie: '',
@@ -30,7 +30,9 @@ const Doe = () => {
         Nome_Raca: '',
     });
 
-
+    const [Animal, setAnimal] = useState({
+        Nome_Animal: '',
+    });
 
     const [Vacina, setVacina] = useState({
         data_vacina: '',
@@ -46,12 +48,26 @@ const Doe = () => {
     const porte_Pet = ['Anão', 'Pequeno Porte', 'Médio Porte', 'Grande Porte', 'Molosso'];
     const sexo_Pet = ['Macho', 'Fêmea'];
     const castrado = ['Sim', 'Não'];
-    const status_Pet = ['Disponível'];
-    const status = ['Valido', 'Vencido'];
+    const status_Pet = ['Disponível', "Interessados"];
+    const status = ['sim', 'não'];
 
-    const validateForm = async () => {
-        return {};
-    };
+    const validateForm = () => {
+        const errors = {};
+      
+      };
+
+    
+    useEffect(() => {
+        const usuarioLogado = AuthContextFunctions.CheckUserLogin();
+
+        if (usuarioLogado) {
+            const userData = JSON.parse(AuthContextFunctions.GetUserData());
+            const userId = userData.Cod_Usuario;
+            setCod_Usuario(userId);
+        } else {
+            alert("nenhum usuario logado")
+        }
+    }, []);
 
     function handleDateChange(date) {
         setVacina({ ...Vacina, data_vacina: date });
@@ -81,21 +97,30 @@ const Doe = () => {
         if (Base64) {
 
             const body = {
-                Vacina, Raca, Especie, nome_Animal, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64
+                Vacina, Animal, Raca, Especie, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
+            }
+            if (!AuthContextFunctions.CheckUserLogin()) {
+                console.log("Usuário não logado. Redirecionando para a página de login.");
+                return;
             }
 
-            if (Object.keys(validationErrors).length === 0) {
-                try {
-                    const headers = AuthContextFunctions.GenerateHeader();
-                    const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body, { headers });
+            const token = AuthContextFunctions.GenerateHeader().get("Authorization");
 
-                    if (response.status === 200) {
-                        alert('Cadastro realizado com sucesso');
-                    }
-                } catch (error) {
-                    console.error('Erro ao fazer a solicitação', error);
-                    alert('Erro ao fazer a solicitação');
+            try {
+
+                const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body, {
+                    headers: {
+                        Authorization: token,
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.status === 200) {
+                    alert('Cadastro realizado com sucesso');
                 }
+            } catch (error) {
+                console.error('Erro ao fazer a solicitação:', error);
+                alert('erro');
             }
         }
     }
@@ -112,6 +137,8 @@ const Doe = () => {
                     <div className='txt'><h2>    Se você quer mudar o mundo,
                         comece adotando um animal. Eles podem trazer grandes mudanças para nossas vidas, </h2></div>
                 </div>
+
+                
                 <div className='imagem'>
                     <img src={img} alt="propaganda" />
                 </div>
@@ -121,7 +148,7 @@ const Doe = () => {
                     <input
                         type="text"
                         placeholder="Digite o Nome do Animal"
-                        className="texto"
+                        className="input"
                         onChange={(e) => setNome_Pet(e.target.value)}
                         value={Nome_Pet}
                     />
@@ -130,7 +157,7 @@ const Doe = () => {
                     <input
                         type="text"
                         placeholder="Digite a Especie do Animal"
-                        className="texto"
+                        className="input"
                         onChange={(e) => setEspecie({ ...Especie, Nome_Especie: e.target.value })}
                         value={Especie.Nome_Especie}
                     />
@@ -139,11 +166,12 @@ const Doe = () => {
                     <input
                         type="text"
                         placeholder="Digite a Raça do Animal"
-                        className="texto"
+                        className="input"
                         onChange={(e) => setRaca({ ...Raca, Nome_Raca: e.target.value })}
                         value={Raca.Nome_Raca}
                     />
                     {errors.Nome_Raca && <p className="labelError">{errors.Nome_Raca}</p>}
+
                     <select
                         value={Nome_Animal}
                         onChange={(e) => setNomeAnimal(e.target.value)}
@@ -233,14 +261,13 @@ const Doe = () => {
                         className="dropdown"
                         placeholder='Data Vacina'
                     >
-
                     </input>
 
 
                     <input
                         type="text"
                         placeholder="Tipo da vacinas"
-                        className="texto"
+                        className="input"
                         onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
                         value={Vacina.descricao}
                     />
@@ -259,13 +286,13 @@ const Doe = () => {
                     <input
                         type="text"
                         placeholder="Descrição"
-                        className="texto"
+                        className="input"
                         onChange={(e) => setDescricao_Pet(e.target.value)}
                         value={Descricao_Pet}
                     />
 
                     <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder='Nome da Imagem'  value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
+                    <input type="input" placeholder='Nome da Imagem'  value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
 
                         <input type="file" accept="image/jpeg" onChange={handleFileChange} />
                         

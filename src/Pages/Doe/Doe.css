@@ -45,7 +45,6 @@
 .doe-content{
 display: flex;
 margin-bottom: 10%;
-
   justify-content: space-between;
   align-items: flex-start;
   width: 80rem;
@@ -61,7 +60,7 @@ margin-bottom: 10%;
   height: 80rem;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #ffd737;
+  background-color: #f9c200;
   margin-top: 8%;
   padding: 2%; /* Adiciona padding ao redor do conteúdo interno */
   box-sizing: border-box; /* Garante que o padding não aumente a largura total */}

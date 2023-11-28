@@ -6,8 +6,6 @@ function SaveJWT(jwtData) {
     localStorage.setItem("jwt", jwtData);
     localStorage.setItem("userData", JSON.stringify(userData));
 }
-1
-
 
 function GetUserData() {
     return (localStorage.getItem("userData"));
@@ -17,8 +15,7 @@ function GenerateHeader() {
     const usuarioLogado = CheckUserLogin();
 
     if (usuarioLogado == false) {
-        //Navegar('Login')
-        
+        Navegar('Login')
     }
 
     const token = (localStorage.getItem("jwt"));
@@ -28,11 +25,8 @@ function GenerateHeader() {
     });
 }
 
-
-
-
 function CheckUserLogin() {
-    const token = localStorage.getItem("jwt");
+    const token = (localStorage.getItem("jwt"));
     if (!token) {
       return false;
     }
@@ -42,7 +36,7 @@ function CheckUserLogin() {
   
     if (actualDate > userData.exp) {
       //usuario expirado
-      localStorage.remove("@jwt");
+      localStorage.remove("jwt");
       return false;
     }
   

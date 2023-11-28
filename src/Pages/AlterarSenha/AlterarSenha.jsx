@@ -1,5 +1,5 @@
 import "../AlterarSenha/AlterarSenha.css"
-
+import { Link } from "react-router-dom"
 
 export default function AlterarSenha() {
     return (
@@ -19,7 +19,7 @@ export default function AlterarSenha() {
                         <button>SALVAR</button>
                     </div>
                     <div className="bnt-voltar-alterar-senha">
-                        <button>VOLTAR</button>
+                    <Link to='/home'><button>VOLTAR</button></Link>
                     </div>
                 </div>
             </div >

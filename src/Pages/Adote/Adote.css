@@ -18,9 +18,11 @@ body {
 
 .filtros {
     display: flex;
-    margin-left: 16%;
-    width: 80rem;
+    width: 78rem;
     font-size: x-large;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
 
 
 }
@@ -73,23 +75,28 @@ body {
 
 .title h1{
     font-size: 2rem;
-    margin-left: -13%;
+    margin-left: -20%;
 
 }
 
 .cards-container {
+    margin-top: 2%;
+    margin-bottom: 5%;
     width: 80%;
-    margin-left: 15%;
+    margin-left: 10%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 1%;
+    align-items: center;
+    justify-content: center;
+    display: grid; /* Ativa o Grid no container */
+
 }
 
 
 
 
 .paginacao {
-    border-color: red;
     align-items: center;
     margin-bottom: 5%;
     margin-top: 5%;

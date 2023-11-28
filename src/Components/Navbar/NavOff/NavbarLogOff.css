@@ -12,7 +12,6 @@
     height: 80px;
     background-color: #F9C200;
     box-shadow: 0 2px 2px #c1c1c1;
-    position: fixed;
     transform: translate(-500);
     z-index: 9999;
     font-family: "Rubik";

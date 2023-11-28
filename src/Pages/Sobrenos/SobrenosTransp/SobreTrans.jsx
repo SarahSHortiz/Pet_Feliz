@@ -1,8 +1,8 @@
 import "../SobrenosTransp/SobreTrans.css";
 import quemsomos from "../../../assets/PET FELIZ (2).png"
 import equipe from "../../../Components/img/mulhercomdog.jpg"
-import logo from "../../../Components/img/transparencia.jpeg"
-import propaganda2 from "../../../Components/img/3.svg"
+import lupa from '../../../Components/img/transparencia.jpeg'
+import propaganda2 from "../../../Components/img/propaganda2.jpg"
 import { Link } from "react-router-dom";
 
 
@@ -58,8 +58,8 @@ export default function SobreTrans() {
           </p>
         </div>
 
-        <div className="sobrenos-img3">
-          <img src={logo} alt="logo" />
+        <div className="sobrenos-img4">
+         <img src={lupa}></img>
         </div>
       </div>
     </div>

@@ -12,7 +12,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 7rem;
     font-family: Glory;
 
 
@@ -21,25 +20,36 @@
 .pets-listacadastrados-container {
     margin-top: 10%;
     background-color: #FDF8F8;
-    ;
     height: 60rem;
     width: 80%;
-    display: flex;
+        margin-top: 10%;
+        background-color: #FDF8F8;
+        height: 60rem;
+        width: 80%;
+        display: flex;
+        flex-direction: column; /* Ajuste para empilhar os cards verticalmente */
+        align-items: center; /* Centralizando os cards horizontalmente */
+        padding: 20px; /* Adicionando espaçamento interno */
+        border-radius: 10px;
+    
+    
+    
 
 }
-
+/* Restante do seu CSS */
 
 .title-listacadastrados {
     width: 55%;
     height: 8%;
     font-size: 20px;
     background-color: #F9C200;
-    margin-left: 22%;
     margin-top: 5%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 25%;
+
 }
 
 .title-listacadastrados h1 {
@@ -50,8 +60,19 @@
     color: #FDF8F8;
 }
 
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards se ajustem ao espaço */
+    justify-content: center; /* Centralizando horizontalmente */
+    gap: 20px; /* Espaçamento entre os cards */
+    margin-top: 20px; /* Espaçamento entre o título e os cards */
+}
 
-.cards-container{
-    margin-top: 20%;
-    margin-left:-50%;
+.card {
+    width: calc(33.33% - 20px); /* Largura dos cards - 3 cards por linha */
+    /* Ajuste a largura conforme necessário */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

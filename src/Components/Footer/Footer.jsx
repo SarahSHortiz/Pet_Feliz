@@ -12,8 +12,8 @@ export default function Footer() {
           <div className="rectangle" />
           <div className="group">
           <div className="grouptitle1">Adote seu amigo!</div>
-          <Link to="/Login">   <p className="grouplink1">Clique e doe seu pet</p></Link>
-          <Link to="/Login">   <div className="grouplink2">Adote um grande amigo!</div></Link>
+           <p className="grouplink1">Clique e doe seu pet</p>
+           <div className="grouplink2">Adote um grande amigo!</div>
           <Link to="/Faq">   <div className="grouplink3">Perguntas e respostas</div></Link>
           </div>
           <div className="group2">

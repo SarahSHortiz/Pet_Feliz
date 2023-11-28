@@ -4,6 +4,8 @@ import CardsAnimal from "../../Components/Card/CardsAnimal/CardsAnimal";
 import CustomSlider from "../../Components/Carousel/Carousel";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { getStatusColor} from '../../Components/Status/Status';
+
 
 export default function Home() {
   const [animal, setAnimal] = useState([]);
@@ -56,7 +58,7 @@ export default function Home() {
         </div>
         <div className="cards">
           {reversedAnimal.map((animalData, index) => (
-            <CardsAnimal key={index} cardanimal={animalData} />
+            <CardsAnimal StatusColor={getStatusColor} key={index} cardanimal={animalData} />
           ))}
         </div>
       </div>
