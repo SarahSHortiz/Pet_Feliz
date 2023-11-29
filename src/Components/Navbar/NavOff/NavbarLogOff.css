@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Rubik:wght@300;400&display=swap');
 
 
-.NavbarItems {
+.NavbarItems1 {
 
     display: flex;
     justify-content: space-between;
@@ -18,23 +18,23 @@
     position: fixed !important;
     top: 0 !important;
 
+
 }
 
-.Navbar-logo {
+.Navbar-logo1 {
     color: black;
     font-size: 2.0rem;
     cursor: pointer;
-    margin-left: 5%;
+
 }
 
 .Nav-menu {
-    display: grid;
-    grid-template-columns: repeat(8, auto);
+    
+    z-index: -1;
+    grid-template-columns: repeat(10, auto);
     grid-gap: 10px;
     list-style: none;
     align-items: center;
-    z-index: -1;
-    margin-right: 10%;
 
 }
 
@@ -45,22 +45,36 @@
     color: black;
     font-size: 1.2rem;
     font-weight: 600;
-    padding: 0.7rem 1rem;
+    padding: 1rem 2rem;
     white-space: nowrap;
+
 }
 
 .nav_links:hover {
     color: rgb(255, 255, 255);
-    transition: all 0.2 ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
+
+/* Restante do seu CSS */
+
+
+.nav_links:hover {
+    color: rgb(255, 255, 255);
+    transition: all 0.2s ease-in-out;
+}
+
+
 
 .nav_links_cadastro {
     display: none;
     color: aliceblue;
+    display: flex;
+
+
 
 }
 
-.button-navbar {
+.button-navbar1 {
     padding: 0.5rem 1rem;
     white-space: nowrap;
     border-radius: 1.0rem;
@@ -72,42 +86,23 @@
     transition: all 0.2 ease-in-out;
     font-size: 1.3rem;
     font-family: "Rubik";
+    display: flex;
 
 
 }
 
-.button-navbar:hover {
+.button-navbar1:hover {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
 
 }
 
-.menu_icons {
+.menu_icons1 {
     display: none;
 
 }
 
-.nav_links_login {
-    display: block;
-    width: 100%;
-    font-size: 1.3rem;
-    padding: 2rem;
-    text-decoration: none;
-    list-style: none;
-    color: #000000;
-}
 
-.nav_links_login i {
-    padding-right: 10px;
-    text-decoration: none;
-    list-style: none;
-}
-
-.nav_links_login:hover {
-    transition: none;
-    color: #ffffff;
-
-}
 
 @media screen and (max-width: 850px) {
     .NavbarItems {
@@ -157,28 +152,6 @@
         transition: none;
         color: #ffffff;
         background-color: #F9C200;
-    }
-
-    .nav_links_login {
-        display: block;
-        width: 100%;
-        font-size: 1.3rem;
-        padding: 2rem;
-        text-decoration: none;
-        list-style: none;
-    }
-
-    .nav_links_login i {
-        padding-right: 10px;
-        text-decoration: none;
-        list-style: none;
-    }
-
-    .nav_links_login:hover {
-        transition: none;
-        color: #ffffff;
-        background-color: #F9C200;
-
     }
 
 

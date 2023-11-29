@@ -3,24 +3,21 @@ import './Doe.css';
 import axios from 'axios';
 import img from '../../Components/img/propaganda.png'
 import { AuthContextFunctions } from '../../AuthContext';
-import { useLocation } from "react-router-dom";
 
+import { useNavigate } from 'react-router-dom';
 const Doe = () => {
-    const location = useLocation();
 
-
-    const [Nome_Pet, setNome_Pet] = useState("");
     const [Porte_Pet, setPorte_Pet] = useState("");
     const [Sexo_Pet, setSexo_Pet] = useState("");
     const [Idade_Pet, setIdade_Pet] = useState("");
     const [Descricao_Pet, setDescricao_Pet] = useState("");
     const [Status_Pet, setStatus_Pet] = useState("");
     const [Castrado, setCastrado] = useState("");
-    const [Nome_Foto, setNome_Foto] = useState("");
+    const [Foto_Pet] = useState("");
     const [Base64, setBase64] = useState(null);
     const [Cod_Usuario, setCod_Usuario] = useState("");
-    const [Nome_Animal, setNomeAnimal] = useState("");
-    const [Foto_Pet] = useState("");
+    const [Nome_Foto] = useState("");
+    const [Nome_Pet, setNome_Pet] = useState("")
 
     const [Especie, setEspecie] = useState({
         Nome_Especie: '',
@@ -48,15 +45,15 @@ const Doe = () => {
     const porte_Pet = ['Anão', 'Pequeno Porte', 'Médio Porte', 'Grande Porte', 'Molosso'];
     const sexo_Pet = ['Macho', 'Fêmea'];
     const castrado = ['Sim', 'Não'];
-    const status_Pet = ['Disponível', "Interessados"];
+    const status_Pet = ['Disponível', "Interessados", 'Adotado'];
     const status = ['sim', 'não'];
 
     const validateForm = () => {
         const errors = {};
-      
-      };
 
-    
+    };
+
+
     useEffect(() => {
         const usuarioLogado = AuthContextFunctions.CheckUserLogin();
 
@@ -89,16 +86,23 @@ const Doe = () => {
         }
     }
 
+    const navigate = useNavigate();
     async function handleSubmit(event) {
         event.preventDefault();
         const validationErrors = await validateForm();
         setErrors(validationErrors);
 
         if (Base64) {
+            debugger;
+
+            const sexo = Sexo_Pet == "Macho" ? "M" : "F";
 
             const body = {
-                Vacina, Animal, Raca, Especie, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
+                Vacina, Animal, Nome_Pet, Raca, Especie, Porte_Pet, Sexo_Pet: sexo, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
             }
+
+
+
             if (!AuthContextFunctions.CheckUserLogin()) {
                 console.log("Usuário não logado. Redirecionando para a página de login.");
                 return;
@@ -117,6 +121,8 @@ const Doe = () => {
 
                 if (response.status === 200) {
                     alert('Cadastro realizado com sucesso');
+                    navigate("Home");
+
                 }
             } catch (error) {
                 console.error('Erro ao fazer a solicitação:', error);
@@ -138,7 +144,7 @@ const Doe = () => {
                         comece adotando um animal. Eles podem trazer grandes mudanças para nossas vidas, </h2></div>
                 </div>
 
-                
+
                 <div className='imagem'>
                     <img src={img} alt="propaganda" />
                 </div>
@@ -161,7 +167,7 @@ const Doe = () => {
                         onChange={(e) => setEspecie({ ...Especie, Nome_Especie: e.target.value })}
                         value={Especie.Nome_Especie}
                     />
-                    {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>}
+                    {errors.Nome_Especie && <p className="labelError">{errors.Nome_Especie}</p>}
 
                     <input
                         type="text"
@@ -173,8 +179,8 @@ const Doe = () => {
                     {errors.Nome_Raca && <p className="labelError">{errors.Nome_Raca}</p>}
 
                     <select
-                        value={Nome_Animal}
-                        onChange={(e) => setNomeAnimal(e.target.value)}
+                        value={Animal.Nome_Animal}
+                        onChange={(e) => setAnimal({ ...Animal, Nome_Animal: e.target.value })}
                         className="dropdown"
                     >
                         <option value="Selecione o tipo">Selecione o Tipo do Animal</option>
@@ -184,6 +190,7 @@ const Doe = () => {
                             </option>
                         ))}
                     </select>
+
 
 
 
@@ -292,10 +299,10 @@ const Doe = () => {
                     />
 
                     <form onSubmit={handleSubmit}>
-                    <input type="input" placeholder='Nome da Imagem'  value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
+                        <input type="input" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
 
                         <input type="file" accept="image/jpeg" onChange={handleFileChange} />
-                        
+
                         <button type="submit" className="cadastrar">
                             CADASTRAR
                         </button>

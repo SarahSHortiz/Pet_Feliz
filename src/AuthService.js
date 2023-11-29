@@ -64,6 +64,7 @@ export const login = async (usuario) => {
 
 
 
+
 const getUserInfo = () => {
     const token = getToken();
 
@@ -76,9 +77,13 @@ const getUserInfo = () => {
 };
 
 
+const LogoutButton  = () => {
+    localStorage.removeItem('@jwt');
+  AuthContextFunctions.SaveJWT('');
+  window.location.href = '/home'; 
+  };
 
 
 
 
-
-export { getUserInfo }; // Exportando getUserInfo separadamente
+export { getUserInfo }; 

@@ -30,7 +30,7 @@ function CardsEditarAnimal({ cardanimal }) {
 
     return (
         <div className="card-editar">
-            <Card className="card-card" sx={{ maxWidth: 450 }}>
+            <Card className="card-card" sx={{ maxWidth: 400,}}>
                 <CardActionArea>
                     <CardMedia className="card-img" sx={{ height: 150 }}>
                         <img src={cardanimal.foto_Pet} alt="Imagem do Card"
@@ -48,7 +48,7 @@ function CardsEditarAnimal({ cardanimal }) {
                                 <Button
                                     variant="contained"
                                     style={{
-                                        backgroundColor: 'green',
+                                        backgroundColor: '#F9C200',
                                         width: '8rem',
                                         marginLeft: '20%',
                                         marginTop: '8%',

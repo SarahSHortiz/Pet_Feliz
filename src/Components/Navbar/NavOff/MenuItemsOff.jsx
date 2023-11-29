@@ -32,7 +32,7 @@ export const MenuItemsOff = [
     {
         title: "Login",
         URL: "/Login",
-        cName: "nav_links_login",
+        cName: "nav_links",
 
     },
 

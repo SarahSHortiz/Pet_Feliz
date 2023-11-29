@@ -12,13 +12,12 @@ class NavbarLogOff extends Component {
 
   render() {
     return (
-      <nav className="NavbarItems">
-        <h1 className="Navbar-logo">Pet Feliz</h1>
+      <nav className="NavbarItems1">
+        <h1 className="Navbar-logo1">Pet Feliz</h1>
 
-        <div className="menu_icons" onClick={this.handleClick}>
+        <div className="menu_icons1" onClick={this.handleClick}>
           <i className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
-
         <ul className={this.state.clicked ? "Nav-menu active" : "Nav-menu"}>
           {MenuItemsOff.map((item, index) => {
             return (
@@ -31,7 +30,7 @@ class NavbarLogOff extends Component {
             );
           })}
           <Link to="/Cadastro">
-            <button className="button-navbar">Cadastre-se</button>
+            <button className="button-navbar1">Cadastre-se</button>
           </Link>
         </ul>
       </nav>

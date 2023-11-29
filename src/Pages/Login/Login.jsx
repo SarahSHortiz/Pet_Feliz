@@ -20,6 +20,12 @@ function Login({setIsLoggedIn}) {
       NomeLog: '',
       Numero: '',
     },
+    Cidade: {
+      Nome_Cidade: ''
+    },
+    Estado: {
+      Nome_Estado: ''
+    }
   });
 
   const setMensagem = useState('');
@@ -41,6 +47,7 @@ function Login({setIsLoggedIn}) {
         return;
       }
       const response = await axios.post("https://petfeliz.azurewebsites.net/api/Auth/Login", usuario);
+      // const response = await axios.post("https://localhost:44302/api/Auth/Login", usuario);
       if (response.status === 200) {
       
         AuthContextFunctions.SaveJWT(response.data.token)

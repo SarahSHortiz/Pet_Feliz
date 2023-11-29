@@ -1,103 +1,145 @@
-import "../AlterarPerfil/AlterarPerfil.css"
+
+
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AuthContextFunctions } from "../../AuthContext";
 import axios from "axios";
+import "../AlterarPerfil/AlterarPerfil.css";
 
 export default function AlterarPerfil() {
-   
+  const location = useLocation();
+  const id = location.state && location.state.id;
+
+  const [Nome, setNome] = useState("");
+  const [Telefone, setTelefone] = useState("");
+  const [Senha, setSenha] = useState("");
+  const [Id, setId] = useState("");
+  const [Estado, setEstado] = useState({
+    Nome_Estado: ""
+  });
+  const [Cidade, setCidade] = useState({
+    Nome_Cidade: '',
+  });
+  //const [NomeLog, setNomeLog] = useState("");
+  //const [CEP, setCEP] = useState("");
+  //const [Numero, setNumero] = useState("");
+  const [Logradouro, setLogradouro] = useState({
+    NomeLog: '',
+    CEP: '',
+    Numero: ''
+  })
+
+
+  useEffect(() => {
+    const usuarioLogado = AuthContextFunctions.CheckUserLogin();
+
+    if (usuarioLogado) {
+      const userData = JSON.parse(AuthContextFunctions.GetUserData());
+
+      const userNome = userData.Nome_Usuario;
+      setNome(userNome);
+
+      const userTelefone = userData.Telefone;
+      setTelefone(userTelefone);
+
+      const usercidade = userData.Nome_Cidade;
+      setCidade({ ...Cidade, Nome_Cidade: usercidade});
+
+      const userestado = userData.Nome_Estado;
+      setEstado({ ...Estado, Nome_Estado: userestado});
+
+      const userNomeLog = userData.Nome_Log;
+      setLogradouro({ ...Logradouro, NomeLog: userNomeLog});
+
+      const userCep = userData.CEP;
+      setLogradouro({ ...Logradouro, NomeLog: userCep});
+
+      const userNumero = userData.Numero_Log;
+      setLogradouro({ ...Logradouro, NomeLog: userNumero});
+      
+      const userId = userData.Cod_Usuario;
+      setId(userId)
+    } else {
+      alert("nenhum usuario logado")
+    }
+
+  }, []);
+
+  const editarUsuario = async (e) => {
+    e.preventDefault();
     
-      const location = useLocation();
-      const id = location.state && location.state.id;
-    
-      const [Nome, setNome] = useState("");
-      const [Telefone, setTelefone] = useState("");
-      const [Estado, setEstado] = useState("");
-      const [Cidade, setCidade] = useState("");
-      const [Logradouro, setLogradouro] = useState("");
-      const [CEP, setCEP] = useState("");
-      const [Numero, setNumero] = useState("");
-      const [Email, setEmail] = useState("");
-      const [CPF, setCPF] = useState("");
-      const [Senha, setSenha] = useState(""); // Adicionado
-    
-      const user = AuthContextFunctions.GetUserData();
-    
-      useEffect(() => {
-        if (location.state) {
-          axios
-            .get(`https://petfeliz.azurewebsites.net/api/Usuario/${id}`)
-            .then((response) => {
-              const usuario = response.data;
-              setNome(usuario.Nome);
-              setTelefone(usuario.Telefone);
-    
-              if (usuario.Estado) {
-                setEstado(usuario.Estado.Nome_Estado);
-              }
-    
-              if (usuario.Cidade) {
-                setCidade(usuario.Cidade.Nome_Cidade);
-              }
-    
-              setLogradouro(usuario.Logradouro.NomeLog);
-              setCEP(usuario.Logradouro.CEP);
-              setNumero(usuario.Logradouro.Numero);
-              setEmail(usuario.Email);
-              setCPF(usuario.CPF);
-            })
-            .catch((error) => {
-              console.error("Erro ao buscar os dados do usuário", error);
-            });
-        } else {
-          alert("Ocorreu um erro!");
+    const body = {
+      Id,
+      Nome,
+      Telefone,
+      Estado,
+      Cidade,
+      Logradouro,
+      Senha,
+    };
+
+    try {
+      await axios.put("https://petfeliz.azurewebsites.net/api/Usuario/atualizarUsuario", body, {
+        headers: {
+          'Content-Type': 'application/json',
         }
-      }, [location.state, id]);
-    
-      const editarUsuario = async (e) => {
-        e.preventDefault();
-    
-        const body = {
-          id,
-          Nome,
-          Telefone,
-          Estado: { Nome_Estado: Estado },
-          Cidade: { Nome_Cidade: Cidade },
-          Logradouro: { NomeLog: Logradouro, CEP, Numero },
-          Email,
-          CPF,
-          Senha,
-        };
-    
-        try {
-          await axios.put("https://localhost:44302/api/Usuario/atualizarUsuario", body);
-          alert("Usuário alterado com sucesso");
-        } catch (error) {
-          console.error("Erro ao alterar o usuário", error);
-          alert("Erro ao alterar o usuário");
-        }
-      };
+      });
+      alert("Usuário alterado com sucesso");
+    } catch (error) {
+      console.error("Erro ao alterar o usuário", error);
+      alert("Erro ao alterar o usuário");
+    }
+  };
 
+  return (
+    <div className="body-alterar-perfil">
+      <div className="alterar-perfil-container">
+        <div className="title-alterar-perfil">
+          <h1>Alterar Perfil</h1>
+        </div>
+        <div className="preferencias">
+          <h1>Preferências</h1>
+        </div>
 
-    return (
-        <div className="body-alterar-perfil">
-            <div className="alterar-perfil-container">
-                <div className="title-alterar-perfil">
-                    <h1>Alterar Perfil</h1>
-                </div>
-                <div className="preferencias">
-                    <h1>Preferências</h1>
-                </div>
+        <form onSubmit={(e) => editarUsuario(e)} className="alterar-perfil-form">
+          <div className="form-group">
+            <label  className="texto1" htmlFor="name">Nome</label>
+            <input type="text" id="name" value={Nome} onChange={(e) => setNome(e.target.value)} name="name" placeholder="Nome" />
+          </div>
 
-                <form   onSubmit={(e) => editarUsuario(e)} className="alterar-perfil-form ">
-                    <input type="text" id="name" name="name" placeholder="Nome"  value={Nome} onChange={(e) => setNome(e.target.value)} />
-                    <input type="email" id="email" name="email" placeholder="E-mail"  value={Email} onChange={(e) => setEmail(e.target.value)} />
-                    <input type="tel" id="tel" name="tel" placeholder="Telefone"  value={Telefone} onChange={(e) => setTelefone(e.target.value)} />
-                    <input type="text" id="estado" name="estado" placeholder="Estado" value={Estado} onChange={(e) => setEstado(e.target.value)}  />
-                    <input type="text" id="cidade" name="cidade" placeholder="Cidade"  value={Cidade} onChange={(e) => setCidade(e.target.value)} />
-                    <input type="endereco" id="endereco" name="endereco" placeholder="Endereço" value={Logradouro} onChange={(e) => setLogradouro(e.target.value)} />
-                    <input type="text" id="cpf" value={CPF} onChange={(e) => setCPF(e.target.value)} name="cpf" placeholder="CPF" />
-                    <input
+          <div className="form-group">
+            <label className="texto1" htmlFor="tel">Telefone</label>
+            <input type="tel" id="tel" value={Telefone} onChange={(e) => setTelefone(e.target.value)} name="tel" placeholder="Telefone" />
+          </div>
+
+          <div className="form-group">
+            <label className="texto1"htmlFor="estado">Estado  </label>
+            <input type="text" id="estado" value={Estado.Nome_Estado} onChange={(e) => setEstado({ ...Estado, Nome_Estado: e.target.value})} name="estado" placeholder="Estado" />
+          </div>
+
+          <div className="form-group">
+            <label className="texto1" htmlFor="cidade">Cidade  </label>
+            <input type="text" id="cidade" value={Cidade.Nome_Cidade} onChange={(e) => setCidade({ ...Cidade, Nome_Cidade: e.target.value})} name="cidade" placeholder="Cidade" />
+          </div>
+
+          <div className="form-group">
+            <label className="texto1" htmlFor="endereco">Endereço  </label>
+            <input type="text" id="endereco" value={Logradouro.NomeLog} onChange={(e) => setLogradouro({ ...Logradouro, NomeLog: e.target.value})} name="endereco" placeholder="Endereço" />
+          </div>
+
+          <div className="form-group">
+            <label className="texto1" htmlFor="cep">CEP</label>
+            <input type="text" id="cep" value={Logradouro.CEP} onChange={(e) => setLogradouro({ ...Logradouro, CEP: e.target.value})} name="cep" placeholder="CEP" />
+          </div>
+
+          <div className="form-group">
+            <label className="texto1" htmlFor="numero">Número</label>
+            <input type="text" id="numero" value={Logradouro.Numero} onChange={(e) => setLogradouro({ ...Logradouro, Numero: e.target.value})} name="numero" placeholder="Número" />
+          </div>
+
+          <div className="form-group">
+            <label className="texto1" htmlFor="senha">Senha</label>
+            <input
               type="password"
               id="senha"
               value={Senha}
@@ -105,11 +147,15 @@ export default function AlterarPerfil() {
               name="senha"
               placeholder="Senha"
             />
-                </form>
-                <div className="bnt-alterar-perfil">
-                    <button type="submit" value={"Editar"}>SALVAR</button>
-                </div>
-            </div >
-        </div >
-    )
+          </div>
+
+          <div className="bnt-alterar-perfil">
+            <button type="submit" value={"Editar"}>
+              Alterar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }

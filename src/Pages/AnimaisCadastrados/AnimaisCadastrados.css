@@ -5,40 +5,33 @@
     padding: 0;
     font-family: Glory;
 }
+/* Seu CSS com as modificações */
+
+/* ... */
 
 .body-pets-listacadastrados {
-
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     font-family: Glory;
+    margin-bottom: 10%;
 
-
-}
-
-.pets-listacadastrados-container {
+  }
+  
+  .pets-listacadastrados-container {
     margin-top: 10%;
     background-color: #FDF8F8;
-    height: 60rem;
+    height: 60%;
     width: 80%;
-        margin-top: 10%;
-        background-color: #FDF8F8;
-        height: 60rem;
-        width: 80%;
-        display: flex;
-        flex-direction: column; /* Ajuste para empilhar os cards verticalmente */
-        align-items: center; /* Centralizando os cards horizontalmente */
-        padding: 20px; /* Adicionando espaçamento interno */
-        border-radius: 10px;
-    
-    
-    
-
-}
-/* Restante do seu CSS */
-
-.title-listacadastrados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .title-listacadastrados {
     width: 55%;
     height: 8%;
     font-size: 20px;
@@ -48,31 +41,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 25%;
-
-}
-
-.title-listacadastrados h1 {
-    margin: 0;
+    margin-left: 2%;
+  }
+  
+  .title-listacadastrados h1 {
     font-family: Rubik;
     white-space: nowrap;
     text-align: center;
     color: #FDF8F8;
-}
+  }
 
-.cards-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os cards se ajustem ao espaço */
-    justify-content: center; /* Centralizando horizontalmente */
-    gap: 20px; /* Espaçamento entre os cards */
-    margin-top: 20px; /* Espaçamento entre o título e os cards */
-}
-
-.card {
-    width: calc(33.33% - 20px); /* Largura dos cards - 3 cards por linha */
-    /* Ajuste a largura conforme necessário */
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  .cards-container3{
+    width: 90%;
+    margin-top: 2%;
+    display: flex; /* Trocado de grid para flex */
+    flex-wrap: wrap; /* Garante que os cards vão para a próxima linha conforme necessário */
+    gap: 1%; /* Espaçamento entre os cards */
+    align-items: center;
+    justify-content: center;}

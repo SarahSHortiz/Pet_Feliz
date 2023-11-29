@@ -12,7 +12,6 @@ import Perfil from './Pages/Perfil/Perfil';
 import EsqueciSenha from './Pages/EsqueciSenha/EsqueciSenha';
 import CadastroAnimal from '../src/Pages/Doe/Doe';
 import Doe from '../src/Pages/Doe/Doe';
-import AlterarSenha from '../src/Pages/AlterarSenha/AlterarSenha';
 import AlterarPerfil from '../src/Pages/AlterarPerfil/AlterarPerfil';
 import Footer from '../src/Components/Footer/Footer';
 import Cadastro from '../src/Pages/Cadastro/Cadastro';
@@ -22,6 +21,7 @@ import SobrenosAjudar from '../src/Pages/Sobrenos/SobrenosAjudar/SobrenosAjudar'
 import NavbarLogin from './Components/Navbar/NavLogin/NavbarLogin';
 import { useEffect, useState } from 'react';
 import { AuthContextFunctions } from './AuthContext';
+// import PerfilAnimal from '../src/Pages/AlterarPet/AlterarPet'
 
 function App() {
 
@@ -50,10 +50,11 @@ function App() {
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/CadastroAnimal" element={<CadastroAnimal />} />
           <Route path="/Doe" element={<Doe />} />
-          <Route path="/AlterarSenha" element={<AlterarSenha />} />
           <Route path="/EsqueciSenha" element={<EsqueciSenha />} />
           <Route path="/AlterarPerfil" element={<AlterarPerfil />} />
           <Route path="/Cadastro" element={<Cadastro />} />
+          {/* <Route path="/PerfilAnimal" element={<PerfilAnimal />} /> */}
+
         </Routes>
         <Footer />
       </Router>

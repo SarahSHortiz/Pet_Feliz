@@ -11,9 +11,7 @@ body {
     border: none;
 }
 
-.adote {
-    margin-bottom: 10%;
-}
+
 
 
 .filtros {
@@ -79,19 +77,14 @@ body {
 
 }
 
-.cards-container {
-    margin-top: 2%;
-    margin-bottom: 5%;
-    width: 80%;
-    margin-left: 10%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1%;
+.cards-container1 {
+    width: 90%;
+    margin-left: 5%;
+    display: flex; /* Trocado de grid para flex */
+    flex-wrap: wrap; /* Garante que os cards vão para a próxima linha conforme necessário */
+    gap: 1%; /* Espaçamento entre os cards */
     align-items: center;
-    justify-content: center;
-    display: grid; /* Ativa o Grid no container */
-
-}
+    justify-content: center;}
 
 
 

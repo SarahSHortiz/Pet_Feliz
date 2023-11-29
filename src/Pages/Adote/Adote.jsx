@@ -148,7 +148,7 @@ function Adote() {
                     <h1>VENHA ADOTAR SEU NOVO PET!</h1>
                 </div>
 
-                <div className="cards-container">
+                <div className="cards-container1">
                     {currentItems.map((x) => {
                         return <CardsAnimal cardanimal={x} key={x?.id_Pet} />;
                     })}

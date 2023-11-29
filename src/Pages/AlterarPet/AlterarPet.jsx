@@ -1,100 +1,141 @@
-import axios from "axios";
-import "../PerfilAnimal/PerfilAnimal.css";
-import { useEffect, useState } from 'react';
-import axios from "axios";
-
-    export default function PerfilAnimal() {
-        const [pet, setPet] = useState({
-            Nome: '',
-            Raca: '',
-            Porte: '',
-            Idade: '',
-            Especie: '',
-            Castrado: '',
-            Vermifugado: '',
-            Vacinado: '',
-        });
-    
-        useEffect(() => {
-            // Substitua 'idDoAnimal' pelo ID do animal que você deseja editar.
-            axios.get(`https://petfeliz.azurewebsites.net/api/PetFeliz/ObterDetalhesDoAnimal?id=${idDoAnimal}`)
-                .then((response) => {
-                    const animalData = response.data; // Dados do animal da API
-                    setPet(animalData); // Define os dados do animal no estado
-                })
-                .catch((error) => {
-                    console.error('Erro ao carregar dados do animal:', error);
-                });
-        }, [idDoAnimal]);
-    
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Certifique-se de ter o axios instalado no seu projeto
+import { useLocation } from "react-router-dom";
 
 
-    const [ setInputValue] = useState('');
+const PerfilAnimal = () =>{
 
-const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPet((prevPet) => ({
-        ...prevPet,
-        [name]: value,
-    }));
+const [Porte_Pet, setPorte_Pet] = useState("");
+const [Sexo_Pet, setSexo_Pet] = useState("");
+const [Idade_Pet, setIdade_Pet] = useState("");
+const [Descricao_Pet, setDescricao_Pet] = useState("");
+const [Status_Pet, setStatus_Pet] = useState("");
+const [Castrado, setCastrado] = useState("");
+const [Foto_Pet] = useState("");
+const [Base64, setBase64] = useState(null);
+const [Cod_Usuario, setCod_Usuario] = useState("");
+const [Nome_Foto] = useState("");
+const [Nome_Pet, setNome_Pet] = useState("")
+
+const [Especie, setEspecie] = useState({
+    Nome_Especie: '',
+})
+
+const [Raca, setRaca] = useState({
+    Nome_Raca: '',
+});
+
+const [Animal, setAnimal] = useState({
+    Nome_Animal: '',
+});
+
+const [Vacina, setVacina] = useState({
+    data_vacina: '',
+    status: 'Selecione a Opção',
+    descricao: '',
+});
+
+
+const [errors, setErrors] = useState({});
+
+const nome_Animal = ['Gato', 'Cão'];
+const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10'];
+const porte_Pet = ['Anão', 'Pequeno Porte', 'Médio Porte', 'Grande Porte', 'Molosso'];
+const sexo_Pet = ['Macho', 'Fêmea'];
+const castrado = ['Sim', 'Não'];
+const status_Pet = ['Disponível', "Interessados", 'Adotado'];
+const status = ['Não Válido', 'Válido'];
+
+const validateForm = () => {
+    const errors = {};
+
 };
 
-
-const handleSubmit = (evento) => {
+function editarpet(evento) {
     evento.preventDefault();
 
-    axios.put(`https://petfeliz.azurewebsites.net/api/PetFeliz/EditarPet?id=${idDoAnimal}`, pet)
-        .then((response) => {
-            console.log("Alterações salvas com sucesso:", response.data);
-            // Você pode redirecionar o usuário para outra página ou realizar outras ações após salvar as alterações.
+    const body = { nome, cpf, email, celular, imagem };
+
+
+  useEffect(() => {
+
+
+    fetch("https://petfeliz.azurewebsites.net/api/usuarioAtualizarPet", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
         })
-        .catch((error) => {
-            console.error('Erro ao salvar alterações:', error);
-            alert('Erro ao salvar as alterações');
-        });
+            .then((response) => { alert("Usuário alterado com sucesso"); })
+            .catch((error) => {
+                console.log(error);
+                alert("Erro ao alterar usuario");
+            });
+    }
+
+
+
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setCardAnimal({ ...cardanimal, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    // Aqui você pode enviar as alterações para a API
+    // Usando os dados em 'cardanimal'
+    console.log('Informações do animal atualizadas:', cardanimal);
+    // Coloque aqui a lógica para enviar as alterações para a API
+  };
+
+  return (
+    <div>
+      <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', borderRadius: "6px", maxWidth: '100%', maxHeight: '20rem' }} />
+      
+      <div>
+        <label>Nome do Pet:</label>
+        <input
+          type="text"
+          name="nome_Pet"
+          value={cardanimal.nome_Pet}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label>Sexo do Pet:</label>
+        <input
+          type="text"
+          name="sexo_Pet"
+          value={cardanimal.sexo_Pet}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label>Descrição:</label>
+        <input
+          type="text"
+          name="descricao_Pet"
+          value={cardanimal.descricao_Pet}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label>Idade do Pet:</label>
+        <input
+          type="text"
+          name="idade_Pet"
+          value={cardanimal.idade_Pet}
+          onChange={handleChange}
+        />
+      </div>
+
+
+      <button onClick={handleSubmit}>Salvar Alterações</button>
+    </div>
+  );
 };
 
 
-    return (
-        <div className="perfil-animal-body">
-            <div className="perfil-animal-container">
-                <div className="perfil-title">
-                    <h1>Perfil Animal</h1>
-                </div>
-                <form className="dados-animal-perfil" onSubmit={handleSubmit}>
-                    <div className="question">
-                        <input
-                            type="text"
-                            required
-                            placeholder="Nome"
-                            value={pet.Nome}
-                            onChange={(e) => setPet({ ...pet, Nome: e.target.value })}
-                        />
-                    </div>
-                    <div className="question">
-                        <input
-                            type="text"
-                            required
-                            placeholder="Raça"
-                            value={pet.Raca}
-                            onChange={(e) => setPet({ ...pet, Raca: e.target.value })}
-                        />
-                    </div>
-                    <select className="question">
-                        <input
-                            type="text"
-                            placeholder="Porte"
-                            value={pet.Porte}
-                            onChange={(e) => setPet({ ...pet, Porte: e.target.value })}
-                        />
-                    </select>
-                    {/* Adicione campos para outros atributos do animal aqui */}
-                    <button type="submit">SALVAR ALTERAÇÕES</button>
-                </form>
-                <div className="cancelar-animal-editar">
-                    <button>CANCELAR</button>
-                </div>
-            </div>
-        </div>
-    );
-}

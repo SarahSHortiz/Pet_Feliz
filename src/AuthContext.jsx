@@ -36,16 +36,25 @@ function CheckUserLogin() {
   
     if (actualDate > userData.exp) {
       //usuario expirado
-      localStorage.remove("jwt");
+      localStorage.removeItem("jwt");
+;
       return false;
     }
   
     return true;
 }
 
+const LogoutButton  = () => {
+    localStorage.removeItem('jwt');
+  window.location.href = '/home'; 
+  };
+
 export const AuthContextFunctions = {
     SaveJWT,
     GetUserData,
     GenerateHeader,
-    CheckUserLogin
+    CheckUserLogin,
+    LogoutButton
+
 };
+

@@ -6,20 +6,16 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { AuthContextFunctions } from '../../../AuthContext';
+// import {LogoutButton} from '../../../AuthContext';
 
-function LogoutButton() {
-  const handleLogout = () => {
-      localStorage.removeItem(TOKEN_KEY);
-    AuthContextFunctions.SaveJWT(''); // Limpa o token
-    window.location.href = '/home'; // Redireciona para a página de login após o logout
-  };
 
-  return (
-    <MenuItem onClick={handleLogout}>
-    <Link to='/home'>  Logout</Link>
-    </MenuItem>
-  );
-}
+
+// const LogoutButton  = () => {
+//   localStorage.removeItem('@jwt');
+// AuthContextFunctions.SaveJWT('');
+// window.location.href = '/home'; 
+// };
+// async function
 
 function NavbarLogin() {
   const [clicked, setClicked] = useState(false);
@@ -60,7 +56,7 @@ function NavbarLogin() {
             aria-haspopup="true"
             aria-expanded={Boolean(anchorEl)}
             onClick={handleClick2}
-            style={{ overflowY: 'auto' }}
+            style={{ overflowY: 'auto',  backgroundColor: "black" }}
           >
             PERFIL
           </Button>
@@ -69,13 +65,13 @@ function NavbarLogin() {
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleClose}
-            style={{ overflowY: 'auto', textDecoration: 'none' }}
+            style={{ overflowY: 'auto' }}
           >
-            <Link to='/perfil'><MenuItem onClick={handleClose}>PERFIL</MenuItem></Link>
-            <Link to='/AnimaisCadastrados'><MenuItem onClick={handleClose}>ANIMAIS CADASTRADOS</MenuItem></Link>
-            <Link to='/alterarsenha'><MenuItem onClick={handleClose}>ALTERAR SENHA</MenuItem></Link>
-            <Link to='/alterarperfil'><MenuItem onClick={handleClose}>ALTERAR PERFIL</MenuItem></Link>
-            <LogoutButton />
+
+            <Link style={{ textDecoration: 'none'}}to='/perfil'><MenuItem onClick={handleClose}>PERFIL</MenuItem></Link>
+            <Link  style={{ textDecoration: 'none',}}to='/AnimaisCadastrados'><MenuItem onClick={handleClose}>ANIMAIS CADASTRADOS</MenuItem></Link>
+            <Link style={{ textDecoration: 'none',}} to='/alterarperfil'><MenuItem onClick={handleClose}>ALTERAR PERFIL</MenuItem></Link>
+           <MenuItem onClick={AuthContextFunctions.LogoutButton} style={{ textDecoration: 'none',}}>lougout</MenuItem>
           </Menu>
         </div>
       </ul>
