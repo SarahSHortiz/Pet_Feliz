@@ -20,8 +20,36 @@ function Adote() {
         tipo: "",
         uf: "",
         cidade: "",
-        castrado:"",
+        castrado: "",
     });
+
+
+    const resetFiltro = () => {
+        setFilters({
+            porte: "",
+            sexo: "",
+            tipo: "",
+            uf: "",
+            cidade:"",
+            castrado:""
+        });
+
+        setplaceholderTipo('Selecione o Tipo');
+        setplaceholderCastrado('Status castração');
+        setplaceholderCidade('Selecione a cidade');
+        setplaceholderPorte('Seçecione o Porte');
+        setplaceholderUf('Selecione o Estado');
+        setplaceholderSexo('Selecione o Sexo');
+
+    };
+
+
+    const [placeholderTipo, setplaceholderTipo] = useState("Selecione o Tipo");
+    const [placeholderSexo, setplaceholderSexo] = useState("Selecione o Sexo");
+    const [placeholderPorte, setplaceholderPorte] = useState("Selecione o Porte");
+    const [placeholderUf, setplaceholderUf] = useState("Selecione o Estado");
+    const [placeholderCidade, setplaceholderCidade] = useState("Selecione a Cidade");
+    const [placeholderCastrado, setplaceholderCastrado] = useState("Status castração");
 
 
     const porte_Pet = [
@@ -43,11 +71,11 @@ function Adote() {
     ];
 
     const castrado = [
-        {value: "Sim", label: "Sim"},
-        {value: "Não", label: "Não"}
+        { value: "Sim", label: "Sim" },
+        { value: "Não", label: "Não" }
     ];
 
- 
+
     useEffect(() => {
         getDataFromApi();
     }, [])
@@ -80,7 +108,7 @@ function Adote() {
                 queryString += "cidade=" + filters.cidade + "&";
             }
             if (filters.castrado) {
-                queryString += "castrado=" + filters.castrado+ "&";
+                queryString += "castrado=" + filters.castrado + "&";
             }
 
             const response = await axios.get(`https://petfeliz.azurewebsites.net/api/PetFeliz/ListarPet?` + queryString);
@@ -98,29 +126,79 @@ function Adote() {
 
 
     function handleTipoChange(option) {
-        const updatedFilters = { ...filters, tipo: option.value };
-        setFilters(updatedFilters);
+        if (handleTipoChange === '') {
+            setFilters({ ...filters, tipo: '' });
+            setplaceholderTipo = 'Selecione o tipo';
+            setFilters(updatedFilters);
+        }
+        else {
+            setFilters({ ...filters, tipo: option.value });
+            setplaceholderTipo('');
+            setFilters(updatedFilters);
+        }
     }
     function handleSexoChange(option) {
-        const updatedFilters = { ...filters, sexo: option.value };
-        setFilters(updatedFilters);
+        if (handleSexoChange === '') {
+            setFilters({ ...filters, sexo: '' });
+            setplaceholderSexo = 'Selecione o Sexo';
+            setFilters(updatedFilters);
+        }
+        else {
+            setFilters({ ...filters, sexo: option.value });
+            setplaceholderSexo('');
+            setFilters(updatedFilters);
+        }
     }
 
     function handlePorteChange(option) {
-        const updatedFilters = { ...filters, porte: option.value };
-        setFilters(updatedFilters);
+        if (handlePorteChange === '') {
+            setFilters({ ...filters, porte: '' });
+            setplaceholderPorte = 'Selecione o porte';
+            setFilters(updatedFilters);
+        }
+        else {
+            setFilters({ ...filters, porte: option.value });
+            setplaceholderPorte('');
+            setFilters(updatedFilters);
+        }
     }
     function handleUFChange(option) {
-        const updatedFilters = { ...filters, uf: option };
-        setFilters(updatedFilters);
+        if (option.value === '') {
+            setFilters({ ...filters, uf: '' });
+            setPlaceholderUf = 'Selecione o Estado';
+            setFilters(updatedFilters);
+        } else {
+            setFilters({ ...filters, uf: option.value });
+            setPlaceholderUf('');
+            setFilters(updatedFilters);
+        }
     }
+
+
     function handleCidadeChange(option) {
-        const updatedFilters = { ...filters, cidade: option };
-        setFilters(updatedFilters);
+        if (handleCidadeChange === '') {
+            setFilters({ ...filters, cidade: '' });
+            setplaceholderCidade = 'Selecione a Cidade';
+            setFilters(updatedFilters);
+        }
+        else {
+            setFilters({ ...filters, cidade: option.value });
+            setplaceholderCidade('');
+            setFilters(updatedFilters);
+        }
     }
+
     function handleCastradoChange(option) {
-        const updatedFilters = { ...filters, castrado: option };
-        setFilters(updatedFilters);
+        if (handleCastradoChange === '') {
+            setFilters({ ...filters, castrado: '' });
+            setplaceholderCastrado = 'Status da Castração';
+            setFilters(updatedFilters);
+        }
+        else {
+            setFilters({ ...filters, castrado: option.value });
+            setplaceholderCastrado('');
+            setFilters(updatedFilters);
+        }
     }
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -130,7 +208,9 @@ function Adote() {
     return (
         <div className="adote">
             <div className="filtros">
+
                 <div className="coluna1">
+
                     <div className="filtro">
                         <Select
                             options={sexo_Pet}
@@ -146,15 +226,6 @@ function Adote() {
                             placeholder="Selecione o porte do animal"
                             value={porte_Pet.find((option) => option.value === filters.porte)}
                             onChange={handlePorteChange}
-                            onValueChange={(selectedPorte) => {
-                                if (selectedPorte === '') {
-                                  setFilters({ ...filters, porte: '' });
-                                  setPlaceholderPorte('Selecione o porte');
-                                } else {
-                                  setFilters({ ...filters, porte: selectedPorte });
-                                  setPlaceholderPorte(''); 
-                                }
-                              }}
                         />
                     </div>
                     <div className="filtro">
@@ -187,10 +258,10 @@ function Adote() {
                         />
                     </div>
 
-                    <div className="bnt-limpar">
-<button>Limpar</button>
+                    <div onClick={resetFiltro} className="bnt-limpar">
+                        <button>Limpar</button>
                     </div>
-                 
+
                 </div>
             </div>
 
