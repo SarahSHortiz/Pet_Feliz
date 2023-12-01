@@ -1,7 +1,6 @@
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import NavbarLogin from '../src/Components/Navbar/NavLogin/NavbarLogin';
 import NavbarLogOff from './Components/Navbar/NavOff/NavbarLogOff';
 import Home from '../src/Pages/Home/Home';
 import AnimaisCadastrados from '../src/Pages/AnimaisCadastrados/AnimaisCadastrados'
@@ -21,7 +20,7 @@ import SobrenosAjudar from '../src/Pages/Sobrenos/SobrenosAjudar/SobrenosAjudar'
 import NavbarLogin from './Components/Navbar/NavLogin/NavbarLogin';
 import { useEffect, useState } from 'react';
 import { AuthContextFunctions } from './AuthContext';
-// import PerfilAnimal from '../src/Pages/AlterarPet/AlterarPet'
+import AlterarPet from './Pages/AlterarPet/AlterarPet';'../src/Pages/AlterarPerfil/AlterarPerfil'
 
 function App() {
 
@@ -53,7 +52,7 @@ function App() {
           <Route path="/EsqueciSenha" element={<EsqueciSenha />} />
           <Route path="/AlterarPerfil" element={<AlterarPerfil />} />
           <Route path="/Cadastro" element={<Cadastro />} />
-          {/* <Route path="/PerfilAnimal" element={<PerfilAnimal />} /> */}
+          <Route path="/AlterarPet" element={<AlterarPet />} />
 
         </Routes>
         <Footer />

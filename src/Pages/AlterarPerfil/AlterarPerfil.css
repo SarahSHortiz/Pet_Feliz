@@ -107,6 +107,7 @@ margin-left: -51%;
 
 .bnt-alterar-perfil button {
   background-color: #F9C200;
+  cursor: pointer;
   color: white;
   margin-bottom: 20%;
   width: 18rem;

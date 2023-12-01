@@ -23,8 +23,15 @@
 .Navbar-logo {
     color: black;
     font-size: 2.0rem;
-    cursor: pointer;
+    text-decoration: none;
     margin-left: 5%;
+
+}
+
+.Navbar-logo:hover{
+    text-decoration: none;
+    background-color: #c1c1c1;
+
 }
 
 .Nav-menu {
@@ -91,8 +98,6 @@
 }
 
 #basic-button :hover {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
     position: fixed !important;
 
 }
@@ -101,6 +106,8 @@
    
     z-index: 9999;
   }
+
+
 
 
 @media screen and (max-width: 850px) {

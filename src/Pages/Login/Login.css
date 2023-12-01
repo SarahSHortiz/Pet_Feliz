@@ -42,6 +42,7 @@
     border: 4px solid #F9C200;
     display: block;
     margin-left: 10%;
+
   }
   .login-form input[type="email"] {
     width: 30rem;
@@ -56,7 +57,7 @@
   }
   
   
-  .login-buttom-entrar {
+  .login-buttom-entrar1 {
     width: 30rem;
     height: 6rem;
     background-color: #F9C200;
@@ -68,10 +69,18 @@
     margin-top: 10%;
     margin-left: 10%;
     border-radius: 0.5rem;
+    cursor: pointer;
+    
+
   
   }
-  
-  .login-buttom-entrar span{
+  .login-buttom-entrar1:hover {
+    background-color:  #e5b402;
+
+
+  }
+
+  .login-buttom-entrar1 button{
     text-decoration: none;
     color: #fff;
     text-align: center;
@@ -81,7 +90,17 @@
     font-variant: small-caps;
     letter-spacing: 0.44px;
     font-family: Arial;
+    background-color: #F9C200;
+    cursor: pointer;
+
   }
+
+
+.login-buttom-entrar1 button:hover{
+    background-color: #e5b402;
+}
+
+
   .login-buttom-senha{
     margin-top: 4%;
     margin-left: 10%;
@@ -89,10 +108,12 @@
   }
   
   .login-buttom-senha p {
-    color: gray;
     text-decoration: none;
     font-family: Arial;
   }
+
+
+
   .login-buttom-cadastro{
     margin-left: 85%;
     font-size: 1.4rem;
@@ -100,10 +121,17 @@
   }
   
   .login-buttom-cadastro p {
-    color: gray;
     text-decoration: none;
     font-family: Arial;
     white-space: nowrap; /* Prevent text from wrapping */
   
   }
   
+
+  .botao-cadastro{
+    background-color: #F9C200 ;
+  }
+
+  .botao-cadastro:hover{
+background-color: #c39b0b;
+  }

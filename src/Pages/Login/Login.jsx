@@ -77,7 +77,7 @@ function Login({setIsLoggedIn}) {
         <form className="login-form" onSubmit={handleLogin}>
           <input type="email" id="email" name="Email" placeholder="E-mail" value={usuario.Email} onChange={handleInputChange} />
           <input type="password" id="senha" name="Senha" placeholder="Senha" value={usuario.Senha} onChange={handleInputChange} />
-          <div className="login-buttom-entrar" onChange={handleInputChange}>
+          <div className="login-buttom-entrar1" onChange={handleInputChange}>
             <button type="submit">ENTRAR</button> 
           </div>
         </form>
@@ -86,7 +86,7 @@ function Login({setIsLoggedIn}) {
         <Link to="/EsqueciSenha"><p>Esqueceu a Senha?</p></Link>
         </div>
         <div className="login-buttom-cadastro">
-        <Link to="/Cadastro" >  <p>Cadastre-se</p></Link>
+        <Link to="/Cadastro" ><p>Cadastre-se</p></Link>
         </div>
       </div>
     </div>

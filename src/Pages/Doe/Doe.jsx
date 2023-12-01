@@ -119,10 +119,9 @@ const Doe = () => {
                     },
                 });
 
-                if (response.status === 200) {
-                    alert('Cadastro realizado com sucesso');
-                    navigate("Home");
-
+                if (response.status === 200) {                    
+                    navigate("/Home");
+                    
                 }
             } catch (error) {
                 console.error('Erro ao fazer a solicitação:', error);
@@ -259,18 +258,6 @@ const Doe = () => {
                         ))}
                     </select>
 
-
-
-                    <input
-                        onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
-                        value={Vacina.data_vacina}
-                        type="date"
-                        className="dropdown"
-                        placeholder='Data Vacina'
-                    >
-                    </input>
-
-
                     <input
                         type="text"
                         placeholder="Tipo da vacinas"
@@ -283,13 +270,26 @@ const Doe = () => {
                         onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
                         className="dropdown"
                     >
-                        <option value="Selecione uma opção">Selecione a Validade da Vacina</option>
+                        <option value="Selecione uma opção">O animal está vacinado?</option>
                         {status.map((option) => (
                             <option value={option} key={option}>
                                 {option}
                             </option>
                         ))}
                     </select>
+
+
+                    <input
+                        onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
+                        value={Vacina.data_vacina}
+                        type="date"
+                        className="dropdown"
+                        placeholder='Data Vacina'
+                    >
+                    </input>
+
+
+
                     <input
                         type="text"
                         placeholder="Descrição"

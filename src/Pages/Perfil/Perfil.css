@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: Glory;
-  outline:none;
+  outline: none;
   border: none;
 }
 
@@ -70,7 +70,7 @@
   padding-left: 10%;
 }
 
-.dados-usuario-perfil value{
+.dados-usuario-perfil value {
   margin-left: 10%;
 }
 
@@ -87,6 +87,7 @@
   margin-left: -80%;
 }
 
+
 /* Estilos para os botões */
 .perfil-bnt-cadastrar,
 .perfil-bnt-petscadastrados {
@@ -100,6 +101,10 @@
   width: 18rem;
   height: 5rem;
   border-radius: 15px;
+}
+
+.perfil-bnt-cadastrar button:hover {
+  background-color: #FFD700;
 }
 
 .perfil-bnt-cadastrar button {
@@ -117,7 +122,10 @@
   line-height: 28px;
   font-variant: small-caps;
   letter-spacing: 0.44px;
+  cursor: pointer;
   box-shadow: 0px 2px 2px 0px rgba(116, 116, 116, 1);
+  /* background: #FFD700; */
+
 }
 
 .perfil-bnt-petscadastrados {
@@ -126,6 +134,8 @@
   border-radius: 15px;
   margin-top: 20%;
 }
+
+
 
 .perfil-bnt-petscadastrados button {
   background-color: #F9C200;
@@ -142,5 +152,10 @@
   line-height: 28px;
   font-variant: small-caps;
   letter-spacing: 0.44px;
+  cursor: pointer;
   box-shadow: 0px 2px 2px 0px rgba(116, 116, 116, 1);
+}
+
+.perfil-bnt-petscadastrados button:hover {
+  background-color: #FFD700;
 }

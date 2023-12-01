@@ -43,8 +43,8 @@ function CardsEditarAnimal({ cardanimal }) {
                             {cardanimal.nome_Pet}
                         </h1>
 
-                        <Stack spacing={2} direction="row">
-                            <Link to="/PerfilAnimal">
+                        <Stack spacing={2} direction="row" className='button-modal'>
+                            <Link to="/AlterarPet">
                                 <Button
                                     variant="contained"
                                     style={{
@@ -61,8 +61,7 @@ function CardsEditarAnimal({ cardanimal }) {
 
 
 
-                        <Stack spacing={2} direction="row">
-                            <Link to="/PerfilAnimal">
+                        <Stack spacing={2} direction="row" className='button-modal-remover'>
                                 <Button
                                     onClick={handleExcluir}
                                     variant="contained"
@@ -75,7 +74,6 @@ function CardsEditarAnimal({ cardanimal }) {
                                 >
                                     Remover
                                 </Button>
-                            </Link>
                         </Stack>
 
 

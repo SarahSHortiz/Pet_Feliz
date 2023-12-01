@@ -107,6 +107,9 @@ body{
     font-variant: small-caps;
     letter-spacing: 0.44px;
     font-family: Arial;
+    border-radius: 12px;
+    cursor: pointer;
+
   
   }
   
@@ -121,6 +124,11 @@ body{
     letter-spacing: 0.44px;
     font-family: Arial;
   }
+
+
+  .cadastro-buttom1:hover{
+    background-color: #ba9304;
+  }
   
   .cadastro-buttom2{
     margin-top: 5%;
@@ -129,6 +137,5 @@ body{
   }
   
   .cadastro-buttom2 a {
-    color: gray;
     text-decoration: none;
   }

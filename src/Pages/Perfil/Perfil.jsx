@@ -49,10 +49,10 @@ export default function Perfil() {
 
         <div className='bnt-perfil-usuario'>
           <div className="perfil-bnt-cadastrar">
-          <Link to='/Doe'><button>Cadastrar Animal</button></Link>
+          <Link to='/Doe'><button>CADASTRAR ANIMAL</button></Link>
           </div>
           <div className="perfil-bnt-petscadastrados">
-          <Link to='/AnimaisCadastrados'><button>Animais Cadastrados</button></Link>
+          <Link to='/AnimaisCadastrados'><button>ANIMAIS CADASTRADOS</button></Link>
           </div>
         </div>
       </div>

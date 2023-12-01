@@ -43,3 +43,13 @@
 
 }
 
+.button-modal button:hover{
+  background-color: #FFD700;
+
+
+}
+
+.button-modal-remover{
+  background-color: red;
+
+}

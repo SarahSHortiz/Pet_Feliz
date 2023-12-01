@@ -21,6 +21,12 @@
   font-weight: bold;
   color: white;
   margin-left: 25%;
+  cursor: pointer;
+}
+
+.cadastrar:hover{
+  background-color: #3d1a1a;
+  
 }
 
 .labelError {

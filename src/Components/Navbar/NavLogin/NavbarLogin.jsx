@@ -35,7 +35,7 @@ function NavbarLogin() {
 
   return (
     <nav className="NavbarItems">
-      <h1 className="Navbar-logo">Pet Feliz</h1>
+     <h1 className="Navbar-logo" style={{textDecoration:'none',}}><Link to='/Home'>Pet Feliz </Link></h1>
       <div className="menu_icons" onClick={handleClick}>
         <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
       </div>
@@ -68,10 +68,10 @@ function NavbarLogin() {
             style={{ overflowY: 'auto' }}
           >
 
-            <Link style={{ textDecoration: 'none'}}to='/perfil'><MenuItem onClick={handleClose}>PERFIL</MenuItem></Link>
-            <Link  style={{ textDecoration: 'none',}}to='/AnimaisCadastrados'><MenuItem onClick={handleClose}>ANIMAIS CADASTRADOS</MenuItem></Link>
-            <Link style={{ textDecoration: 'none',}} to='/alterarperfil'><MenuItem onClick={handleClose}>ALTERAR PERFIL</MenuItem></Link>
-           <MenuItem onClick={AuthContextFunctions.LogoutButton} style={{ textDecoration: 'none',}}>lougout</MenuItem>
+            <Link style={{ textDecoration: 'none', color: "black"}}to='/perfil'><MenuItem onClick={handleClose}>PERFIL</MenuItem></Link>
+            <Link  style={{ textDecoration: 'none', color: "black"}}to='/AnimaisCadastrados'><MenuItem onClick={handleClose}>ANIMAIS CADASTRADOS</MenuItem></Link>
+            <Link style={{ textDecoration: 'none',color: "black"}} to='/alterarperfil'><MenuItem onClick={handleClose}>ALTERAR PERFIL</MenuItem></Link>
+           <MenuItem onClick={AuthContextFunctions.LogoutButton} style={{ textDecoration: 'none',}}>SAIR</MenuItem>
           </Menu>
         </div>
       </ul>

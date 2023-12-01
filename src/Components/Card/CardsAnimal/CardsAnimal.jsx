@@ -56,15 +56,17 @@ function CardsAnimal({ cardanimal }) {
               marginBottom: '2%', position: 'absolute', padding: '5px 10px', top: '10px',
               right: '10px', backgroundColor: InfoColor, borderRadius: '8px'
             }}>{cardanimal.status_Pet}</div>
+
           </div>
           <CardMedia className='card-img' sx={{ height: 150 }}>
             <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', width: '100%' }} />
           </CardMedia>
+
           <CardContent className='description' sx={{ marginBottom: '5%' }}>
-            <div style={{ marginBottom: '5%', objectFit: 'cover', color: '#5A3333' }}>{cardanimal.nome_Pet}</div>
+            <div style={{ marginBottom: '5%', objectFit: 'cover', color: '#5A3333', fontWeight:'700', fontSize: '1.5rem' }}>{cardanimal.nome_Pet}</div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ display: 'inline', marginRight: '1rem' }}>{cardanimal.estado.nome_Estado}</div>
-              <div style={{ display: 'inline', whiteSpace: 'nowrap' }}>{cardanimal.cidade.nome_Cidade}</div>
+              <div style={{ display: 'inline', marginRight: '1rem', fontWeight:'600', fontSize: '1rem' }}>{cardanimal.estado.nome_Estado}</div>
+              <div style={{ display: 'inline', whiteSpace: 'nowrap', fontWeight:'600', fontSize: '1rem' }}>{cardanimal.cidade.nome_Cidade}</div>
             </div>
           </CardContent>
         </CardActionArea>
@@ -121,26 +123,26 @@ function CardsAnimal({ cardanimal }) {
                 {cardanimal.estado.nome_Estado}
               </Typography>
               {/* Adicione acessos diretos às propriedades específicas */}
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography id="modal-modal-title" variant="h6" component="h2"><p>Sexo</p>
                 {cardanimal.sexo_Pet}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography id="modal-modal-title" variant="h6" component="h2"><p>Raça</p>
                 {cardanimal.raca.nome_Raca}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" >
+              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Espécie</p>
                 {cardanimal.especie.nome_Especie}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" >
+              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Idade</p>
                 {cardanimal.idade_Pet}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" >
+              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Tipo</p>
                 {cardanimal.animal.nome_Animal}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" >
-                {cardanimal.Castrado}
+              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Castração</p>
+                {cardanimal.castrado}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                {cardanimal.vacina.id_Vacina} {/* Exemplo de acesso à propriedade específica */}
+              <Typography id="modal-modal-title" variant="h6" component="h2"><p>Descrição</p>
+                {cardanimal.vacina.descricao} {/* Exemplo de acesso à propriedade específica */}
               </Typography>
             </div>
           </div>

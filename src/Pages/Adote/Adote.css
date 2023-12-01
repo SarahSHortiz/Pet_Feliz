@@ -21,6 +21,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: 10%;
+    margin-bottom: 10%;
 
 
 }
@@ -31,7 +32,7 @@ body {
 .coluna1 {
     margin-top: 10%;
     width: 40%;
-    height: 12rem;
+    height: 18rem;
     flex-direction: column;
     background-color:  #f8c100;
     border-radius: 5px 0% 0% 5px;
@@ -43,7 +44,7 @@ body {
 .coluna2 {
     margin-top: 10%;
     width: 40%;
-    height: 12rem;
+    height: 18rem;
     flex-direction: column;
     justify-content: space-between;
     background-color: #f8c100;
@@ -94,3 +95,5 @@ body {
     margin-bottom: 5%;
     margin-top: 5%;
 }
+
+

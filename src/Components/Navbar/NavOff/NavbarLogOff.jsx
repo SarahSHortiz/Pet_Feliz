@@ -29,7 +29,7 @@ class NavbarLogOff extends Component {
               </li>
             );
           })}
-          <Link to="/Cadastro">
+          <Link style={{ textDecoration: 'none'}}  to="/Cadastro">
             <button className="button-navbar1">Cadastre-se</button>
           </Link>
         </ul>

@@ -24,6 +24,7 @@ function Cadastro() {
     }
   });
 
+  const[confsenha, setConfSenha]= useState('');
 
   const handleInputChange = (evento) => {
     const { name, value } = evento.target;
@@ -91,16 +92,20 @@ function Cadastro() {
         alert("Preencha o campo senha");
         return;
       }
+      if (usuario.Senha!= confsenha) {
+        alert("Senhas diferentes! Por favor verificar");
+        return;
+      }
       if (!usuario.Logradouro.CEP) {
         alert("Preencha o campo CEP");
         return;
       }
       if (!usuario.Logradouro.NomeLog) {
-        alert("Preencha o campo nomeLog");
+        alert("Preencha o campo endereço");
         return;
       }
       if (!usuario.Logradouro.Numero) {
-        alert("Preencha o campo numero");
+        alert("Preencha o campo número");
         return;
       }
 
@@ -129,7 +134,8 @@ function Cadastro() {
 
       alert("Usuário cadastrado com sucesso.");
       window.location.reload();
-    } catch (error) { console.error(error);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -146,7 +152,7 @@ function Cadastro() {
           <input type="text" id="name" name="Nome" value={usuario.Nome} onChange={handleInputChange} placeholder="Nome" />
           <input type="email" id="email" name="Email" value={usuario.Email} onChange={handleInputChange} placeholder="E-mail" />
           <input type="password" id="senha" name="Senha" value={usuario.Senha} onChange={handleInputChange} placeholder="Senha" />
-          <input type="password" id="senhaconfirmar" name="senhaconfirmar" placeholder="Confirmar Senha" />
+          <input type="password" id="senhaconfirmar" name="confsenha" value={confsenha} onChange={(e) => setConfSenha(e.target.value)} placeholder="Confirmar Senha" />
           <input type="number" id="tel" name="Telefone" value={usuario.Telefone} onChange={handleInputChange} placeholder="Celular" />
           <input type="text" id="cpf" name="CPF" value={usuario.CPF} onChange={handleInputChange} placeholder="CPF" />
           <input type="text" id="CEP" name="CEP" value={usuario.Logradouro.CEP} onChange={handleLogradouroInputChange} placeholder="CEP" />
