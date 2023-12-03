@@ -71,7 +71,7 @@ function NavbarLogin() {
             <Link style={{ textDecoration: 'none', color: "black"}}to='/perfil'><MenuItem onClick={handleClose}>PERFIL</MenuItem></Link>
             <Link  style={{ textDecoration: 'none', color: "black"}}to='/AnimaisCadastrados'><MenuItem onClick={handleClose}>ANIMAIS CADASTRADOS</MenuItem></Link>
             <Link style={{ textDecoration: 'none',color: "black"}} to='/alterarperfil'><MenuItem onClick={handleClose}>ALTERAR PERFIL</MenuItem></Link>
-           <MenuItem onClick={AuthContextFunctions.LogoutButton} style={{ textDecoration: 'none',}}>SAIR</MenuItem>
+           <MenuItem onClick={AuthContextFunctions.LogoutButton} style={{ textDecoration: 'none', color: 'red'}}>SAIR</MenuItem>
           </Menu>
         </div>
       </ul>

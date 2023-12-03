@@ -6,7 +6,7 @@
 .alterarpet{
 height: 100%;
 width: 100%;
-margin-bottom: 30%;
+margin-bottom: 1%;
 display: flex;
 }
 
@@ -76,4 +76,33 @@ display: flex;
     margin-left: 10%;
     font-size: x-large;
 
+
 }
+.bnt-alterarpet {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinhar os botões ao centro horizontalmente */
+    gap: 1rem; /* Espaço entre os botões */
+    margin-left: 30%;
+    margin-top: -50%;
+  }
+  
+  .cancelar,
+  .cadastrar1 {
+    background-color: #f9c200;
+    height: 5rem;
+    width: 20rem;
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  
+
+
+
+  /* Exemplo de CSS para alterar a cor do switch ativado */
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+    background-color: #f9c200; /* Defina sua cor desejada aqui */
+  }
+  

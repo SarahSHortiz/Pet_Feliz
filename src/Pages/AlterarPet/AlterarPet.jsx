@@ -51,10 +51,29 @@ const AlterarPet = () => {
 
   const validateForm = () => {
     const errors = {};
-    // ... (your validation logic)
     return errors;
   };
 
+  const handleCancel = () => {
+    setPorte_Pet("");
+    setSexo_Pet("");
+    setIdade_Pet("");
+    setDescricao_Pet("");
+    setStatus_Pet("");
+    setCastrado("");
+    setSelectedStatus("");
+    setBase64(null);
+    setEspecie({ Nome_Especie: "" });
+    setRaca({ Nome_Raca: "" });
+    setAnimal({ Nome_Animal: "" });
+    setVacina({
+      data_vacina: "",
+      status: "Selecione a Opção",
+      descricao: "",
+    });
+    setErrors({});
+    setNome_Pet("");
+  };
 
   const getSwitchColor = (status) => {
     switch (status) {
@@ -106,10 +125,8 @@ const AlterarPet = () => {
 
   const handleStatusChange = (status) => {
     if (selectedStatus === status) {
-      // Se o switch clicado for o mesmo que está selecionado, desativa
       setSelectedStatus('');
     } else {
-      // Se não, seleciona o switch clicado
       setSelectedStatus(status);
     }
   };
@@ -164,11 +181,8 @@ const AlterarPet = () => {
           <p>EDITAR PERFIL PET</p>
         </div>
 
-        
+
         <form className='alterarpet-form'>
-
-
-          
           <input
             type="text"
             placeholder="Digite o Nome do Animal"
@@ -222,7 +236,6 @@ const AlterarPet = () => {
               </option>
             ))}
           </select>
-
           <select
             value={Porte_Pet}
             onChange={(e) => setPorte_Pet(e.target.value)}
@@ -235,7 +248,6 @@ const AlterarPet = () => {
               </option>
             ))}
           </select>
-
           <select
             value={Castrado}
             onChange={(e) => setCastrado(e.target.value)}
@@ -248,7 +260,6 @@ const AlterarPet = () => {
               </option>
             ))}
           </select>
-
           <select
             value={Sexo_Pet}
             onChange={(e) => setSexo_Pet(e.target.value)}
@@ -263,6 +274,7 @@ const AlterarPet = () => {
           </select>
 
           <FormGroup className='status-alterarpet'>
+            <h1 style={{fontSize: '1.5rem'}}>Status animal</h1>
             {status_Pet.map((status) => (
               <FormControlLabel
                 key={status}
@@ -283,8 +295,6 @@ const AlterarPet = () => {
               />
             ))}
           </FormGroup>
-
-        
           <select
             value={Vacina.status}
             onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
@@ -297,7 +307,6 @@ const AlterarPet = () => {
               </option>
             ))}
           </select>
-
           <input
             type="text"
             placeholder="Tipo da vacinas"
@@ -305,8 +314,6 @@ const AlterarPet = () => {
             onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
             value={Vacina.descricao}
           />
-
-
           <input
             onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
             value={Vacina.data_vacina}
@@ -315,9 +322,6 @@ const AlterarPet = () => {
             placeholder='Data Vacina'
           >
           </input>
-
-
-
           <input
             type="text"
             placeholder="Descrição"
@@ -326,11 +330,14 @@ const AlterarPet = () => {
             value={Descricao_Pet}
           />
 
-          <form onSubmit={handleSubmit}>
+          <form className='bnt-alterarpet' onSubmit={handleSubmit}>
 
             <input type="file" accept="image/jpeg" onChange={handleFileChange} />
+            <button type="submit" className="cancelar" onClick={handleCancel}>
+              CANCELAR
+            </button>
 
-            <button type="submit" className="cadastrar">
+            <button type="submit" className="cadastrar1">
               SALVAR ALTERAÇÕES
             </button>
           </form>

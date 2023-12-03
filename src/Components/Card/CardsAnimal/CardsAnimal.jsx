@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './CardsAnimais.css';
@@ -43,14 +43,14 @@ function CardsAnimal({ cardanimal }) {
     case 'Adotado':
       InfoColor = "#F52317";
       break;
-      case 'Interessados':
-        InfoColor = "#F5C716";
-        break;
+    case 'Interessados':
+      InfoColor = "#F5C716";
+      break;
     default:
       InfoColor = "#F5C716";
       break;
   }
-  
+
   return (
     <>
       <Card className='card-card'>
@@ -58,26 +58,27 @@ function CardsAnimal({ cardanimal }) {
           <div id='status' style={getStatusColor(cardanimal.status_Pet)}>
             <div style={{
               marginBottom: '2%', position: 'absolute', padding: '5px 10px', top: '10px',
-              right: '10px', backgroundColor: InfoColor, borderRadius: '8px'
+              right: '10px', backgroundColor: InfoColor, borderRadius: '8px', fontWeight: 700
             }}>{cardanimal.status_Pet}</div>
 
           </div>
           <CardMedia className='card-img'>
-            <img  style={{
-      width: '100%', 
-      height: '200px', 
-      objectFit: 'cover', 
-      borderRadius: '5px 5px 0 0', 
-    }} src={cardanimal.foto_Pet} alt="Imagem do Card" />
+            <img style={{
+              width: '100%',
+              height: '200px',
+              objectFit: 'cover',
+              borderRadius: '5px 5px 0 0',
+            }} src={cardanimal.foto_Pet} alt="Imagem do Card" />
           </CardMedia>
 
-          <CardContent className='description'  style={{ marginTop:'-10%' }}>
-    
-            <div  style={{ color: '#5A3333', fontWeight:'700', fontSize: '1.5rem' }}> {cardanimal.nome_Pet}</div>
-            <div style={{ display: 'flex', alignItems: 'center',  marginTop: '15%' }}>
-              <div style={{ display: 'inline', marginRight: '1rem', fontWeight:'600', fontSize: '1rem'  }}>{cardanimal.estado.nome_Estado}</div>
-              <div style={{ display: 'inline', marginRight: '1rem', fontWeight:'600', fontSize: '1rem', whiteSpace: 'nowrap',
- }}>{cardanimal.cidade.nome_Cidade}</div>
+          <CardContent className='description' style={{ marginTop: '-10%' }}>
+
+            <div style={{ color: '#5A3333', fontWeight: '700', fontSize: '1.5rem' }}> {cardanimal.nome_Pet}</div>
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: '15%' }}>
+              <div style={{ display: 'inline', marginRight: '1rem', fontWeight: '600', fontSize: '1rem' }}>{cardanimal.estado.nome_Estado}</div>
+              <div style={{
+                display: 'inline', marginRight: '1rem', fontWeight: '600', fontSize: '1rem', whiteSpace: 'nowrap',
+              }}>{cardanimal.cidade.nome_Cidade}</div>
             </div>
           </CardContent>
         </CardActionArea>
@@ -90,7 +91,7 @@ function CardsAnimal({ cardanimal }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="content-modal" sx={style}>
+        <div className="content-modal" sx={style}>
           <Typography style={{ maxWidth: '100%', maxHeight: '20rem' }} className='infoimg'>
             <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', borderRadius: "6px" }} />
           </Typography>
@@ -105,9 +106,11 @@ function CardsAnimal({ cardanimal }) {
             </div>
 
             <Typography id="modal-modal-title" variant="h6" component="h2" className='infos1'>
+              <h3>E-mail</h3>
               {cardanimal.usuario.email}
             </Typography>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='infos1'>
+              <h3>Telefone</h3>
               {cardanimal.usuario.telefone}
             </Typography>
           </div>
@@ -153,7 +156,7 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
             </div>
           </div>
-        </Box>
+        </div>
       </Modal>
     </>
   );

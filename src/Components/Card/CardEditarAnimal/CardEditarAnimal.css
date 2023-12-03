@@ -48,8 +48,14 @@
 
 
 }
+
+.button-modal{
+  margin-left: 10%;
+
+}
+
 .button-modal-remover{
-  margin-left: 20%;
+  margin-left: 30%;
   height: 2.2rem;
   width: 8rem;
   border-radius: 10px;

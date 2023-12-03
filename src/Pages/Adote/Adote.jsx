@@ -4,7 +4,6 @@ import "./Adote.css";
 import CardsAnimal from '../../Components/Card/CardsAnimal/CardsAnimal';
 import { SelectEstado } from '../../Components/Filtro/Estado/SelectEstado';
 import { SelectCidade } from '../../Components/Filtro/Cidade/SelectCidade';
-
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import axios from "axios";
@@ -261,7 +260,7 @@ function Adote() {
                 <h1>VENHA ADOTAR SEU NOVO PET!</h1>
             </div>
 
-            <div className="cards-container1" style={{marginBottom: '-20%'}}>
+            <div className="cards-container1" >
                 {currentItems.reverse().map((x) => {
                     return <CardsAnimal cardanimal={x} key={x?.id_Pet} />;
                 })}
