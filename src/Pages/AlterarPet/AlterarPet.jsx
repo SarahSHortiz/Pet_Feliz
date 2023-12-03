@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './AlterarPet.css';
 import { AuthContextFunctions } from '../../AuthContext';
-
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 const AlterarPet = () => {
   const [Porte_Pet, setPorte_Pet] = useState("");
@@ -17,7 +19,7 @@ const AlterarPet = () => {
   const [Cod_Usuario, setCod_Usuario] = useState("");
   const [Nome_Foto] = useState("");
   const [Nome_Pet, setNome_Pet] = useState("")
-  
+
   const [Especie, setEspecie] = useState({
     Nome_Especie: '',
   });
@@ -53,15 +55,29 @@ const AlterarPet = () => {
     return errors;
   };
 
+
+  const getSwitchColor = (status) => {
+    switch (status) {
+      case 'Adotado':
+        return '#F93C006B';
+      case 'Interessados':
+        return '#ECD172';
+      case 'Disponível':
+        return '#84B67F';
+      default:
+        return 'default';
+    }
+  };
+
   useEffect(() => {
     const usuarioLogado = AuthContextFunctions.CheckUserLogin();
 
     if (usuarioLogado) {
-        const userData = JSON.parse(AuthContextFunctions.GetUserData());
-        const userId = userData.Cod_Usuario;
-        setCod_Usuario(userId);
+      const userData = JSON.parse(AuthContextFunctions.GetUserData());
+      const userId = userData.Cod_Usuario;
+      setCod_Usuario(userId);
     } else {
-        alert("nenhum usuario logado")
+      alert("nenhum usuario logado")
     }
   }, []);
 
@@ -73,14 +89,28 @@ const AlterarPet = () => {
     const selectedFile = event.target.files[0];
 
     if (selectedFile) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const base64 = e.target.result.split(',')[1];
-            setBase64(base64);
-        };
-        reader.readAsDataURL(selectedFile);
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const base64 = e.target.result.split(',')[1];
+        setBase64(base64);
+      };
+      reader.readAsDataURL(selectedFile);
     } else {
-        setBase64(null);
+      setBase64(null);
+    }
+  };
+
+  const [selectedStatus, setSelectedStatus] = useState('');
+  const label = { inputProps: { 'aria-label': 'Size switch demo' } };
+
+
+  const handleStatusChange = (status) => {
+    if (selectedStatus === status) {
+      // Se o switch clicado for o mesmo que está selecionado, desativa
+      setSelectedStatus('');
+    } else {
+      // Se não, seleciona o switch clicado
+      setSelectedStatus(status);
     }
   };
 
@@ -133,20 +163,25 @@ const AlterarPet = () => {
         <div className='title-alterarpet'>
           <p>EDITAR PERFIL PET</p>
         </div>
+
+        
         <form className='alterarpet-form'>
+
+
+          
           <input
             type="text"
             placeholder="Digite o Nome do Animal"
-            className="input"
+            className="input1"
             onChange={(e) => setNome_Pet(e.target.value)}
             value={Nome_Pet}
           />
-          {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>} 
+          {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>}
 
           <input
             type="text"
             placeholder="Digite a Especie do Animal"
-            className="input"
+            className="input1"
             onChange={(e) => setEspecie({ ...Especie, Nome_Especie: e.target.value })}
             value={Especie.Nome_Especie}
           />
@@ -155,146 +190,153 @@ const AlterarPet = () => {
           <input
             type="text"
             placeholder="Digite a Raça do Animal"
-            className="input"
+            className="input1"
             onChange={(e) => setRaca({ ...Raca, Nome_Raca: e.target.value })}
             value={Raca.Nome_Raca}
           />
           {errors.Nome_Raca && <p className="labelError">{errors.Nome_Raca}</p>}
 
 
-                    <select
-                        value={Animal.Nome_Animal}
-                        onChange={(e) => setAnimal({ ...Animal, Nome_Animal: e.target.value })}
-                        className="dropdown"
-                    >
-                        <option value="Selecione o tipo">Edite o Tipo do Animal</option>
-                        {nome_Animal.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
+          <select
+            value={Animal.Nome_Animal}
+            onChange={(e) => setAnimal({ ...Animal, Nome_Animal: e.target.value })}
+            className="dropdown1"
+          >
+            <option value="Selecione o tipo">Edite o Tipo do Animal</option>
+            {nome_Animal.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={Idade_Pet}
+            onChange={(e) => setIdade_Pet(e.target.value)}
+            className="dropdown1"
+          >
+            <option value="Selecione a Idade">Edite a Idade do Animal</option>
+            {idade_Pet.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={Porte_Pet}
+            onChange={(e) => setPorte_Pet(e.target.value)}
+            className="dropdown1"
+          >
+            <option value="Selecione o Porte">Edite o Porte do Animal</option>
+            {porte_Pet.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={Castrado}
+            onChange={(e) => setCastrado(e.target.value)}
+            className="dropdown1"
+          >
+            <option value="Selecione a opção">Edite se Animal foi Castrado</option>
+            {castrado.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={Sexo_Pet}
+            onChange={(e) => setSexo_Pet(e.target.value)}
+            className="dropdown1"
+          >
+            <option value="Selecione o Sexo">Edite o Sexo do Animal</option>
+            {sexo_Pet.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <FormGroup className='status-alterarpet'>
+            {status_Pet.map((status) => (
+              <FormControlLabel
+                key={status}
+                
+                control={
+                  <Switch
+                    checked={selectedStatus === status}
+                    {...label} defaultCheckedsize="x-large"
+                    onChange={() => handleStatusChange(status)}
+                    disabled={selectedStatus !== '' && selectedStatus !== status}
+                    style={{
+                      color: status === 'Adotado' ? '#F93C006B' : status === 'Interessados' ? '#ECD172' : '#84B67F',
+                    }}
+
+                  />
+                }
+                label={status}
+              />
+            ))}
+          </FormGroup>
+
+        
+          <select
+            value={Vacina.status}
+            onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
+            className="dropdown1"
+          >
+            <option value="Selecione uma opção">Edite se o animal está vacinado</option>
+            {status.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <input
+            type="text"
+            placeholder="Tipo da vacinas"
+            className="input1"
+            onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
+            value={Vacina.descricao}
+          />
+
+
+          <input
+            onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
+            value={Vacina.data_vacina}
+            type="date"
+            className="dropdown1"
+            placeholder='Data Vacina'
+          >
+          </input>
 
 
 
+          <input
+            type="text"
+            placeholder="Descrição"
+            className="input1"
+            onChange={(e) => setDescricao_Pet(e.target.value)}
+            value={Descricao_Pet}
+          />
 
-                    <select
-                        value={Idade_Pet}
-                        onChange={(e) => setIdade_Pet(e.target.value)}
-                        className="dropdown"
-                    >
-                        <option value="Selecione a Idade">Edite a Idade do Animal</option>
-                        {idade_Pet.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
+          <form onSubmit={handleSubmit}>
 
-                    <select
-                        value={Porte_Pet}
-                        onChange={(e) => setPorte_Pet(e.target.value)}
-                        className="dropdown"
-                    >
-                        <option value="Selecione o Porte">Edite o Porte do Animal</option>
-                        {porte_Pet.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
+            <input type="file" accept="image/jpeg" onChange={handleFileChange} />
 
-                    <select
-                        value={Castrado}
-                        onChange={(e) => setCastrado(e.target.value)}
-                        className="dropdown"
-                    >
-                        <option value="Selecione a opção">Edite se Animal foi Castrado</option>
-                        {castrado.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-
-                    <select
-                        value={Sexo_Pet}
-                        onChange={(e) => setSexo_Pet(e.target.value)}
-                        className="dropdown"
-                    >
-                        <option value="Selecione o Sexo">Edite o Sexo do Animal</option>
-                        {sexo_Pet.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-
-                    <select
-                        value={Status_Pet}
-                        onChange={(e) => setStatus_Pet(e.target.value)}
-                        className="dropdown"
-                    >
-                        <option value="Selecione uma opção">Edite o Status do Animal</option>
-                        {status_Pet.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-
-                    <input
-                        type="text"
-                        placeholder="Tipo da vacinas"
-                        className="input"
-                        onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
-                        value={Vacina.descricao}
-                    />
-                    <select
-                        value={Vacina.status}
-                        onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
-                        className="dropdown"
-                    >
-                        <option value="Selecione uma opção">Edite se o animal está vacinado</option>
-                        {status.map((option) => (
-                            <option value={option} key={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-
-
-                    <input
-                        onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
-                        value={Vacina.data_vacina}
-                        type="date"
-                        className="dropdown"
-                        placeholder='Data Vacina'
-                    >
-                    </input>
-
-
-
-                    <input
-                        type="text"
-                        placeholder="Descrição"
-                        className="input"
-                        onChange={(e) => setDescricao_Pet(e.target.value)}
-                        value={Descricao_Pet}
-                    />
-
-                    <form onSubmit={handleSubmit}>
-                        <input type="input" value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
-
-                        <input type="file" accept="image/jpeg" onChange={handleFileChange} />
-
-                        <button type="submit" className="cadastrar">
-                            SALVAR ALTERAÇÕES
-                        </button>
+            <button type="submit" className="cadastrar">
+              SALVAR ALTERAÇÕES
+            </button>
+          </form>
         </form>
-      </form>
       </div>
-  </div>
+    </div>
   );
 };
 

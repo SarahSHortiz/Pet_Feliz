@@ -23,6 +23,7 @@ function Adote() {
         castrado: "",
     });
 
+    const [placeholderUf, setPlaceholderUf] = useState('Selecione o Estado');
 
     const resetFiltro = () => {
         setFilters({
@@ -30,27 +31,18 @@ function Adote() {
             sexo: "",
             tipo: "",
             uf: "",
-            cidade:"",
-            castrado:""
+            cidade: "",
+            castrado: "",
         });
 
         setplaceholderTipo('Selecione o Tipo');
         setplaceholderCastrado('Status castração');
         setplaceholderCidade('Selecione a cidade');
-        setplaceholderPorte('Seçecione o Porte');
+        setplaceholderPorte('Selecione o Porte');
         setplaceholderUf('Selecione o Estado');
         setplaceholderSexo('Selecione o Sexo');
-
     };
-
-
-    const [placeholderTipo, setplaceholderTipo] = useState("Selecione o Tipo");
-    const [placeholderSexo, setplaceholderSexo] = useState("Selecione o Sexo");
-    const [placeholderPorte, setplaceholderPorte] = useState("Selecione o Porte");
-    const [placeholderUf, setplaceholderUf] = useState("Selecione o Estado");
-    const [placeholderCidade, setplaceholderCidade] = useState("Selecione a Cidade");
-    const [placeholderCastrado, setplaceholderCastrado] = useState("Status castração");
-
+    
 
     const porte_Pet = [
         { value: "anao", label: "Anão" },
@@ -258,8 +250,8 @@ function Adote() {
                         />
                     </div>
 
-                    <div onClick={resetFiltro} className="bnt-limpar">
-                        <button>Limpar</button>
+                    <div onClick={resetFiltro} >
+                        <button className="bnt-limpar">LIMPAR FILTROS</button>
                     </div>
 
                 </div>
@@ -269,8 +261,8 @@ function Adote() {
                 <h1>VENHA ADOTAR SEU NOVO PET!</h1>
             </div>
 
-            <div className="cards-container1">
-                {currentItems.map((x) => {
+            <div className="cards-container1" style={{marginBottom: '-20%'}}>
+                {currentItems.reverse().map((x) => {
                     return <CardsAnimal cardanimal={x} key={x?.id_Pet} />;
                 })}
             </div>

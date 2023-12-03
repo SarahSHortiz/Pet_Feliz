@@ -6,27 +6,35 @@ import { CardActionArea } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { AuthContextFunctions } from "../../../AuthContext"; 
 import { Link } from 'react-router-dom';
 
 function CardsEditarAnimal({ cardanimal }) {
     if (!cardanimal) {
         return null;
     }
+    // const handleExcluir = (id_Pet) => {
+    //     const tokenJWT = AuthContextFunctions.GetAuthToken(); 
 
-    const handleExcluir = () => {
-        axios
-            .delete(`https://petfeliz.azurewebsites.net/api/PetFeliz/apagarPet/${cardanimal}`)
-            .then((response) => {
-                if (response.status === 200) {
-                    alert('Card excluído com sucesso!');
-                } else {
-                    alert('Erro ao excluir o card.');
-                }
-            })
-            .catch((error) => {
-                console.error('Erro ao excluir o card:', error);
-            });
-    };
+    //     if (!tokenJWT) {
+    //         alert('Token JWT não encontrado. Usuário não autenticado.');
+    //         return;
+    //     }
+
+    //     axios.delete(`https://petfeliz.azurewebsites.net/api/PetFeliz/apagarPet/${id_Pet}`, { headers })
+    //         .then((response) => {
+    //             if (response.status === 200) {
+    //                 alert('Animal excluído com sucesso!');
+    //             } else {
+    //                 alert('Erro ao excluir o animal.');
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.error('Erro ao excluir o animal:', error);
+    //             alert('Erro ao excluir o animal');
+    //         });
+    // };
+
 
     return (
         <div className="card-editar">
@@ -63,20 +71,15 @@ function CardsEditarAnimal({ cardanimal }) {
 
                         <Stack spacing={2} direction="row" className='button-modal-remover'>
                                 <Button
-                                    onClick={handleExcluir}
                                     variant="contained"
+                                    onClick={() => handleExcluir(cardanimal.id)}
                                     style={{
-                                        backgroundColor: 'red',
-                                        width: '8rem',
-                                        marginLeft: '20%',
-                                        marginTop: '5%',
+                                       
                                     }}
                                 >
                                     Remover
                                 </Button>
                         </Stack>
-
-
 
                     </CardContent>
                 </CardActionArea>

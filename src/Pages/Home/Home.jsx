@@ -57,7 +57,7 @@ export default function Home() {
           <h2>Venha conhecer os recém chegados no Pet Feliz!</h2>
         </div>
         <div className="cards">
-          {reversedAnimal.map((animalData, index) => (
+          {reversedAnimal.slice(0, 15).map((animalData, index) => (
             <CardsAnimal StatusColor={getStatusColor} key={index} cardanimal={animalData} />
           ))}
         </div>

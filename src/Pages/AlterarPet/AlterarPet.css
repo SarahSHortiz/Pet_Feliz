@@ -51,6 +51,15 @@ display: flex;
 
 .alterarpet-form input, select{
     background-color: #F9C200 ;
+    right: 1%;
+    width: 25rem;
+    height: 4rem;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-left: 10%;
 }
 
 .alterarpet-form ::placeholder{
@@ -59,4 +68,12 @@ display: flex;
 
 .alterarpet-form select::placeholder{
     background-color: #ffffff ;
+}
+
+.status-alterarpet{
+    width: 8rem;
+    height: 10rem;
+    margin-left: 10%;
+    font-size: x-large;
+
 }

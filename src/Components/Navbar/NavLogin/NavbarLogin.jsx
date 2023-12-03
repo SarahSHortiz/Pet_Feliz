@@ -35,7 +35,7 @@ function NavbarLogin() {
 
   return (
     <nav className="NavbarItems">
-     <h1 className="Navbar-logo" style={{textDecoration:'none',}}><Link to='/Home'>Pet Feliz </Link></h1>
+     <h1 className="Navbar-logo" style={{textDecoration:'none',}}>Pet Feliz</h1>
       <div className="menu_icons" onClick={handleClick}>
         <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
       </div>

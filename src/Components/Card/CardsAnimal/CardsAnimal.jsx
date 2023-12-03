@@ -11,6 +11,7 @@ import { AuthContextFunctions } from '../../../AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getStatusColor } from '../../Status/Status';
 
+
 function CardsAnimal({ cardanimal }) {
   const [open, setOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -38,18 +39,21 @@ function CardsAnimal({ cardanimal }) {
   switch (cardanimal.status_Pet) {
     case "Disponível":
       InfoColor = '#00ff00';
-
+      break;
     case 'Adotado':
-      InfoColor = "#ff0000";
+      InfoColor = "#F52317";
+      break;
+      case 'Interessados':
+        InfoColor = "#F5C716";
+        break;
     default:
-    case "Interessados":
-      InfoColor = "#F9C200";
+      InfoColor = "#F5C716";
+      break;
   }
-
-
+  
   return (
     <>
-      <Card className='card-card' sx={{ maxWidth: 450, maxHeight: 255 }}>
+      <Card className='card-card'>
         <CardActionArea onClick={handleOpen}>
           <div id='status' style={getStatusColor(cardanimal.status_Pet)}>
             <div style={{
@@ -58,23 +62,26 @@ function CardsAnimal({ cardanimal }) {
             }}>{cardanimal.status_Pet}</div>
 
           </div>
-          <CardMedia className='card-img' sx={{ height: 150 }}>
-            <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', width: '100%' }} />
+          <CardMedia className='card-img'>
+            <img  style={{
+      width: '100%', 
+      height: '200px', 
+      objectFit: 'cover', 
+      borderRadius: '5px 5px 0 0', 
+    }} src={cardanimal.foto_Pet} alt="Imagem do Card" />
           </CardMedia>
 
-          <CardContent className='description' sx={{ marginBottom: '5%' }}>
-            <div style={{ marginBottom: '5%', objectFit: 'cover', color: '#5A3333', fontWeight:'700', fontSize: '1.5rem' }}>{cardanimal.nome_Pet}</div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ display: 'inline', marginRight: '1rem', fontWeight:'600', fontSize: '1rem' }}>{cardanimal.estado.nome_Estado}</div>
-              <div style={{ display: 'inline', whiteSpace: 'nowrap', fontWeight:'600', fontSize: '1rem' }}>{cardanimal.cidade.nome_Cidade}</div>
+          <CardContent className='description'  style={{ marginTop:'-10%' }}>
+    
+            <div  style={{ color: '#5A3333', fontWeight:'700', fontSize: '1.5rem' }}> {cardanimal.nome_Pet}</div>
+            <div style={{ display: 'flex', alignItems: 'center',  marginTop: '15%' }}>
+              <div style={{ display: 'inline', marginRight: '1rem', fontWeight:'600', fontSize: '1rem'  }}>{cardanimal.estado.nome_Estado}</div>
+              <div style={{ display: 'inline', marginRight: '1rem', fontWeight:'600', fontSize: '1rem', whiteSpace: 'nowrap',
+ }}>{cardanimal.cidade.nome_Cidade}</div>
             </div>
           </CardContent>
         </CardActionArea>
       </Card>
-
-
-
-
 
       <Modal
         className='modal'

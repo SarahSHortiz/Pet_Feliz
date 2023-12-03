@@ -48,8 +48,22 @@
 
 
 }
-
 .button-modal-remover{
+  margin-left: 20%;
+  height: 2.2rem;
+  width: 8rem;
+  border-radius: 10px;
+  margin-top: 10%;
+}
+
+.button-modal-remover button{
+  height: 2.2rem;
+  width: 10rem;
   background-color: red;
+
+}
+
+.button-modal-remover button:hover{
+  background-color: rgb(133, 1, 1);
 
 }

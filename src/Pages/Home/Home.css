@@ -68,20 +68,16 @@
     margin-bottom: 2%;
 }
 
-.cards {
+
+
+
+
+  
+  .cards {
     width: 90%;
-    margin-left: 5%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1%;
-    margin-top: 3%;
-}
-
-.cards .card {
-    width: 100%;
-}
-
-.cards .card-content {
-    width: 15rem;
-    margin: 0 auto;
-}
+    margin: 3% auto; /* Adjust margins as needed */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust alignment as needed */
+  }
+  
