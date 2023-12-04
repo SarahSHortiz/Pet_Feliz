@@ -65,11 +65,6 @@ export default function AlterarPerfil() {
 
   }, []);
 
-  function SaveJWT(jwtData, userData) {
-    localStorage.setItem("jwt", jwtData);
-    localStorage.setItem("userData", JSON.stringify(userData))
-  }
-
   const editarUsuario = async (e) => {
     e.preventDefault();
 
