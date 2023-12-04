@@ -6,7 +6,9 @@ import { AuthContextFunctions } from '../../AuthContext';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 const AlterarPet = () => {
   const [Porte_Pet, setPorte_Pet] = useState("");
   const [Sexo_Pet, setSexo_Pet] = useState("");
@@ -87,6 +89,18 @@ const AlterarPet = () => {
         return 'default';
     }
   };
+
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: '2rem',
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: '3rem',
+  });
 
   useEffect(() => {
     const usuarioLogado = AuthContextFunctions.CheckUserLogin();
@@ -274,11 +288,11 @@ const AlterarPet = () => {
           </select>
 
           <FormGroup className='status-alterarpet'>
-            <h1 style={{fontSize: '1.5rem'}}>Status animal</h1>
+            <h1 style={{ fontSize: '1.5rem' }}>Status animal</h1>
             {status_Pet.map((status) => (
               <FormControlLabel
                 key={status}
-                
+
                 control={
                   <Switch
                     checked={selectedStatus === status}
@@ -322,6 +336,7 @@ const AlterarPet = () => {
             placeholder='Data Vacina'
           >
           </input>
+          <div className='coluna-descricao'>
           <input
             type="text"
             placeholder="Descrição"
@@ -329,17 +344,18 @@ const AlterarPet = () => {
             onChange={(e) => setDescricao_Pet(e.target.value)}
             value={Descricao_Pet}
           />
+          </div>
 
           <form className='bnt-alterarpet' onSubmit={handleSubmit}>
 
-            <input type="file" accept="image/jpeg" onChange={handleFileChange} />
             <button type="submit" className="cancelar" onClick={handleCancel}>
               CANCELAR
             </button>
 
-            <button type="submit" className="cadastrar1">
+            <Button size="large" style={{ height: '5rem', width: '20rem', borderRadius: '12px', backgroundColor: '#F9C200', fontSize: '1.5rem' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
               SALVAR ALTERAÇÕES
-            </button>
+              <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
+            </Button>
           </form>
         </form>
       </div>

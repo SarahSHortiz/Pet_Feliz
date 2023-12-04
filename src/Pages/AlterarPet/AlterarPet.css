@@ -84,7 +84,7 @@ display: flex;
     align-items: center; /* Alinhar os botões ao centro horizontalmente */
     gap: 1rem; /* Espaço entre os botões */
     margin-left: 30%;
-    margin-top: -50%;
+    margin-top: -60%;
   }
   
   .cancelar,
@@ -95,14 +95,16 @@ display: flex;
     border-radius: 12px;
     color: #ffffff;
     font-weight: 500;
+    display: flex;
     font-size: 2rem;
   }
   
 
 
 
-  /* Exemplo de CSS para alterar a cor do switch ativado */
-.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
-    background-color: #f9c200; /* Defina sua cor desejada aqui */
-  }
-  
+
+.coluna-descricao{
+    margin-left: 45%;
+    margin-top: -50%;
+
+}
