@@ -1,5 +1,3 @@
-
-
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AuthContextFunctions } from "../../AuthContext";
@@ -15,6 +13,7 @@ export default function AlterarPerfil() {
   const [Telefone, setTelefone] = useState("");
   const [Senha, setSenha] = useState("");
   const [Id, setId] = useState("");
+  const [Email, setEmail] = useState("");
   const [Estado, setEstado] = useState({
     Nome_Estado: ""
   });
@@ -36,6 +35,9 @@ export default function AlterarPerfil() {
 
       const userNome = userData.Nome_Usuario;
       setNome(userNome);
+
+      const userEmail = userData.Email;
+      setEmail(userEmail);
 
       const userTelefone = userData.Telefone;
       setTelefone(userTelefone);
