@@ -1,11 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AuthContextFunctions } from "../../AuthContext";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "../AlterarPerfil/AlterarPerfil.css";
 
 export default function AlterarPerfil() {
 
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.state && location.state.id;
 
@@ -65,13 +67,13 @@ export default function AlterarPerfil() {
 
   }, []);
 
-  function SaveJWT(jwtData, userData) {
-    localStorage.setItem("jwt", jwtData);
-    localStorage.setItem("userData", JSON.stringify(userData))
-  }
-
   const editarUsuario = async (e) => {
     e.preventDefault();
+
+    const Usuario = {
+      Email,
+      Senha
+    }
 
     const Logradouro = {
       NomeLog,
@@ -121,16 +123,41 @@ export default function AlterarPerfil() {
       }
 
 
-      await axios.put("https://petfeliz.azurewebsites.net/api/Usuario/atualizarUsuario", body, {
+      const response = await axios.put("https://petfeliz.azurewebsites.net/api/Usuario/atualizarUsuario", body, {
         headers: {
           'Content-Type': 'application/json',
         }
 
       });
-      alert("Usuário alterado com sucesso");
+      if (response.status === 200) {
+
+        alert("Usuário alterado com sucesso");
+
+        const response = await axios.post("https://petfeliz.azurewebsites.net/api/Auth/Login", Usuario);
+
+        if (response.status === 200) {
+
+          AuthContextFunctions.SaveJWT(response.data.token)
+          const user = AuthContextFunctions.GetUserData();
+          navigate("/Perfil", { state: { id: user.Cod_Usuario } });
+        }
+      }
     } catch (error) {
       console.error("Erro ao alterar o usuário", error);
-      alert("Erro ao alterar o usuário");
+      if (error.response) {
+        // A requisição foi feita e o servidor respondeu com um código de status
+        // que está fora da faixa de 2xx
+        console.error("O servidor respondeu com:", error.response.data);
+        console.error("Código de status:", error.response.status);
+        console.error("Headers:", error.response.headers);
+      } else if (error.request) {
+        // A requisição foi feita, mas nenhuma resposta foi recebida
+        console.error("Nenhuma resposta recebida. Detalhes da requisição:", error.request);
+      } else {
+        // Algo aconteceu na configuração da requisição que gerou um erro
+        console.error("Erro na configuração da requisição:", error.message);
+      }
+      alert("Erro ao alterar o usuário. Consulte o console para mais informações.");
     }
   };
 

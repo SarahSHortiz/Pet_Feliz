@@ -1,7 +1,7 @@
 export const MenuItemsLogin = [
     {
         title: "Home",
-        URL: "/Home",
+        URL: "/",
         cName: "nav_links",
 
     },

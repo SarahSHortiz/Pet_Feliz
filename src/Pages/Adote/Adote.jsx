@@ -22,7 +22,7 @@ function Adote() {
         castrado: "",
     });
 
-    const [placeholderUf, setPlaceholderUf] = useState('Selecione o Estado');
+    //const [placeholderUf, setPlaceholderUf] = useState('Selecione o Estado');
 
     const resetFiltro = () => {
         setFilters({
