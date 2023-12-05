@@ -1,26 +1,29 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.alterarpet{
-height: 100%;
-width: 100%;
-margin-bottom: 1%;
-display: flex;
+.alterarpet {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 1%;
+    display: flex;
 }
 
-.alterarpet-body{
-    height: 100rem;
+.alterarpet-body {
+    height: 80rem;
     width: 80rem;
     margin-top: 10%;
     align-items: center;
     justify-content: center;
     margin-left: 7%;
+    background-color:#FDF8F8;
 }
 
-.title-alterarpet{
-    background-color:#F9C200;
+
+
+.title-alterarpet {
+    background-color: #F9C200;
     margin-top: 5%;
     border-radius: 10px;
     height: 5rem;
@@ -29,12 +32,13 @@ display: flex;
     justify-content: center;
     display: flex;
     margin-left: 18%;
-    -webkit-box-shadow: 1px 4px 5px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 4px 5px -1px rgba(0,0,0,0.75);
-    box-shadow: 1px 4px 5px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 4px 5px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 4px 5px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 4px 5px -1px rgba(0, 0, 0, 0.75);
 
 }
-.alterarpet p{
+
+.alterarpet p {
     font-size: 2.5rem;
     font-weight: 500;
     color: aliceblue;
@@ -42,15 +46,17 @@ display: flex;
     align-items: center;
 }
 
-.alterarpet-form{
+.alterarpet-form {
     margin-top: 5%;
     display: flex;
-    flex-direction: column; /* Adicionando esta linha para exibir os itens em coluna */
+    flex-direction: column;
+    /* Adicionando esta linha para exibir os itens em coluna */
 }
 
 
-.alterarpet-form input, select{
-    background-color: #F9C200 ;
+.alterarpet-form input,
+select, textarea {
+    background-color: #F9C200;
     right: 1%;
     width: 25rem;
     height: 4rem;
@@ -60,51 +66,94 @@ display: flex;
     font-size: 1.5rem;
     color: #ffffff;
     margin-left: 10%;
+
 }
 
-.alterarpet-form ::placeholder{
+.alterarpet-form
+select{
+    cursor: pointer;
+}
+
+.alterarpet-form ::placeholder {
     color: rgb(255, 255, 255);
 }
 
-.alterarpet-form select::placeholder{
-    background-color: #ffffff ;
+.alterarpet-form select::placeholder {
+    background-color: #ffffff;
 }
 
-.status-alterarpet{
+.status-alterarpet {
     width: 8rem;
     height: 10rem;
     margin-left: 10%;
     font-size: x-large;
+    margin-top: 10%;
 
 
 }
+
 .bnt-alterarpet {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinhar os botões ao centro horizontalmente */
-    gap: 1rem; /* Espaço entre os botões */
-    margin-left: 30%;
-    margin-top: -60%;
-  }
-  
-  .cancelar,
-  .cadastrar1 {
+    align-items: center;
+    gap: 1rem;
+    margin-left: 22%;
+    margin-top: -22%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Definir o posicionamento relativo */
+}
+
+.cancelar,
+.cadastrar1 {
     background-color: #f9c200;
     height: 5rem;
-    width: 20rem;
+    width: 22rem;
     border-radius: 12px;
     color: #ffffff;
     font-weight: 500;
     display: flex;
     font-size: 2rem;
-  }
-  
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
 
 
+}
+
+.cancelar{
+    background-color: #F93C00;
+}
+
+.cancelar:hover{
+    background-color: #922402;
+
+}
+
+.cadastrar1:hover {
+    background-color: #FFD700;
+   cursor: pointer;
+}
+
+.mudar-foto Button:hover{
+    background-color: #FFD700;
+   cursor: pointer;
+}
 
 
-.coluna-descricao{
-    margin-left: 45%;
-    margin-top: -50%;
-
+.coluna-descricao {
+    position: absolute;
+    margin-left: 6%;
+    margin-top: 3%;
+    top: 100%;
+    /* Posicionar a partir da parte inferior dos botões */
+    left: 50%;
+    /* Centralizar horizontalmente */
+    transform: translateX(-50%);
+    /* Corrigir para centralizar */
+    /* Outros estilos da coluna descrição */
 }

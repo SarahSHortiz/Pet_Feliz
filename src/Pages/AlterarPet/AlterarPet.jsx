@@ -9,6 +9,8 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+
+
 const AlterarPet = () => {
   const [Porte_Pet, setPorte_Pet] = useState("");
   const [Sexo_Pet, setSexo_Pet] = useState("");
@@ -50,6 +52,44 @@ const AlterarPet = () => {
   const castrado = ['Sim', 'Não'];
   const status_Pet = ['Disponível', "Interessados", 'Adotado'];
   const status = ['sim', 'não'];
+
+  const GreenSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: '#008000',
+      '&:hover': {
+        backgroundColor: alpha('#008000', theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: '#008000',
+    },
+  }));
+
+  const YellowSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: '#FFFF00',
+      '&:hover': {
+        backgroundColor: alpha('#FFFF00', theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: '#FFFF00',
+    },
+  }));
+
+
+  const RedSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: '#FF0000',
+      '&:hover': {
+        backgroundColor: alpha('#FF0000', theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: '#FF0000',
+    },
+  }));
+
 
   const validateForm = () => {
     const errors = {};
@@ -286,29 +326,6 @@ const AlterarPet = () => {
               </option>
             ))}
           </select>
-
-          <FormGroup className='status-alterarpet'>
-            <h1 style={{ fontSize: '1.5rem' }}>Status animal</h1>
-            {status_Pet.map((status) => (
-              <FormControlLabel
-                key={status}
-
-                control={
-                  <Switch
-                    checked={selectedStatus === status}
-                    {...label} defaultCheckedsize="x-large"
-                    onChange={() => handleStatusChange(status)}
-                    disabled={selectedStatus !== '' && selectedStatus !== status}
-                    style={{
-                      color: status === 'Adotado' ? '#F93C006B' : status === 'Interessados' ? '#ECD172' : '#84B67F',
-                    }}
-
-                  />
-                }
-                label={status}
-              />
-            ))}
-          </FormGroup>
           <select
             value={Vacina.status}
             onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
@@ -336,26 +353,54 @@ const AlterarPet = () => {
             placeholder='Data Vacina'
           >
           </input>
+
+
           <div className='coluna-descricao'>
-          <input
-            type="text"
-            placeholder="Descrição"
-            className="input1"
-            onChange={(e) => setDescricao_Pet(e.target.value)}
-            value={Descricao_Pet}
-          />
+            {status_Pet.map((status) => (
+              <div style={{ display: 'block', marginLeft: '10%', marginBottom: '2%' }}>
+                <FormControlLabel
+                  key={status}
+                  control={
+                    <Switch
+                      checked={selectedStatus === status}
+                      {...label}
+                      defaultChecked
+                      onChange={() => handleStatusChange(status)}
+                      disabled={selectedStatus !== '' && selectedStatus !== status}
+                      style={{
+                        color: status === 'Disponível' ? '#008000' : status === 'Interessados' ? '#FFFF00' : '#FF0000',
+                        display: 'flex'
+                      }}
+                    />
+                  }
+                  label={status}
+                />
+              </div>
+            ))}
+
+
+            <textarea
+              style={{ height: '8rem', width: '22rem', resize: 'none', padding: '2%' }}
+              type="text"
+              placeholder="Descrição"
+              className="input1"
+              onChange={(e) => setDescricao_Pet(e.target.value)}
+              value={Descricao_Pet}
+              maxLength={140}
+            />
           </div>
 
           <form className='bnt-alterarpet' onSubmit={handleSubmit}>
-
+            <Button size="large" className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.5rem', marginLeft: '11%' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
+              MUDAR FOTO
+              <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
+            </Button>
             <button type="submit" className="cancelar" onClick={handleCancel}>
               CANCELAR
             </button>
-
-            <Button size="large" style={{ height: '5rem', width: '20rem', borderRadius: '12px', backgroundColor: '#F9C200', fontSize: '1.5rem' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
-              SALVAR ALTERAÇÕES
-              <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
-            </Button>
+            <button type="submit" className="cadastrar1">
+              SALVAR
+            </button>
           </form>
         </form>
       </div>

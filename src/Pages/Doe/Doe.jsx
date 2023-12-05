@@ -3,8 +3,14 @@ import './Doe.css';
 import axios from 'axios';
 import img from '../../Components/img/propaganda.png'
 import { AuthContextFunctions } from '../../AuthContext';
-
+import Button from '@mui/material/Button';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+
+
+
 const Doe = () => {
 
     const [Porte_Pet, setPorte_Pet] = useState("");
@@ -18,7 +24,6 @@ const Doe = () => {
     const [Cod_Usuario, setCod_Usuario] = useState("");
     const [Nome_Foto] = useState("");
     const [Nome_Pet, setNome_Pet] = useState("")
-
     const [Especie, setEspecie] = useState({
         Nome_Especie: '',
     })
@@ -36,6 +41,20 @@ const Doe = () => {
         status: 'Selecione a Opção',
         descricao: '',
     });
+
+
+    const VisuallyHiddenInput = styled.input({
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        height: '2rem',
+        overflow: 'hidden',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        whiteSpace: 'nowrap',
+        width: '3rem',
+    });
+
 
 
     const [errors, setErrors] = useState({});
@@ -87,13 +106,13 @@ const Doe = () => {
     }
 
     const navigate = useNavigate();
+
     async function handleSubmit(event) {
         event.preventDefault();
         const validationErrors = await validateForm();
         setErrors(validationErrors);
 
         if (Base64) {
-            debugger;
 
             const sexo = Sexo_Pet == "Macho" ? "M" : "F";
 
@@ -119,9 +138,9 @@ const Doe = () => {
                     },
                 });
 
-                if (response.status === 200) {                    
+                if (response.status === 200) {
                     navigate("/Home");
-                    
+
                 }
             } catch (error) {
                 console.error('Erro ao fazer a solicitação:', error);
@@ -290,19 +309,24 @@ const Doe = () => {
 
 
 
-                    <input
+                    <textarea
                         type="text"
                         placeholder="Descrição"
                         className="input"
                         onChange={(e) => setDescricao_Pet(e.target.value)}
                         value={Descricao_Pet}
+                        maxLength={140}
+                        style={{ height: '8.5rem', width: '32rem', resize: 'none', padding: '2%' }}
+
                     />
 
+
+
                     <form onSubmit={handleSubmit}>
-                        <input type="input" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
-
-                        <input type="file" accept="image/jpeg" onChange={handleFileChange} />
-
+                        <Button size="large" className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.2rem', marginLeft: '53%', wordBreak:'break-word' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
+                            MANDAR FOTO
+                            <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
+                        </Button>
                         <button type="submit" className="cadastrar">
                             CADASTRAR
                         </button>
