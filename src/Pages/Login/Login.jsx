@@ -53,7 +53,7 @@ function Login({setIsLoggedIn}) {
         AuthContextFunctions.SaveJWT(response.data.token)
         const user = AuthContextFunctions.GetUserData();
         setIsLoggedIn(true);
-        navigate("/Home", { state: { id: user.Cod_Usuario } })
+        navigate("/", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }

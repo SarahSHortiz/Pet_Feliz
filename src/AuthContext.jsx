@@ -46,7 +46,7 @@ function CheckUserLogin() {
 
 const LogoutButton  = () => {
     localStorage.removeItem('jwt');
-  window.location.href = '/home'; 
+  window.location.href = '/'; 
   };
 
 export const AuthContextFunctions = {
