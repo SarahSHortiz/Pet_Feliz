@@ -104,7 +104,7 @@ function CardsAnimal({ cardanimal }) {
           <div className='img-modal'>
           <p style={{fontWeight: 700, marginBottom: "-4%", marginTop:'-15%'}}>Descrição</p>
             <Typography id="modal-description" variant="h6" component="h2" className='description-modal'>
-              {cardanimal.descricao_Pet}
+              {capitalizeFirstLetter(cardanimal.descricao_Pet)}
             </Typography>
             <div id='whatsapp-modal' style={{ color: "white", textDecoration: "none" }}>
               <a target="_blank" href={`https://api.whatsapp.com/send?phone=${telefoneUsuario}&text=${mensagemPadrao}`} rel="noreferrer" style={{ color: "white", textDecoration: "none" }}>Whatsapp</a>
@@ -126,7 +126,7 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%', marginTop:'-3%' }} >
                 <h4>Publicado por</h4>
-                {cardanimal.usuario.nome}
+                {capitalizeFirstLetter(cardanimal.usuario.nome)}
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
                 <h4>Cidade</h4>
@@ -139,7 +139,11 @@ function CardsAnimal({ cardanimal }) {
               {/* Adicione acessos diretos às propriedades específicas */}
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>SEXO</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                {cardanimal.sexo_Pet}
+                {capitalizeFirstLetter(cardanimal.sexo_Pet)}
+              </Typography>
+              <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>Porte</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {cardanimal.Porte_Pet}
               </Typography>
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>RAÇA</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">

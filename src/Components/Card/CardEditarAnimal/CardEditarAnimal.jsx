@@ -20,7 +20,7 @@ function CardsEditarAnimal({ cardanimal }) {
       const handleExcluir = (idPet) => {
         if (window.confirm('Tem certeza que deseja excluir este animal?')) {
           const response = axios
-            .delete(`https://localhost:44302/api/PetFeliz/ApagarPet/${idPet}`)
+            .delete(`https://petfeliz.azurewebsites.net/api/PetFeliz/ApagarPet/${idPet}`)
             .then((response) => {
               console.log(response.data);
 
@@ -35,6 +35,11 @@ function CardsEditarAnimal({ cardanimal }) {
         }
       };
 
+      const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+      };
+  
+       
 
     return (
         <div className="card-editar">
@@ -48,7 +53,7 @@ function CardsEditarAnimal({ cardanimal }) {
 
                     <CardContent className="description">
                         <h1 style={{ color: '#5A3333', }}>
-                            {cardanimal.nome_Pet}
+                            {capitalizeFirstLetter(cardanimal.nome_Pet)}
                         </h1>
 
                         <Stack spacing={2} direction="row" className='button-modal'>

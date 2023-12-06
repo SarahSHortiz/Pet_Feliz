@@ -10,6 +10,18 @@ import styled from 'styled-components';
 
 
 
+const VisuallyHiddenInput = styled.input({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: '2rem',
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: '3rem',
+});
+
 
 const Doe = () => {
 
@@ -41,20 +53,6 @@ const Doe = () => {
         status: 'Selecione a Opção',
         descricao: '',
     });
-
-
-    const VisuallyHiddenInput = styled.input({
-        clip: 'rect(0 0 0 0)',
-        clipPath: 'inset(50%)',
-        height: '2rem',
-        overflow: 'hidden',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        whiteSpace: 'nowrap',
-        width: '3rem',
-    });
-
 
 
     const [errors, setErrors] = useState({});
@@ -323,7 +321,9 @@ const Doe = () => {
 
 
                     <form onSubmit={handleSubmit}>
-                        <Button size="large" className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.2rem', marginLeft: '53%', wordBreak:'break-word' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
+                    <input type="input" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
+
+                        <Button size="large" type="file" accept="image/jpeg" onChange={handleFileChange} className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.2rem', marginLeft: '53%', wordBreak:'break-word' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
                             MANDAR FOTO
                             <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
                         </Button>
