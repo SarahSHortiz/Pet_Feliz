@@ -54,9 +54,9 @@
 
 
 .infoimg img {
-  height: 20rem;
+  height: 15rem;
   width: 20rem;
-  margin-top: -60%;
+  margin-top: -70%;
 }
 
 .img-modal {
@@ -65,14 +65,10 @@
 }
 
 
-.description-modal {
-  margin-left: -70rem;
-  font-size: 1rem;
 
-}
 
 #modal-description {
-  height: 10%;
+  height: 6rem;
   width: 20rem;
   font-size: 1rem;
   padding-left: 2%;

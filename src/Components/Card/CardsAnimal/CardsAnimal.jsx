@@ -51,6 +51,11 @@ function CardsAnimal({ cardanimal }) {
       break;
   }
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
+
+ 
   return (
     <>
       <Card className='card-card'>
@@ -73,7 +78,7 @@ function CardsAnimal({ cardanimal }) {
 
           <CardContent className='description' style={{ marginTop: '-10%' }}>
 
-            <div style={{ color: '#5A3333', fontWeight: '700', fontSize: '1.5rem' }}> {cardanimal.nome_Pet}</div>
+            <div style={{ color: '#5A3333', fontWeight: '700', fontSize: '1.5rem' }}> {capitalizeFirstLetter(cardanimal.nome_Pet)}</div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '15%' }}>
               <div style={{ display: 'inline', marginRight: '1rem', fontWeight: '600', fontSize: '1rem' }}>{cardanimal.estado.nome_Estado}</div>
               <div style={{
@@ -92,67 +97,73 @@ function CardsAnimal({ cardanimal }) {
         aria-describedby="modal-modal-description"
       >
         <div className="content-modal" sx={style}>
-          <Typography style={{ maxWidth: '100%', maxHeight: '20rem' }} className='infoimg'>
+          <Typography style={{ maxWidth: '100%', maxHeight: '20rem', marginBottom: "8%"}} className='infoimg'>
             <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', borderRadius: "6px" }} />
           </Typography>
 
           <div className='img-modal'>
+          <p style={{fontWeight: 700, marginBottom: "-4%", marginTop:'-15%'}}>Descrição</p>
             <Typography id="modal-description" variant="h6" component="h2" className='description-modal'>
               {cardanimal.descricao_Pet}
             </Typography>
-
             <div id='whatsapp-modal' style={{ color: "white", textDecoration: "none" }}>
               <a target="_blank" href={`https://api.whatsapp.com/send?phone=${telefoneUsuario}&text=${mensagemPadrao}`} rel="noreferrer" style={{ color: "white", textDecoration: "none" }}>Whatsapp</a>
             </div>
-
+            <h5 style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}} >E-mail</h5>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='infos1'>
-              <h3>E-mail</h3>
               {cardanimal.usuario.email}
             </Typography>
+            <h5 style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>Telefone</h5>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='infos1'>
-              <h3>Telefone</h3>
               {cardanimal.usuario.telefone}
             </Typography>
           </div>
 
-          <div style={{ flex: '1 1 60%', textAlign: 'left', marginLeft: '5%', marginTop: '-10%' }} className='infos'>
-            <div>
-              <Typography variant="h6" component="h2" id='name-pet'>
-                {cardanimal.nome_Pet}
+          <div style={{ flex: '1 1 60%', textAlign: 'left', marginLeft: '5%', marginTop: '-2%' }} className='infos'>
+            <div >
+              <Typography variant="h6" component="h2" id='name-pet' style={{ marginTop:'5%' }}>
+                {capitalizeFirstLetter(cardanimal.nome_Pet)}
               </Typography>
-              <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%' }} >
-                <h3>Publicado por</h3>
+              <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%', marginTop:'-3%' }} >
+                <h4>Publicado por</h4>
                 {cardanimal.usuario.nome}
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
-                <h3>Cidade</h3>
+                <h4>Cidade</h4>
                 {cardanimal.cidade.nome_Cidade}
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%', fontWeight: '100' }}>
-                <h3>Está em</h3>
+                <h4>Está em</h4>
                 {cardanimal.estado.nome_Estado}
               </Typography>
               {/* Adicione acessos diretos às propriedades específicas */}
-              <Typography id="modal-modal-title" variant="h6" component="h2"><p>Sexo</p>
+              <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>SEXO</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
                 {cardanimal.sexo_Pet}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2"><p>Raça</p>
+              <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>RAÇA</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
                 {cardanimal.raca.nome_Raca}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Espécie</p>
+              <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>ESPÉCIE</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2" >
                 {cardanimal.especie.nome_Especie}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Idade</p>
+              <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>IDADE</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2" >
                 {cardanimal.idade_Pet}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Tipo</p>
+              <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>TIPO</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2" >
                 {cardanimal.animal.nome_Animal}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2" ><p>Castração</p>
+              <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>CASTRAÇÃO</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2" >
                 {cardanimal.castrado}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2"><p>Descrição</p>
-                {cardanimal.vacina.descricao} {/* Exemplo de acesso à propriedade específica */}
+              <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>VACINA</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2" >
+                {cardanimal.vacina.descricao}
               </Typography>
             </div>
           </div>
@@ -169,7 +180,7 @@ const style = {
   marginTop: '3%',
   transform: 'translate(-50%, -50%)',
   width: '50rem',
-  height: '38rem',
+  height: '39rem',
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,

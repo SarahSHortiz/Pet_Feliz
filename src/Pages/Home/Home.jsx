@@ -5,11 +5,15 @@ import CustomSlider from "../../Components/Carousel/Carousel";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { getStatusColor} from '../../Components/Status/Status';
+import { AuthContextFunctions } from '../../AuthContext';
 
 
 export default function Home() {
   const [animal, setAnimal] = useState([]);
   const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   async function ListarPets() {
     try {
@@ -26,13 +30,29 @@ export default function Home() {
   }, []);
 
   const handleClickadote = () => {
-    navigate('/adote')
-  }
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      navigate('/adote');
+    }
+   }
+   
+   const handleClickdoe = () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      navigate('/doe');
+    }
+   }   
+   
+   const userData = AuthContextFunctions.GetUserData();
 
-  const handleClickdoe = () => {
-    navigate('/doe')
-  }
-
+   
+   useEffect(() => {
+    ListarPets();
+    setIsLoggedIn(AuthContextFunctions.CheckUserLogin());
+   }, []);
+   
   // Inverte a ordem dos itens no array animal
   const reversedAnimal = [...animal].reverse();
 

@@ -60,6 +60,8 @@
   width: 8rem;
   border-radius: 10px;
   margin-top: 10%;
+  align-items: center;
+  text-align: center;
 }
 
 .button-modal-remover button{
