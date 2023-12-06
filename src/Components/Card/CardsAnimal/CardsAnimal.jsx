@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import Box from '@mui/material/Box';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './CardsAnimais.css';
@@ -96,14 +96,14 @@ function CardsAnimal({ cardanimal }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="content-modal" sx={style}>
+        <Box className="content-modal" sx={style}>
           <Typography style={{ maxWidth: '100%', maxHeight: '20rem', marginBottom: "8%"}} className='infoimg'>
             <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', borderRadius: "6px" }} />
           </Typography>
 
           <div className='img-modal'>
           <p style={{fontWeight: 700, marginBottom: "-4%", marginTop:'-15%'}}>Descrição</p>
-            <Typography id="modal-description" variant="h6" component="h2" className='description-modal'>
+            <Typography id="modal-description" variant="h6" component="h2" className='description-modal' style={{ wordWrap: 'break-word' }}>
               {capitalizeFirstLetter(cardanimal.descricao_Pet)}
             </Typography>
             <div id='whatsapp-modal' style={{ color: "white", textDecoration: "none" }}>
@@ -130,20 +130,16 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
                 <h4>Cidade</h4>
-                {cardanimal.cidade.nome_Cidade}
+                {cardanimal.cidade.nome_Cidade}<h4>Está em</h4>{cardanimal.estado.nome_Estado}
               </Typography>
-              <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%', fontWeight: '100' }}>
-                <h4>Está em</h4>
-                {cardanimal.estado.nome_Estado}
-              </Typography>
-              {/* Adicione acessos diretos às propriedades específicas */}
+                        {/* Adicione acessos diretos às propriedades específicas */}
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>SEXO</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 {capitalizeFirstLetter(cardanimal.sexo_Pet)}
               </Typography>
               <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>Porte</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                {cardanimal.Porte_Pet}
+                {cardanimal.porte_Pet}
               </Typography>
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>RAÇA</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -171,7 +167,7 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
             </div>
           </div>
-        </div>
+        </Box>
       </Modal>
     </>
   );
@@ -184,7 +180,7 @@ const style = {
   marginTop: '3%',
   transform: 'translate(-50%, -50%)',
   width: '50rem',
-  height: '39rem',
+  height: '40rem',
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,

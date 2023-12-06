@@ -8,6 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { useLocation } from 'react-router-dom';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 const VisuallyHiddenInput = styled('input')({
@@ -54,6 +55,11 @@ const AlterarPet = ( props ) => {
   });
 
   const [errors, setErrors] = useState({});
+
+  
+   const navigate = useNavigate();
+   const location = useLocation();
+   const id = location.state && location.state.id;
 
 
   const nome_Animal = ['Gato', 'Cão'];
@@ -143,17 +149,6 @@ const AlterarPet = ( props ) => {
 
 
 
-  useEffect(() => {
-    const usuarioLogado = AuthContextFunctions.CheckUserLogin();
-
-    if (usuarioLogado) {
-      const userData = JSON.parse(AuthContextFunctions.GetUserData());
-      const userId = userData.Cod_Usuario;
-      setCod_Usuario(userId);
-    } else {
-      alert("nenhum usuario logado")
-    }
-  }, []);
 
   const handleDateChange = (date) => {
     setVacina({ ...Vacina, data_vacina: date });
@@ -174,9 +169,7 @@ const AlterarPet = ( props ) => {
     }
   };
 
-  const [selectedStatus, setSelectedStatus] = useState('');
-  const label = { inputProps: { 'aria-label': 'Size switch demo' } };
-
+ 
 
   const handleStatusChange = (status) => {
     if (selectedStatus === status) {
@@ -186,7 +179,6 @@ const AlterarPet = ( props ) => {
     }
   };
 
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -229,23 +221,7 @@ const AlterarPet = ( props ) => {
     }
   };
   
-
-  // useEffect(() => {
-  //   const fetchImage = async () => {
-  //     try {
-  //       const response = await axios.get('https://petfeliz.azurewebsites.net/api/PetFeliz/ListarPet', {
-  //         params: {
-  //           petId: 'Foto_Pet', // Replace 'your_pet_id' with the actual ID of the pet
-  //         },
-  //       });
-  //       setFoto_Pet(response.data);
-  //     } catch (error) {
-  //       console.error('Erro ao buscar a imagem do pet:', error);
-  //     }
-  //   };
-   
-  //   fetchImage();
-  // }, []);
+  const [selectedStatus, setSelectedStatus] = useState('');
 
 
 
@@ -386,16 +362,16 @@ const AlterarPet = ( props ) => {
                   key={status}
                   control={
                     <Switch
-                      checked={selectedStatus === status}
-                      {...label}
-                      defaultChecked
-                      onChange={() => handleStatusChange(status)}
-                      disabled={selectedStatus !== '' && selectedStatus !== status}
-                      style={{
-                        color: status === 'Disponível' ? '#008000' : status === 'Interessados' ? '#FFFF00' : '#FF0000',
-                        display: 'flex'
-                      }}
-                    />
+                    checked={selectedStatus === status}
+                    defaultChecked
+                    onChange={() => handleStatusChange(status)}
+                    disabled={selectedStatus !== '' && selectedStatus !== status}
+                    style={{
+                      color: status === 'Disponível' ? '#008000' : status === 'Interessados' ? '#FFFF00' : '#FF0000',
+                      display: 'flex'
+                    }}
+                  />
+                  
                   }
                   label={status}
                 />

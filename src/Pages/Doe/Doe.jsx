@@ -275,13 +275,6 @@ const Doe = () => {
                         ))}
                     </select>
 
-                    <input
-                        type="text"
-                        placeholder="Tipo da vacinas"
-                        className="input"
-                        onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
-                        value={Vacina.descricao}
-                    />
                     <select
                         value={Vacina.status}
                         onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
@@ -295,6 +288,13 @@ const Doe = () => {
                         ))}
                     </select>
 
+                    <input
+                        type="text"
+                        placeholder="Tipo da vacinas"
+                        className="input"
+                        onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
+                        value={Vacina.descricao}
+                    />
 
                     <input
                         onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
@@ -321,7 +321,6 @@ const Doe = () => {
 
 
                     <form onSubmit={handleSubmit}>
-                    <input type="input" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value)} />
 
                         <Button size="large" type="file" accept="image/jpeg" onChange={handleFileChange} className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.2rem', marginLeft: '53%', wordBreak:'break-word' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
                             MANDAR FOTO
