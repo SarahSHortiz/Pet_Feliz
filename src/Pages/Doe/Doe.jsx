@@ -58,7 +58,7 @@ const Doe = () => {
     const [errors, setErrors] = useState({});
 
     const nome_Animal = ['Gato', 'Cão'];
-    const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10'];
+    const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10', 'Idade Indefinida'];
     const porte_Pet = ['Anão', 'Pequeno Porte', 'Médio Porte', 'Grande Porte', 'Molosso'];
     const sexo_Pet = ['Macho', 'Fêmea'];
     const castrado = ['Sim', 'Não'];
