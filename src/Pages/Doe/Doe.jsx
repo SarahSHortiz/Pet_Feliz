@@ -112,10 +112,10 @@ const Doe = () => {
 
         if (Base64) {
 
-            const sexo = Sexo_Pet == "Macho" ? "M" : "F";
+           // const sexo = Sexo_Pet == "Macho" ? "M" : "F";
 
             const body = {
-                Vacina, Animal, Nome_Pet, Raca, Especie, Porte_Pet, Sexo_Pet: sexo, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
+                Vacina, Animal, Nome_Pet, Raca, Especie, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
             }
 
 

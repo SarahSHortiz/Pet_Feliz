@@ -154,7 +154,7 @@ function Cadastro() {
           <input type="password" id="senha" name="Senha" value={usuario.Senha} onChange={handleInputChange} placeholder="Senha" />
           <input type="password" id="senhaconfirmar" name="confsenha" value={confsenha} onChange={(e) => setConfSenha(e.target.value)} placeholder="Confirmar Senha" />
           <input type="number" id="tel" name="Telefone" value={usuario.Telefone} onChange={handleInputChange} placeholder="Celular" />
-          <input type="text" id="cpf" name="CPF" value={usuario.CPF} onChange={handleInputChange} placeholder="CPF" />
+          <input type="text" id="cpf" name="CPF" value={usuario.CPF} onChange={handleInputChange} placeholder="CPF/CNPJ" />
           <input type="text" id="CEP" name="CEP" value={usuario.Logradouro.CEP} onChange={handleLogradouroInputChange} placeholder="CEP" />
           <input type="text" id="estado" name="Nome_Estado" value={usuario.Estado.Nome_Estado} onChange={handleEstadoInputChange} placeholder="Estado" />
           <input type="text" id="cidade" name="Nome_Cidade" value={usuario.Cidade.Nome_Cidade} onChange={handleCidadeInputChange} placeholder="Cidade" />

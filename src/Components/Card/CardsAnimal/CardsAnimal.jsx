@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import {Box}from "@mui/material";
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './CardsAnimais.css';
@@ -24,6 +24,7 @@ function CardsAnimal({ cardanimal }) {
   const telefoneUsuario = cardanimal.usuario.telefone;
   const mensagemPadrao = `%20Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20pet%20${cardanimal.nome_Pet}`;
 
+  
   const navigate = useNavigate();
   function handleOpen() {
     isLoggedIn ? setOpen(true) : navigate("/login");
@@ -130,12 +131,12 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
                 <h4>Cidade</h4>
-                {cardanimal.cidade.nome_Cidade}<h4>Está em</h4>{cardanimal.estado.nome_Estado}
+                {cardanimal.cidade.nome_Cidade}<h4>Estado</h4>{cardanimal.estado.nome_Estado}
               </Typography>
                         {/* Adicione acessos diretos às propriedades específicas */}
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>SEXO</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                {capitalizeFirstLetter(cardanimal.sexo_Pet)}
+                {capitalizeFirstLetter(cardanimal.sexo_Pet)} 
               </Typography>
               <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>Porte</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
