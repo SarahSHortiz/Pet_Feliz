@@ -121,6 +121,7 @@ select{
     text-align: center;
     font-weight: 700;
     cursor: pointer;
+    filter: drop-shadow(1px 5px 3px #303030);
 
 
 }
@@ -139,9 +140,10 @@ select{
    cursor: pointer;
 }
 
-.mudar-foto Button:hover{
+.mudar-foto :hover{
     background-color: #FFD700;
    cursor: pointer;
+   filter: drop-shadow(1px 5px 3px #303030);
 }
 
 

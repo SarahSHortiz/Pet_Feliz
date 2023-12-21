@@ -8,20 +8,29 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { useLocation } from 'react-router-dom';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: '2rem',
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: '3rem',
+});
 
 const AlterarPet = () => {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const imageUrl = params.get('imageUrl');
   const [Porte_Pet, setPorte_Pet] = useState("");
   const [Sexo_Pet, setSexo_Pet] = useState("");
   const [Idade_Pet, setIdade_Pet] = useState("");
   const [Descricao_Pet, setDescricao_Pet] = useState("");
   const [Status_Pet, setStatus_Pet] = useState("");
   const [Castrado, setCastrado] = useState("");
-  const [Foto_Pet, setFoto_Pet] = useState(imageUrl);
+  const [Foto_Pet] = useState("");
   const [Base64, setBase64] = useState(null);
   const [Cod_Usuario, setCod_Usuario] = useState("");
   const [Nome_Foto] = useState("");
@@ -46,6 +55,11 @@ const AlterarPet = () => {
   });
 
   const [errors, setErrors] = useState({});
+
+  
+   const navigate = useNavigate();
+   const location = useLocation();
+   const id = location.state && location.state.id;
 
 
   const nome_Animal = ['Gato', 'Cão'];
@@ -133,29 +147,8 @@ const AlterarPet = () => {
     }
   };
 
-  const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: '2rem',
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: '3rem',
-  });
 
-  useEffect(() => {
-    const usuarioLogado = AuthContextFunctions.CheckUserLogin();
 
-    if (usuarioLogado) {
-      const userData = JSON.parse(AuthContextFunctions.GetUserData());
-      const userId = userData.Cod_Usuario;
-      setCod_Usuario(userId);
-    } else {
-      alert("nenhum usuario logado")
-    }
-  }, []);
 
   const handleDateChange = (date) => {
     setVacina({ ...Vacina, data_vacina: date });
@@ -176,9 +169,7 @@ const AlterarPet = () => {
     }
   };
 
-  const [selectedStatus, setSelectedStatus] = useState('');
-  const label = { inputProps: { 'aria-label': 'Size switch demo' } };
-
+ 
 
   const handleStatusChange = (status) => {
     if (selectedStatus === status) {
@@ -188,7 +179,6 @@ const AlterarPet = () => {
     }
   };
 
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -230,6 +220,10 @@ const AlterarPet = () => {
       }
     }
   };
+  
+  const [selectedStatus, setSelectedStatus] = useState('');
+
+
 
   return (
     <div className='alterarpet'>
@@ -240,6 +234,9 @@ const AlterarPet = () => {
 
 
         <form className='alterarpet-form'>
+       
+        <img src={Foto_Pet} alt="Imagem do pet" />
+
           <input
             type="text"
             placeholder="Digite o Nome do Animal"
@@ -367,16 +364,16 @@ const AlterarPet = () => {
                   key={status}
                   control={
                     <Switch
-                      checked={selectedStatus === status}
-                      {...label}
-                      defaultChecked
-                      onChange={() => handleStatusChange(status)}
-                      disabled={selectedStatus !== '' && selectedStatus !== status}
-                      style={{
-                        color: status === 'Disponível' ? '#008000' : status === 'Interessados' ? '#FFFF00' : '#FF0000',
-                        display: 'flex'
-                      }}
-                    />
+                    checked={selectedStatus === status}
+                    defaultChecked
+                    onChange={() => handleStatusChange(status)}
+                    disabled={selectedStatus !== '' && selectedStatus !== status}
+                    style={{
+                      color: status === 'Disponível' ? '#008000' : status === 'Interessados' ? '#FFFF00' : '#FF0000',
+                      display: 'flex'
+                    }}
+                  />
+                  
                   }
                   label={status}
                 />
@@ -396,7 +393,7 @@ const AlterarPet = () => {
           </div>
 
           <form className='bnt-alterarpet' onSubmit={handleSubmit}>
-            <Button size="large" className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.5rem', marginLeft: '11%' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
+            <Button size="large" className='mudar-foto' style={{ height: '3rem', width: '15rem', borderRadius: '12px', backgroundColor: 'black', fontSize: '1rem', marginLeft: '11%' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
               MUDAR FOTO
               <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
             </Button>

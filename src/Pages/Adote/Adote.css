@@ -35,7 +35,7 @@ body {
 .coluna1 {
     margin-top: 10%;
     width: 40%;
-    height: 18rem;
+    height: 15rem;
     flex-direction: column;
     background-color:  #f8c100;
     border-radius: 5px 0% 0% 5px;
@@ -47,7 +47,7 @@ body {
 .coluna2 {
     margin-top: 10%;
     width: 40%;
-    height: 18rem;
+    height: 15rem;
     flex-direction: column;
     justify-content: space-between;
     background-color: #f8c100;
@@ -101,10 +101,10 @@ body {
 
 .bnt-limpar{
     height: 3rem;
-    width: 5rem;
-    background-color: rgb(255, 255, 255);
+    width: 8rem;
     color: black;
     display: flex;
+    margin-left: 50%;
     padding: 2%;
     border-radius: 10px;
     -webkit-box-shadow: -1px 2px 2px 1px rgba(122,122,122,1);
@@ -115,15 +115,5 @@ box-shadow: -1px 2px 2px 1px rgba(122,122,122,1);
 
 }
 
-.bnt-limpar button {
-    font-size: 1.2rem;
-    font-weight: 700;
-    background-color: rgb(255, 255, 255);
 
-}
-
-.bnt-limpar:hover{
-    background-color: #f8c100;
-transition: background-color 0.5s ease 0s;
-}
 

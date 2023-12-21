@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import "./Adote.css";
 import CardsAnimal from '../../Components/Card/CardsAnimal/CardsAnimal';
+import Button from '@mui/material/Button';
+
 import { SelectEstado } from '../../Components/Filtro/Estado/SelectEstado';
 import { SelectCidade } from '../../Components/Filtro/Cidade/SelectCidade';
 import Pagination from '@mui/material/Pagination';
@@ -41,7 +43,7 @@ function Adote() {
         setplaceholderUf('Selecione o Estado');
         setplaceholderSexo('Selecione o Sexo');
     };
-    
+
 
     const porte_Pet = [
         { value: "anao", label: "Anão" },
@@ -153,31 +155,42 @@ function Adote() {
             setFilters(updatedFilters);
         }
     }
-    function handleUFChange(option) {
-        if (option.value === '') {
-            setFilters({ ...filters, uf: '' });
-            setPlaceholderUf = 'Selecione o Estado';
-            setFilters(updatedFilters);
-        } else {
-            setFilters({ ...filters, uf: option.value });
-            setPlaceholderUf('');
-            setFilters(updatedFilters);
-        }
-    }
+    // function handleUFChange(option) {
+    //     if (option.value === '') {
+    //         setFilters({ ...filters, uf: '' });
+    //         setPlaceholderUf = 'Selecione o Estado';
+    //         setFilters(updatedFilters);
+    //     } else {
+    //         setFilters({ ...filters, uf: option.value });
+    //         setPlaceholderUf('');
+    //         setFilters(updatedFilters);
+    //     }
+    // }
 
+    function handleUFChange(option) {
+        
+        const updatedFilters = { ...filters, uf: option };
+        setFilters(updatedFilters);
+    }
 
     function handleCidadeChange(option) {
-        if (handleCidadeChange === '') {
-            setFilters({ ...filters, cidade: '' });
-            setplaceholderCidade = 'Selecione a Cidade';
-            setFilters(updatedFilters);
-        }
-        else {
-            setFilters({ ...filters, cidade: option.value });
-            setplaceholderCidade('');
-            setFilters(updatedFilters);
-        }
+        const updatedFilters = { ...filters, cidade: option };
+        setFilters(updatedFilters);
     }
+
+
+    // function handleCidadeChange(option) {
+    //     if (handleCidadeChange === '') {
+    //         setFilters({ ...filters, cidade: '' });
+    //         setplaceholderCidade = 'Selecione a Cidade';
+    //         setFilters(updatedFilters);
+    //     }
+    //     else {
+    //         setFilters({ ...filters, cidade: option.value });
+    //         setplaceholderCidade('');
+    //         setFilters(updatedFilters);
+    //     }
+    // }
 
     function handleCastradoChange(option) {
         if (handleCastradoChange === '') {
@@ -191,7 +204,7 @@ function Adote() {
             setFilters(updatedFilters);
         }
     }
-
+ 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -219,14 +232,14 @@ function Adote() {
                             onChange={handlePorteChange}
                         />
                     </div>
-                    <div className="filtro">
+                    {/* <div className="filtro">
                         <Select
                             options={castrado}
                             placeholder="Status da Castração"
                             value={castrado.find((option) => option.value === filters.castrado)}
                             onChange={handleCastradoChange}
                         />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="coluna2">
 
@@ -243,15 +256,17 @@ function Adote() {
                         <SelectEstado
                             onChange={handleUFChange} />
                     </div>
-                    <div className="filtro">
-                        <SelectCidade
-                            onChange={handleCidadeChange}
-                        />
-                    </div>
 
-                    <div onClick={resetFiltro} >
-                        <button className="bnt-limpar">LIMPAR FILTROS</button>
+                    {/* <div className="filtro">
+                        <SelectCidade onChange={handleCidadeChange} /> 
+                    </div> */}
+
+
+                    <div onClick={resetFiltro} style={{marginLeft:'-15%'}} >
+                    <Button  style={{  color: 'white', backgroundColor:"black"}} className="bnt-limpar" variant="contained">LIMPAR FILTROS</Button>
+
                     </div>
+                    
 
                 </div>
             </div>

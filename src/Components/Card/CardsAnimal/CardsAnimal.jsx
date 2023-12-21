@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import Box from '@mui/material/Box';
+import {Box}from "@mui/material";
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './CardsAnimais.css';
@@ -24,6 +24,7 @@ function CardsAnimal({ cardanimal }) {
   const telefoneUsuario = cardanimal.usuario.telefone;
   const mensagemPadrao = `%20Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20pet%20${cardanimal.nome_Pet}`;
 
+  
   const navigate = useNavigate();
   function handleOpen() {
     isLoggedIn ? setOpen(true) : navigate("/login");
@@ -96,15 +97,15 @@ function CardsAnimal({ cardanimal }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="content-modal" sx={style}>
+        <Box className="content-modal" sx={style}>
           <Typography style={{ maxWidth: '100%', maxHeight: '20rem', marginBottom: "8%"}} className='infoimg'>
             <img src={cardanimal.foto_Pet} alt="Imagem do Card" style={{ objectFit: 'cover', borderRadius: "6px" }} />
           </Typography>
 
           <div className='img-modal'>
           <p style={{fontWeight: 700, marginBottom: "-4%", marginTop:'-15%'}}>Descrição</p>
-            <Typography id="modal-description" variant="h6" component="h2" className='description-modal'>
-              {cardanimal.descricao_Pet}
+            <Typography id="modal-description" variant="h6" component="h2" className='description-modal' style={{ wordWrap: 'break-word' }}>
+              {capitalizeFirstLetter(cardanimal.descricao_Pet)}
             </Typography>
             <div id='whatsapp-modal' style={{ color: "white", textDecoration: "none" }}>
               <a target="_blank" href={`https://api.whatsapp.com/send?phone=${telefoneUsuario}&text=${mensagemPadrao}`} rel="noreferrer" style={{ color: "white", textDecoration: "none" }}>Whatsapp</a>
@@ -126,20 +127,20 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%', marginTop:'-3%' }} >
                 <h4>Publicado por</h4>
-                {cardanimal.usuario.nome}
+                {capitalizeFirstLetter(cardanimal.usuario.nome)}
               </Typography>
               <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%' }}>
                 <h4>Cidade</h4>
-                {cardanimal.cidade.nome_Cidade}
+                {cardanimal.cidade.nome_Cidade}<h4>Estado</h4>{cardanimal.estado.nome_Estado}
               </Typography>
-              <Typography className='infos3' variant="h6" component="h2" style={{ display: 'flex', flexDirection: 'row', gap: '2%', fontWeight: '100' }}>
-                <h4>Está em</h4>
-                {cardanimal.estado.nome_Estado}
-              </Typography>
-              {/* Adicione acessos diretos às propriedades específicas */}
+                        {/* Adicione acessos diretos às propriedades específicas */}
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>SEXO</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                {cardanimal.sexo_Pet}
+                {capitalizeFirstLetter(cardanimal.sexo_Pet)} 
+              </Typography>
+              <p style={{fontWeight: 700,  marginBottom: '-2%', marginTop:'2%',}}>Porte</p>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {cardanimal.porte_Pet}
               </Typography>
               <p style={{fontWeight: 700, marginBottom: '-2%', marginTop:'2%',}}>RAÇA</p>
               <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -167,7 +168,7 @@ function CardsAnimal({ cardanimal }) {
               </Typography>
             </div>
           </div>
-        </div>
+        </Box>
       </Modal>
     </>
   );
@@ -180,7 +181,7 @@ const style = {
   marginTop: '3%',
   transform: 'translate(-50%, -50%)',
   width: '50rem',
-  height: '39rem',
+  height: '40rem',
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,

@@ -10,6 +10,18 @@ import styled from 'styled-components';
 
 
 
+const VisuallyHiddenInput = styled.input({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: '2rem',
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: '3rem',
+});
+
 
 const Doe = () => {
 
@@ -43,24 +55,10 @@ const Doe = () => {
     });
 
 
-    const VisuallyHiddenInput = styled.input({
-        clip: 'rect(0 0 0 0)',
-        clipPath: 'inset(50%)',
-        height: '2rem',
-        overflow: 'hidden',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        whiteSpace: 'nowrap',
-        width: '3rem',
-    });
-
-
-
     const [errors, setErrors] = useState({});
 
     const nome_Animal = ['Gato', 'Cão'];
-    const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10'];
+    const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10', 'Idade Indefinida'];
     const porte_Pet = ['Anão', 'Pequeno Porte', 'Médio Porte', 'Grande Porte', 'Molosso'];
     const sexo_Pet = ['Macho', 'Fêmea'];
     const castrado = ['Sim', 'Não'];
@@ -114,10 +112,10 @@ const Doe = () => {
 
         if (Base64) {
 
-            const sexo = Sexo_Pet == "Macho" ? "M" : "F";
+           // const sexo = Sexo_Pet == "Macho" ? "M" : "F";
 
             const body = {
-                Vacina, Animal, Nome_Pet, Raca, Especie, Porte_Pet, Sexo_Pet: sexo, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
+                Vacina, Animal, Nome_Pet, Raca, Especie, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
             }
 
 
@@ -277,13 +275,6 @@ const Doe = () => {
                         ))}
                     </select>
 
-                    <input
-                        type="text"
-                        placeholder="Tipo da vacinas"
-                        className="input"
-                        onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
-                        value={Vacina.descricao}
-                    />
                     <select
                         value={Vacina.status}
                         onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
@@ -297,6 +288,13 @@ const Doe = () => {
                         ))}
                     </select>
 
+                    <input
+                        type="text"
+                        placeholder="Tipo da vacinas"
+                        className="input"
+                        onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
+                        value={Vacina.descricao}
+                    />
 
                     <input
                         onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
@@ -323,7 +321,8 @@ const Doe = () => {
 
 
                     <form onSubmit={handleSubmit}>
-                        <Button size="large" className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.2rem', marginLeft: '53%', wordBreak:'break-word' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
+
+                        <Button size="large" type="file" accept="image/jpeg" onChange={handleFileChange} className='mudar-foto' style={{ height: '4rem', width: '15rem', borderRadius: '12px', backgroundColor: '#381813', fontSize: '1.2rem', marginLeft: '53%', wordBreak:'break-word' }} component="label" variant="contained" startIcon={< AddAPhotoIcon />}>
                             MANDAR FOTO
                             <VisuallyHiddenInput type="file" accept="image/jpeg" onChange={handleFileChange} />
                         </Button>
