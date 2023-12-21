@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AlterarPet.css';
 import { AuthContextFunctions } from '../../AuthContext';
 import FormGroup from '@mui/material/FormGroup';
@@ -12,13 +12,16 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 
 const AlterarPet = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const imageUrl = params.get('imageUrl');
   const [Porte_Pet, setPorte_Pet] = useState("");
   const [Sexo_Pet, setSexo_Pet] = useState("");
   const [Idade_Pet, setIdade_Pet] = useState("");
   const [Descricao_Pet, setDescricao_Pet] = useState("");
   const [Status_Pet, setStatus_Pet] = useState("");
   const [Castrado, setCastrado] = useState("");
-  const [Foto_Pet] = useState("");
+  const [Foto_Pet, setFoto_Pet] = useState(imageUrl);
   const [Base64, setBase64] = useState(null);
   const [Cod_Usuario, setCod_Usuario] = useState("");
   const [Nome_Foto] = useState("");
@@ -245,6 +248,8 @@ const AlterarPet = () => {
             value={Nome_Pet}
           />
           {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>}
+
+          <img src={Foto_Pet} alt="Foto do pet" />
 
           <input
             type="text"

@@ -44,7 +44,7 @@ function CardsAnimal({ cardanimal }) {
       InfoColor = "#F52317";
       break;
     case 'Interessados':
-      InfoColor = "#F5C716";
+      InfoColor = "#F5C716";rd
       break;
     default:
       InfoColor = "#F5C716";

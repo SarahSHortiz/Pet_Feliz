@@ -52,7 +52,7 @@ function CardsEditarAnimal({ cardanimal }) {
                         </h1>
 
                         <Stack spacing={2} direction="row" className='button-modal'>
-                            <Link to="/AlterarPet">
+                            <Link to="/AlterarPet?imageUrl=${cardanimal.foto_Pet}">
                                 <Button
                                     variant="contained"
                                     style={{
