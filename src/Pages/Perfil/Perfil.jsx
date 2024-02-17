@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../perfil/Perfil.css';
+import "../Perfil/Perfil.css";
 import { AuthContextFunctions } from '../../AuthContext';
 import { Link } from 'react-router-dom';
 
